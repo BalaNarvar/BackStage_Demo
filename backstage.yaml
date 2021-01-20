@@ -4,7 +4,7 @@ metadata:
   name: Bala-backstage
   description: Backstage-Testing
   tags:
-    - Java
+    - java
     - node
 spec:
   type: service
