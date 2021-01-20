@@ -4,7 +4,7 @@ metadata:
   name: Bala-backstage
   description: Backstage-Testing
   annotations:
-    circleci.com/project-slug: github/narvar/automation_tools
+    circleci.com/project-slug: github/narvar/hub-backend
   tags:
     - java
     - node
