@@ -9,6 +9,6 @@ metadata:
     - java
     - python
 spec:
-  type: service2
-  lifecycle: experimental2
+  type: service
+  lifecycle: experimental
   owner: bala
