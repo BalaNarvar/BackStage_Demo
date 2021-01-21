@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: artist-api
-  description: Retrieve artist details
+  name: order-api
+  description: Order API
 spec:
   type: openapi
   lifecycle: production
@@ -12,12 +12,12 @@ spec:
     openapi: "3.0.0"
     info:
       version: 1.0.0
-      title: Artist API
+      title: ORDER API
       license:
         name: MIT
     servers:
-      - url: http://artist.spotify.net/v1
+      - url: https://ws.narvar.qa/api/v1
     paths:
-      /artists:
+      /orders/:
         get:
-          summary: List all artists
+          summary: ORDER API
