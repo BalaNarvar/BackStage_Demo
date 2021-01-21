@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: order-api
+  description: Order API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: order-api
+  system: order-api
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: ORDER API
+      license:
+        name: MIT
+    servers:
+      - url: https://ws.narvar.qa/api/v1
+    paths:
+      /orders/:
+        get:
+          summary: ORDER API
