@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Bala-backstage2
+  description: Backstage-Testing2
+  annotations:
+    circleci.com/project-slug: github/narvar/Automation_Messaging
+  tags:
+    - java
+    - python
+spec:
+  type: service2
+  lifecycle: experimental2
+  owner: bala
