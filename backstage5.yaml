@@ -4,7 +4,7 @@ metadata:
   name: Bala-backstage5
   description: Backstage-Testing5
   annotations:
-    jira/project-key: Narvar JIRA/Messaging(MSG)
+    jira/project-key: MSG
   tags:
     - java
     - python
