@@ -5,7 +5,6 @@ metadata:
   description: Backstage-Testing3
   annotations:
     circleci.com/project-slug: github/narvar/hub_backend
-    jira/project-key: Narvar JIRA/Messaging(MSG)
   tags:
     - java
     - python
