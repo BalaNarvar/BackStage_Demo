@@ -4,7 +4,7 @@ metadata:
   name: Bala-backstage2
   description: Backstage-Testing2
   annotations:
-    circleci.com/project-slug: github/narvar/Automation_Messaging
+    jira/project-key: Narvar JIRA/Messaging(MSG)
   tags:
     - java
     - python
