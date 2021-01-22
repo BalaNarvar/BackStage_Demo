@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Bala-backstage5
+  description: Backstage-Testing5
+  annotations:
+    jira/project-key: Narvar JIRA/Messaging(MSG)
+  tags:
+    - java
+    - python
+spec:
+  type: service
+  lifecycle: experimental
+  owner: bala
