@@ -5,7 +5,7 @@ metadata:
   description: Backstage-Testing7
   annotations:
     circleci.com/project-slug: github/narvar/Automation_Messaging
-    jira/project-key: TRK
+    jira/project-key: MSG
     
   tags:
     - java
