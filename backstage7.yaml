@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Bala-backstage7
+  description: Backstage-Testing7
+  annotations:
+    circleci.com/project-slug: github/narvar/Automation_Messaging
+    
+  tags:
+    - java
+    - node
+spec:
+  type: service
+  lifecycle: experimental
+  owner: bala
