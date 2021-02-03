@@ -6,6 +6,7 @@ metadata:
   annotations:
     circleci.com/project-slug: github/narvar/Automation_Messaging
     jira/project-key: MSG
+    github.com/project-slug: narvar/messaging_automation
     
   tags:
     - java
