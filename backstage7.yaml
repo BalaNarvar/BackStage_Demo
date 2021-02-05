@@ -8,7 +8,7 @@ metadata:
     jira/project-key: MSG
     github.com/project-slug: narvar/messaging_automation
     sonarqube.org/project-key: com.narvar:carrier-data-ingestion
-    
+    jenkins.io/github-folder: messaging_automation/Messaging_End_to_End_Test
   tags:
     - java
     - node
