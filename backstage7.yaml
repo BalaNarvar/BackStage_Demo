@@ -9,6 +9,8 @@ metadata:
     github.com/project-slug: narvar/messaging_automation
     sonarqube.org/project-key: com.narvar:carrier-data-ingestion
     jenkins.io/github-folder: messaging_automation/Messaging_End_to_End_Test
+    aws.com/lambda-function-name: HelloWorld
+    aws.com/lambda-region: us-east-1
   tags:
     - java
     - node
