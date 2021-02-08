@@ -11,7 +11,7 @@ metadata:
     jenkins.io/github-folder: messaging_automation/Messaging_End_to_End_Test
     aws.com/lambda-function-name: HelloWorld
     aws.com/lambda-region: us-east-1
-    narvar-speca/url: https://narvar.atlassian.net/wiki/spaces/EN/pages/486179086/Track+URL+Obfuscation
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/EN/pages/486179086/Track+URL+Obfuscation
 
   tags:
     - java
