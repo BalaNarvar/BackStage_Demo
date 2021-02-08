@@ -7,7 +7,7 @@ metadata:
     circleci.com/project-slug: github/narvar/Automation_Messaging
     jira/project-key: MSG
     github.com/project-slug: narvar/messaging_automation
-    sonarqube.org/project-key: narvar:castle
+    sonarqube.org/project-key: narvar/narvar:castle
     jenkins.io/github-folder: messaging_automation/Messaging_End_to_End_Test
     aws.com/lambda-function-name: HelloWorld
     aws.com/lambda-region: us-east-1
