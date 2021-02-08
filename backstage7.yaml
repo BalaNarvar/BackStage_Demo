@@ -11,7 +11,7 @@ metadata:
     jenkins.io/github-folder: messaging_automation/Messaging_End_to_End_Test
     aws.com/lambda-function-name: HelloWorld
     aws.com/lambda-region: us-east-1
-    narvar-speca/url: https://speca.io/Narvar/headless-returns/_edit/m/get-returrn-methods
+    narvar-speca/url: https://speca.io/Narvar/headless-returns/_edit/
 
   tags:
     - java
