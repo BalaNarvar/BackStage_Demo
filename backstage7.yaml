@@ -9,6 +9,7 @@ metadata:
     github.com/project-slug: narvar/messaging_automation
     sonarqube.org/project-key: action-notification-service
     narvar-speca/url: https://speca.io/Narvar/tracking-api
+    lighthouse.com/website-url: https://backstage.io/
 
   tags:
     - java
