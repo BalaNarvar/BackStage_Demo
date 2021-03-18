@@ -11,6 +11,9 @@ metadata:
     narvar-speca/url: https://speca.io/Narvar/tracking-api
     lighthouse.com/website-url: https://backstage.io/
     backstage.io/techdocs-ref: url:https://github.com/narvar/service-dashboard
+  providesApis: 
+    - http://internal-acf47a1a-prod01-notificati-9369-1157604011.us-west-2.elb.amazonaws.com/api/v1/notification-time
+  
 
   tags:
     - java
