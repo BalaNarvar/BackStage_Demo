@@ -20,5 +20,5 @@ spec:
   type: service
   lifecycle: experimental
   owner: bala
-  providesApis: 
-    - http://internal-acf47a1a-prod01-notificati-9369-1157604011.us-west-2.elb.amazonaws.com/api/v1/notification-time
+  providesApis:
+    - artist-api
