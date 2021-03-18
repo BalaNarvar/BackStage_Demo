@@ -10,7 +10,7 @@ metadata:
     sonarqube.org/project-key: com.narvar:carrier-data-ingestion
     narvar-speca/url: https://speca.io/Narvar/tracking-api
     lighthouse.com/website-url: https://backstage.io/
-    backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master
+    backstage.io/techdocs-ref: url:https://github.com/narvar/service-dashboard
 
   tags:
     - java
