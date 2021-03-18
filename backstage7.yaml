@@ -21,4 +21,4 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis:
-    - artist-api
+    - https://ws.narvar.qa/api/v1/orders/
