@@ -15,3 +15,6 @@ spec:
   owner: bala
   providesApis:
     - artist-api
+  consumesApis:
+    - artist-api
+
