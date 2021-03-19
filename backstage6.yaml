@@ -1,16 +1,23 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: API
 metadata:
-  name: Bala-backstage6
-  description: Backstage-Testing6
-  annotations:
-    jira/project-key: MSG
-    backstage.io/techdocs-ref: https://docs.google.com/document/d/1o1_qXpUd_9WM1shZwiD4RD6Y3vEspzKI5KevRtLmOkw/edit?ts=603cb8bc#
-
-  tags:
-    - java
-    - python
+  name: artist-api
+  description: Retrieve artist details
 spec:
-  type: service
-  lifecycle: experimental
-  owner: bala
+  type: openapi
+  lifecycle: production
+  owner: artist-relations-team
+  system: artist-engagement-portal
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Artist API
+      license:
+        name: MIT
+    servers:
+      - url: http://artist.spotify.net/v1
+    paths:
+      /artists:
+        get:
+          summary: List all artists
