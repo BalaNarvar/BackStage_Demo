@@ -14,7 +14,7 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis:
-    - artist-api
+    - messaging-api1
   consumesApis:
-    - artist-api
+    - messaging-api1
 
