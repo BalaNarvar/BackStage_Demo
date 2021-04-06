@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: messaging-api
+  description: Shows list of API used in messaging
+spec:
+  type: openapi
+  lifecycle: production
+  owner: messaging-team
+  system: messaging-portal
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Messaging API
+      license:
+        name: MIT
+    servers:
+      - url: https://ws.narvar.qa/api/v1
+    paths:
+      /orders/:
+        get:
+          summary: Order API
+      /carrier-data/batch:
+        get:
+          summary: Carrier API
