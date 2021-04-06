@@ -1,10 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Bala-backstage5
-  description: Backstage-Testing5
+  name: Bala-backstage6
+  description: Backstage-Testing6
   annotations:
     jira/project-key: MSG
+    backstage.io/techdocs-ref: url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197
   tags:
     - java
     - python
@@ -12,3 +13,7 @@ spec:
   type: service
   lifecycle: experimental
   owner: bala
+  providesApis:
+    - artist-api
+  consumesApis:
+    - artist-api
