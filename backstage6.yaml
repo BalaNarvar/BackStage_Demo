@@ -14,7 +14,7 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis:
-    - messaging-api
+    - messaging-api-test
   consumesApis:
-    - messaging-api
+    - messaging-api-test
 
