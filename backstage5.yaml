@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Bala-backstage6
-  description: Backstage-Testing6
+  name: Bala-backstage5
+  description: Backstage-Testing5
   annotations:
     jira/project-key: MSG
     backstage.io/techdocs-ref: url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197
