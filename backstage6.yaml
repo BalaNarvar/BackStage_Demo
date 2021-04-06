@@ -5,7 +5,7 @@ metadata:
   description: Backstage-Testing6
   annotations:
     jira/project-key: MSG
-    backstage.io/techdocs-ref: https://docs.google.com/document/d/1o1_qXpUd_9WM1shZwiD4RD6Y3vEspzKI5KevRtLmOkw/edit?ts=603cb8bc#
+    backstage.io/techdocs-ref: url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197
   tags:
     - java
     - python
