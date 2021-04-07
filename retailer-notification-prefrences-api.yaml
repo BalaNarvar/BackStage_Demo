@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: retailer-notification-prefrences-api
+  description: Shows list of API used in retailer-notification-preference
+spec:
+  type: openapi
+  lifecycle: production
+  owner: messaging-team
+  system: messaging-portal
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Retailer Notification Preference
+      license:
+        name: MIT
+    servers:
+      - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
+    paths:
+      /retailer-preferences/retailer/{retailerName}:
+        get:
+          summary: Getting Latest retailer Notification prefrenecs
+      /retailer-preferences/retailer/{retailerName}:
+        put:
+          summary: Updating retailer Notification prefrenecs
