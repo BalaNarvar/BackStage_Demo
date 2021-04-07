@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Retailer-notification-preferences
+  description: Retailer Notification Preferences
+  annotations:
+    circleci.com/project-slug: github/narvar/Retailer-notification-preferences
+    jira/project-key: MSG
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1516209485
+    github.com/project-slug: narvar/Retailer-notification-preferences
+  tags:
+    - java
+spec:
+  type: service
+  lifecycle: experimental
+  owner: notify-squad@narvar.com
+  system: Retailer-notification-preferences
+  providesApis:
+    - retailer-notification-preferences
