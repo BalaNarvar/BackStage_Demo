@@ -9,9 +9,9 @@ spec:
   owner: messaging-team
   system: messaging-portal
   definition: |
-    openapi: "3.0.1"
+    openapi: "3.0.0"
     info:
-      version: 1.0.0
+      version: 1.0.1
       title: Retailer Notification Preference
       license:
         name: MIT
