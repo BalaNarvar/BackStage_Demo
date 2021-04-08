@@ -12,5 +12,5 @@ spec:
   type: service
   lifecycle: experimental
   owner: bala
-  implementsApis:
-    - retailer-notification-preferences-api
+  providesApis:
+    - messaging-api-test
