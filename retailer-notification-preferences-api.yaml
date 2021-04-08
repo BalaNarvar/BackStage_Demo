@@ -21,6 +21,3 @@ spec:
       /retailer-preferences/retailer/wysiwygtest:
         get:
           summary: Getting Latest retailer Notification prefrenecs
-      /retailer-preferences/retailer/wysiwygtest:
-        put:
-          summary: Updating retailer Notification prefrenecs
