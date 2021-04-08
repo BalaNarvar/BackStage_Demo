@@ -18,10 +18,9 @@ spec:
     servers:
       - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
     paths:
-      /retailer-preferences/retailer/wysiwygtest:
+      /retailer-preferences/retailer/{retailerName}:
         get:
           summary: Getting Latest retailer Notification preferenecs
-          parameters: wysiwygtest       
         put:
           summary: Updating retailer Notification preferenecs
 
