@@ -14,7 +14,7 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis:
-    - messaging-api
+    - retailer-notification-preferences-api
   consumesApis:
-    - messaging-api
+    - retailer-notification-preferences-api
 
