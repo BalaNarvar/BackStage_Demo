@@ -20,5 +20,5 @@ spec:
   type: openapi
   lifecycle: production
   owner: artist-relations-team
-  providesApis:
-    - artist-api
+  implementsApis:
+    - retailer-notification-preferences-api
