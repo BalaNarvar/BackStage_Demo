@@ -10,8 +10,8 @@ metadata:
     narvar-speca/url: https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions
     narvar-noflake/url: https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjo4LCJ0eXBlIjoicXVlcnkiLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOjE2Mn19LCJkaXNwbGF5IjoidGFibGUiLCJ2aXN1YWxpemF0aW9uX3NldHRpbmdzIjp7fX0=
     narvar-datadog/url: 
-      - https://app.datadoghq.com/account/login?next=%2Fmonitors#20758278
       - https://app.datadoghq.com/account/login?next=%2Fmonitors%2F10573016
+      - https://app.datadoghq.com/account/login?next=%2Fmonitors#20758278
       - https://app.datadoghq.com/account/login?next=%2Fmonitors%2F7257196
       - https://app.datadoghq.com/account/login?next=%2Fmonitors%2F10239877
     narvar-grafana/url: https://pulsar-prod01.narvar.com:3000/d/Ypa0B5eWk/overview?orgId=1&refresh=1m
