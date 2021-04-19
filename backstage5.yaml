@@ -11,16 +11,9 @@ metadata:
       - QUICK TIME
       - AA   
       - BB
-    narvar-datadog/url:
-      - A
-      - B
-      - C
-    narvar-noflake/url: 
-      - D
-      - E
-    narvar-grafana/url:
-      - F
-      - G
+    narvar-datadog/url: A
+    narvar-noflake/url: B
+    narvar-grafana/url: C
   tags:
     - java
     - python
