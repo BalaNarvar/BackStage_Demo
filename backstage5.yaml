@@ -11,6 +11,10 @@ metadata:
       - QUICK TIME
       - AA   
       - BB
+    narvar-datadog/url:
+      - A
+      - B
+      - C
   tags:
     - java
     - python
