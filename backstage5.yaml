@@ -8,7 +8,9 @@ metadata:
     backstage.io/techdocs-ref: url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197
     narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions
     narvar-speca/url: AA, BB, CC
-    narvar-datadog/url: A, B
+    narvar-datadog/url:
+      - A
+      - B
     narvar-noflake/url: B
     narvar-grafana/url: C
   tags:
