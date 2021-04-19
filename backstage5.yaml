@@ -15,6 +15,12 @@ metadata:
       - A
       - B
       - C
+    narvar-noflake/url: 
+      - D
+      - E
+    narvar-grafana/url:
+      - F
+      - G
   tags:
     - java
     - python
