@@ -25,7 +25,7 @@ spec:
           produces:
           - "application/json"
           parameters:
-          - name: "retailer name"
+          - name: "retailerName"
             in: "path"
             description: "Passing retailer name to get the RNP preferences"
             required: true
