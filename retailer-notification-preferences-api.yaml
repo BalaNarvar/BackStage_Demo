@@ -34,7 +34,7 @@ spec:
             "200":
               description: "successful operation"
         put:
-          summary: "Update an existing pet"
+          summary: "Updating RNP settings"
           description: ""
           consumes:
           - "application/json"
