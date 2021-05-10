@@ -27,6 +27,6 @@ spec:
           parameters:
           - name: "retailer name"
             in: "path"
-            description: "Passing retailer name to get the RNP preferences
+            description: "Passing retailer name to get the RNP preferences"
             required: true
             type: "string"
