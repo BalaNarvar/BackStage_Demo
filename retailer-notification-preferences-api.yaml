@@ -21,6 +21,15 @@ spec:
       /retailer-preferences/retailer/{retailerName}:
         get:
           summary: Getting Latest retailer Notification preferenecs
+          description: Passing the Retailer name to get the RNP updates
+          produces:
+          - "application/json"
+          parameters:
+          - name: "retailer name"
+            in: "path"
+            description: "Passing retailer name to get the RNP preferences
+            required: true
+            type: "string"
         put:
           summary: Updating retailer Notification preferenecs
 
