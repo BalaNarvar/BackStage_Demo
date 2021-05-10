@@ -33,3 +33,20 @@ spec:
           responses:
             "200":
               description: "successful operation"
+        put:
+          summary: "Update an existing pet"
+          description: ""
+          consumes:
+          - "application/json"
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "Updating the RNP preferences"
+            required: true
+          responses:
+            "400":
+              description: "Bad Request"
+            "404":
+              description: "Not Found"
