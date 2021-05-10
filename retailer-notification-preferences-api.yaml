@@ -41,6 +41,11 @@ spec:
           produces:
           - "application/json"
           parameters:
+          - name: "retailerName"
+            in: "path"
+            description: "Passing retailer name to update the RNP preferences"
+            required: true
+            type: "string"
           - in: "body"
             name: "body"
             description: "Updating the RNP preferences"
