@@ -30,6 +30,11 @@ spec:
             description: "Passing retailer name to get the RNP preferences"
             required: true
             type: "string"
+          - name: Access-Control-Allow-Origin
+            in: header
+            description: an authorization header
+            required: true
+            type: string
           responses:
             "200":
               description: "successful operation"
