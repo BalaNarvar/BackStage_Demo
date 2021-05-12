@@ -9,8 +9,8 @@ metadata:
     #narvar-datadog/dashboard: "https://app.datadoghq.com/dashboard/4uw-mdt-ruf/msg-rules-reader-metrics"
     #narvar-noflake/url: "https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjo4LCJ0eXBlIjoicXVlcnkiLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOjE2NH19LCJkaXNwbGF5IjoidGFibGUiLCJ2aXN1YWxpemF0aW9uX3NldHRpbmdzIjp7fX0=, https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjpudWxsLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOm51bGx9LCJ0eXBlIjoicXVlcnkifSwiZGlzcGxheSI6InRhYmxlIiwidmlzdWFsaXphdGlvbl9zZXR0aW5ncyI6e319, https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjpudWxsLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOm51bGx9LCJ0eXBlIjoicXVlcnkifSwiZGlzcGxheSI6InRhYmxlIiwidmlzdWFsaXphdGlvbl9zZXR0aW5ncyI6e319"
     #narvar-grafana/dashboard: "http://pulsar-prod01.narvar.com:3000/d/Ypa0B5eWk/overview?orgId=1&refresh=1m, http://pulsar-prod01.narvar.com:3000/d/b2w0sy-ik/functions-metrics?orgId=1&from=now-6h&to=now&var-cluster=All&var-namespace=prod01%2Fmessaging&var-function=rulespulsarreader, http://pulsar-prod01.narvar.com:3000/d/p0LQ5r7Mz/topic-metrics?orgId=1&refresh=5s&from=now-2d&to=now&var-cluster=All&var-namespace=prod01%2Fdata-services&var-topic=persistent:%2F%2Fprod01%2Fdata-services%2Fatlas-output-partition-0&var-topic=persistent:%2F%2Fprod01%2Fdata-services%2Fatlas-output-partition-1&var-topic=persistent:%2F%2Fprod01%2Fdata-services%2Fatlas-output-partition-2&var-topic=persistent:%2F%2Fprod01%2Fdata-services%2Fatlas-output-partition-3" 
-    narvar-speca/url: "https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions"
-    narvar-wiki/url: "https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions,https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1014595727/ADA+Test+For+Messaging+Emails"
+    narvar-speca/url: "https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1014595727/ADA+Test+For+Messaging+Emailss"
+    narvar-wiki/url: "https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions"
   description: Backstage-Testing5
   name: Bala-backstage5
   tags: 
