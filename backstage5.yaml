@@ -3,9 +3,15 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   links:
-    - url: https://dashboard.example.com
-      title: My Dashboard_1
-      icon: dashboard
+    - url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1014595727/ADA+Test+For+Messaging+Emailss
+      title: ADA Links
+      icon: confluence
+    - url: https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions
+      title: BCC Scrape
+      icon: confluence
+    - url: https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions
+      title: New Wiki Links
+      icon: confluence
   annotations: 
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
     jira/project-key: MSG
