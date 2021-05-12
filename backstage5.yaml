@@ -1,7 +1,11 @@
 --- 
 apiVersion: backstage.io/v1alpha1
 kind: Component
-metadata: 
+metadata:
+  links:
+    - url: https://dashboard.example.com
+      title: My Dashboard
+      icon: dashboard
   annotations: 
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
     jira/project-key: MSG
