@@ -4,7 +4,13 @@ kind: Component
 metadata:
   links:
     - url: https://dashboard.example.com
-      title: My Dashboard
+      title: My Dashboard_1
+      icon: dashboard
+    - url: https://dashboard.example.com
+      title: My Dashboard_2
+      icon: dashboard
+    - url: https://dashboard.example.com
+      title: My Dashboard_3
       icon: dashboard
   annotations: 
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
