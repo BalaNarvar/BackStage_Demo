@@ -32,7 +32,12 @@ spec:
             type: "string"
           - name: Access-Control-Allow-Origin
             in: header
-            description: an authorization header
+            description: access-contorl-origin
+            required: true
+            type: string
+          - name: Access-Control-Allow-Methods
+            in: header
+            description: access-contorl-methods
             required: true
             type: string
           responses:
