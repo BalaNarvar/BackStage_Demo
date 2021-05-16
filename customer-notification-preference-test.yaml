@@ -61,4 +61,28 @@ spec:
               description: "Bad Request"
             "404":
               description: "Not Found"
+      /api/v1/notify-preferences/order-level/customer/{customerId}?order_id={orderId}:        
+        get:
+          summary: CNP Optin Order Level
+          description: Creating CNP optin for Order level
+          consumes:
+          - "application/json"
+          produces:
+          - "application/json"
+          parameters:
+          - name: "customerId"
+            in: "path"
+            description: "Passing customer Id to the path parameter"
+            required: true
+            type: "string"
+          - name: "orderId"
+            in: "query"
+            description: "Passing order Id to the path parameter"
+            required: true
+            type: "string"
+          responses:
+            "400":
+              description: "Bad Request"
+            "404":
+              description: "Not Found"
 
