@@ -1,0 +1,67 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: retailer-notification-preferences-api-test
+  description: Shows list of API used in retailer-notification-preference
+spec:
+  type: openapi
+  lifecycle: production
+  owner: messaging-team
+  system: messaging-portal
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.1
+      title: Retailer Notification Preference
+      license:
+        name: MIT
+    servers:
+      - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
+    paths:
+      /retailer-preferences/retailer/{retailerName}:
+        get:
+          summary: Getting Latest retailer Notification preferenecs
+          description: Passing the Retailer name to get the RNP updates
+          produces:
+          - "application/json"
+          parameters:
+          - name: "retailerName"
+            in: "path"
+            description: "Passing retailer name to get the RNP preferences"
+            required: true
+            type: "string"
+          - name: Access-Control-Allow-Origin
+            in: header
+            description: access-contorl-origin
+            required: true
+            type: string
+          - name: Access-Control-Allow-Methods
+            in: header
+            description: access-contorl-methods
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+        put:
+          summary: "Updating RNP settings"
+          description: ""
+          consumes:
+          - "application/json"
+          produces:
+          - "application/json"
+          parameters:
+          - name: "retailerName"
+            in: "path"
+            description: "Passing retailer name to update the RNP preferences"
+            required: true
+            type: "string"
+          - in: "body"
+            name: "body"
+            description: "Updating the RNP preferences"
+            required: true
+          responses:
+            "400":
+              description: "Bad Request"
+            "404":
+              description: "Not Found"
