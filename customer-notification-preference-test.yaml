@@ -33,3 +33,32 @@ spec:
           responses:
             "200":
               description: "successful operation"
+      /api/v1/notify-preferences/order-level/customer/{customerID}/order/{orderId}        
+        post:
+          summary: CNP Optin Order Level
+          description: Creating CNP optin for Order level
+          consumes:
+          - "application/json"
+          produces:
+          - "application/json"
+          parameters:
+          - name: "customerId"
+            in: "path"
+            description: "Passing customer Id to the path parameter"
+            required: true
+            type: "string"
+          - name: "orderId"
+            in: "path"
+            description: "Passing order Id to the path parameter"
+            required: true
+            type: "string"
+          - in: "body"
+            name: "body"
+            description: "Creating the CNP Optin"
+            required: true
+          responses:
+            "400":
+              description: "Bad Request"
+            "404":
+              description: "Not Found"
+
