@@ -16,46 +16,15 @@ spec:
       license:
         name: MIT
     servers:
-      - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
+      - url: https://ws.narvar.com
     paths:
-      /retailer-preferences/retailer/{retailerName}:
-        get:
-          summary: Getting Latest retailer Notification preferenecs
-          description: Passing the Retailer name to get the RNP updates
+      /api/v1/event/:
+        post:
+          summary: Action API Endpoint
+          description: Pass the Payload to hit action endpoint
           produces:
           - "application/json"
           parameters:
-          - name: "retailerName"
-            in: "path"
-            description: "Passing retailer name to get the RNP preferences"
-            required: true
-            type: "string"
-          - name: Access-Control-Allow-Origin
-            in: header
-            description: access-contorl-origin
-            required: true
-            type: string
-          - name: Access-Control-Allow-Methods
-            in: header
-            description: access-contorl-methods
-            required: true
-            type: string
-          responses:
-            "200":
-              description: "successful operation"
-        put:
-          summary: "Updating RNP settings"
-          description: ""
-          consumes:
-          - "application/json"
-          produces:
-          - "application/json"
-          parameters:
-          - name: "retailerName"
-            in: "path"
-            description: "Passing retailer name to update the RNP preferences"
-            required: true
-            type: "string"
           - in: "body"
             name: "body"
             description: "Updating the RNP preferences"
