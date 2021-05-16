@@ -20,14 +20,14 @@ spec:
     paths:
       /api/v1/notify-preferences/customer-level/customer/{customerId}:
         get:
-          summary: "Getting customer level optin details"
-          description: "Passing customer Id as path parameter"
+          summary: Getting customer level optin details
+          description: Passing customer Id as path parameter
           produces:
           - "application/json"
           parameters:
           - name: "customerId"
             in: "path"
-            description: "Passing Customer Id to get Customer Level optin details"
+            description: Passing Customer Id to get Customer Level optin details
             required: true
             type: "string"
           responses:
