@@ -33,7 +33,7 @@ spec:
           responses:
             "200":
               description: "successful operation"
-      /api/v1/notify-preferences/order-level/customer/{customerID}/order/{orderId}        
+      /api/v1/notify-preferences/order-level/customer/{customerID}/order/{orderId}:        
         post:
           summary: CNP Optin Order Level
           description: Creating CNP optin for Order level
