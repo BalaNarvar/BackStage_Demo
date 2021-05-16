@@ -85,4 +85,32 @@ spec:
               description: "Bad Request"
             "404":
               description: "Not Found"
+      /api/v1/notify-preferences/tracking-level/carrier/{carrierId}/tracking/{orderId}:
+        post:
+          summary: CNP Track Level Optin  
+          description: Creating CNP optin for Track level
+          consumes:
+          - "application/json"
+          produces:
+          - "application/json"
+          parameters:
+          - name: "carrierId"
+            in: "path"
+            description: "Passing carrier Id to the path parameter"
+            required: true
+            type: "string"
+          - name: "orderId"
+            in: "path"
+            description: "Passing order Id to the path parameter"
+            required: true
+            type: "string"
+          - in: "body"
+            name: "body"
+            description: "Creating the Track Level Optin"
+            required: true
+          responses:
+            "400":
+              description: "Bad Request"
+            "404":
+              description: "Not Found"
 
