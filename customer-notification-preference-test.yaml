@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: retailer-notification-preferences-api-test
+  name: customer-notification-preferences-api-test
   description: Shows list of API used in retailer-notification-preference
 spec:
   type: openapi
