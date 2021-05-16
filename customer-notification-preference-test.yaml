@@ -16,49 +16,45 @@ spec:
       license:
         name: MIT
     servers:
-      - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
+      - url: http://internal-consumer-notify-prefs-prod01-256782917.us-west-2.elb.amazonaws.com
     paths:
-      /retailer-preferences/retailer/{retailerName}:
+      /api/v1/notify-preferences/customer-level/customer/{customerId}:
         get:
-          summary: Getting Latest retailer Notification preferenecs
-          description: Passing the Retailer name to get the RNP updates
+          summary: "Getting customer level optin details"
+          description: "Passing customer Id as path parameter"
           produces:
           - "application/json"
           parameters:
-          - name: "retailerName"
+          - name: "customerId"
             in: "path"
-            description: "Passing retailer name to get the RNP preferences"
+            description: "Passing Customer Id to get Customer Level optin details"
             required: true
             type: "string"
-          - name: Access-Control-Allow-Origin
-            in: header
-            description: access-contorl-origin
-            required: true
-            type: string
-          - name: Access-Control-Allow-Methods
-            in: header
-            description: access-contorl-methods
-            required: true
-            type: string
           responses:
             "200":
               description: "successful operation"
-        put:
-          summary: "Updating RNP settings"
-          description: ""
+      /api/v1/notify-preferences/order-level/customer/{customerID}/order/{orderId}        
+        post:
+          summary: "CNP Optin Order Level"
+          description: "Creating CNP optin for Order level"
           consumes:
           - "application/json"
           produces:
           - "application/json"
           parameters:
-          - name: "retailerName"
+          - name: "customerId"
             in: "path"
-            description: "Passing retailer name to update the RNP preferences"
+            description: "Passing customer Id to the path parameter"
+            required: true
+            type: "string"
+          - name: "orderId"
+            in: "path"
+            description: "Passing order Id to the path parameter"
             required: true
             type: "string"
           - in: "body"
             name: "body"
-            description: "Updating the RNP preferences"
+            description: "Creating the CNP Optin"
             required: true
           responses:
             "400":
