@@ -13,7 +13,7 @@ metadata:
       title: New Wiki Links
       icon: confluence
   annotations: 
-    jenkins.io/github-folder: "/job/AccessbilityTest-ADA-Axe/job/"
+    jenkins.io/github-folder: "job/AccessbilityTest-ADA-Axe/"
     sonarqube.org/project-key: "action-notification-service"
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
     jira/project-key: MSG
