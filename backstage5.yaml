@@ -13,6 +13,7 @@ metadata:
       title: New Wiki Links
       icon: confluence
   annotations: 
+    lighthouse.com/website-url:"docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
     sonarqube.org/project-key: "action-notification-service"
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
