@@ -16,7 +16,7 @@ metadata:
     lighthouse.com/website-url: "/docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
     sonarqube.org/project-key: "action-notification-service"
-    backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
+    backstage.io/techdocs-ref: "url:https://github.com/narvar/Retailer-notification-preferences/tree/PRD-292"
     jira/project-key: MSG
     narvar-datadog/monitor: "https://app.datadoghq.com/monitors/26168411 ,https://app.datadoghq.com/monitors/26168623 , https://app.datadoghq.com/monitors/19787557 ,https://app.datadoghq.com/monitors/19494724 ,https://app.datadoghq.com/monitors/12151058"
     narvar-datadog/dashboard: "https://app.datadoghq.com/dashboard/4uw-mdt-ruf/msg-rules-reader-metrics"
