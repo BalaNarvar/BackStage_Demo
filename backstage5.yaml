@@ -19,6 +19,7 @@ metadata:
     backstage.io/techdocs-ref: "url:https://github.com/narvar/Retailer-notification-preferences/tree/PRD-292"
     snyk.io/org-name: BalaNarvar
     snyk.io/project-ids: b0eefcb6-88b1-4a46-89ed-d2f718b5a35c
+    cloud.google.com/function-ids: projects/project-name/locations/region-name/functions/function-name
     jira/project-key: MSG
     narvar-datadog/monitor: "https://app.datadoghq.com/monitors/26168411 ,https://app.datadoghq.com/monitors/26168623 , https://app.datadoghq.com/monitors/19787557 ,https://app.datadoghq.com/monitors/19494724 ,https://app.datadoghq.com/monitors/12151058"
     narvar-datadog/dashboard: "https://app.datadoghq.com/dashboard/4uw-mdt-ruf/msg-rules-reader-metrics"
