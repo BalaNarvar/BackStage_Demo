@@ -5,6 +5,7 @@ metadata:
   annotations: 
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
     jira/project-key: MSG
+    sonarqube.org/project-key: "action-notification-service"
     #narvar-datadog/monitor: "https://app.datadoghq.com/monitors/26168411 ,https://app.datadoghq.com/monitors/26168623 , https://app.datadoghq.com/monitors/19787557 ,https://app.datadoghq.com/monitors/19494724 ,https://app.datadoghq.com/monitors/12151058"
     #narvar-datadog/dashboard: "https://app.datadoghq.com/dashboard/4uw-mdt-ruf/msg-rules-reader-metrics"
     #narvar-noflake/url: "https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjo4LCJ0eXBlIjoicXVlcnkiLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOjE2NH19LCJkaXNwbGF5IjoidGFibGUiLCJ2aXN1YWxpemF0aW9uX3NldHRpbmdzIjp7fX0=, https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjpudWxsLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOm51bGx9LCJ0eXBlIjoicXVlcnkifSwiZGlzcGxheSI6InRhYmxlIiwidmlzdWFsaXphdGlvbl9zZXR0aW5ncyI6e319, https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjpudWxsLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOm51bGx9LCJ0eXBlIjoicXVlcnkifSwiZGlzcGxheSI6InRhYmxlIiwidmlzdWFsaXphdGlvbl9zZXR0aW5ncyI6e319"
