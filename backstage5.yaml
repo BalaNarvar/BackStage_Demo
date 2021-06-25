@@ -15,7 +15,7 @@ metadata:
   annotations: 
     lighthouse.com/website-url: "/docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
-    sonarqube.org/project-key: "action-notification-service"
+    sonarqube.org/project-key: "narvar:whatsapp-service"
     backstage.io/techdocs-ref: "url:https://github.com/narvar/Retailer-notification-preferences/tree/PRD-292"
     snyk.io/org-name: BalaNarvar
     snyk.io/project-ids: b0eefcb6-88b1-4a46-89ed-d2f718b5a35c
