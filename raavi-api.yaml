@@ -16,30 +16,19 @@ spec:
       license:
         name: MIT
     servers:
-      - url: http://internal-acf47a1a-prod01-retailerno-f376-1880905605.us-west-2.elb.amazonaws.com
+      - url: https://raavi.narvar.com/api/v1
     paths:
-      /retailer-preferences/retailer/{retailerName}:
-        get:
-          summary: Getting Latest retailer Notification preferenecs
-          description: Passing the Retailer name to get the RNP updates
+      /order:
+        post:
+          summary: Posting an order for raabi
+          description: Passing Order detail
           produces:
           - "application/json"
           parameters:
-          - name: "retailerName"
-            in: "path"
-            description: "Passing retailer name to get the RNP preferences"
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
             required: true
-            type: "string"
-          - name: Access-Control-Allow-Origin
-            in: header
-            description: access-contorl-origin
-            required: true
-            type: string
-          - name: Access-Control-Allow-Methods
-            in: header
-            description: access-contorl-methods
-            required: true
-            type: string
           responses:
             "200":
               description: "successful operation"
