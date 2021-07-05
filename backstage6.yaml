@@ -21,5 +21,5 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis: 
-    - customer-notification-preferences-api-test
+    - raavi-api
   type: service
