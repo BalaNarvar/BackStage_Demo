@@ -122,3 +122,33 @@ spec:
             "200":
               description: "successful operation" 
         
+
+      /shopify/order:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /shopify/product:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"
