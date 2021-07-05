@@ -20,7 +20,7 @@ spec:
     paths:
       /order:
         post:
-          summary: Posting an order for raabi
+          summary: Posting an order for raavi
           description: Passing Order detail
           produces:
           - "application/json"
@@ -32,3 +32,93 @@ spec:
           responses:
             "200":
               description: "successful operation"
+      /order/{orderNumber}/shipment:
+        put:
+          summary: Updating an Shipment
+          description: Updating an Shipment
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"
+      
+      /order/{orderNumber}/invoice:
+        put:
+          summary: Updating an invoice
+          description: Updating an invoice
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation" 
+      
+      /bigcommerce/order:
+        post:
+          summary: Posting an order
+          description: Posting an order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation" 
+      
+      /bigcommerce/shipment:
+        post:
+          summary: Posting an shipment for bigcommerce
+          description: Posting an shipment
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"  
+       
+      /bigcommerce/store:
+        post:
+          summary: Posting an shipment for store
+          description: Posting an store
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /bigcommerce/category:
+        post:
+          summary: Posting an shipment for category
+          description: Posting an category
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation" 
+        
