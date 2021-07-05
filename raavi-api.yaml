@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: raavi
+  name: raavi-api
   description: Shows list of API used in raavi
 spec:
   type: openapi
