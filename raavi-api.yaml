@@ -43,6 +43,26 @@ spec:
             name: "body"
             description: "passing the payload"
             required: true
+          - name: x-magneto-store
+            in: header
+            description: x-magneto-store
+            required: true
+            type: string
+          - name: x-magento-hmac-sha256
+            in: header
+            description: x-magento-hmac-sha256
+            required: true
+            type: string
+          - name: x-magento-event
+            in: header
+            description: x-magento-event
+            required: true
+            type: string
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
           responses:
             "200":
               description: "successful operation"
@@ -58,6 +78,26 @@ spec:
             name: "body"
             description: "passing the payload"
             required: true
+          - name: x-magneto-store
+            in: header
+            description: x-magneto-store
+            required: true
+            type: string
+          - name: x-magento-hmac-sha256
+            in: header
+            description: x-magento-hmac-sha256
+            required: true
+            type: string
+          - name: x-magento-event
+            in: header
+            description: x-magento-event
+            required: true
+            type: string
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
           responses:
             "200":
               description: "successful operation" 
