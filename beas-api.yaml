@@ -20,8 +20,8 @@ spec:
     paths:
       /magento/handshake:
         post:
-          summary: Posting an order for beas
-          description: Passing Order detail
+          summary: magneto handshake
+          description: magneto handshake
           produces:
           - "application/json"
           parameters:
@@ -51,8 +51,8 @@ spec:
 
       /magento/integration/callback:
         post:
-          summary: Posting an order for beas
-          description: Passing Order detail
+          summary: magneto callback
+          description: magneto callback
           produces:
           - "application/json"
           parameters:
@@ -81,8 +81,8 @@ spec:
               
       /magento/integration/login:
         post:
-          summary: Posting an order for beas
-          description: Passing Order detail
+          summary: magneto login
+          description: magneto login
           produces:
           - "application/json"
           parameters:
@@ -111,7 +111,7 @@ spec:
               
       /magento/integration/endpoints:
         post:
-          summary: Posting an order for beas
+          summary: magento endpoints
           description: Passing Order detail
           produces:
           - "application/json"
@@ -138,3 +138,263 @@ spec:
           responses:
             "200":
               description: "successful operation"
+              
+      /bigcommerce/app/auth:
+        post:
+          summary: bigcommerce auth
+          description: bigcommerce auth
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+
+      /bigcommerce/app/load:
+        post:
+          summary: Loading big commerce app
+          description: Loading big commerce app
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /bigcommerce/app/uninstall:
+        post:
+          summary: Uninstalling big commerce app
+          description: uninstalling big commerce app
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /lom/auth/callback:
+        post:
+          summary: Lom auth call back
+          description: Lom auth call back
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /lom/auth:
+        post:
+          summary: Lom auth
+          description: Lom auth
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"   
+              
+      /lom/auth/token:
+        post:
+          summary: Lom token
+          description: Lom token
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /hybris/impex:
+        post:
+          summary: Hybris impex
+          description: Hybris impex
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /hybris/initiate:
+        post:
+          summary: Hybris impex
+          description: Hybris impex
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation" 
+              
+      /hybris/update/order:
+        put:
+          summary: Updating hybris order
+          description: Updating hybris order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /install:
+        post:
+          summary: Shopify installing
+          description: Shopify installing
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"        
+              
+      /finish_install:
+        post:
+          summary: Shopify installing
+          description: Shopify installing
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /webhook/uninstall:
+        post:
+          summary: Shopify installing
+          description: Shopify installing
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"        
+              
+      /schedule:
+        post:
+          summary: Google cloud scheduler
+          description: Google cloud scheduler
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"        
