@@ -16,11 +16,11 @@ spec:
       license:
         name: MIT
     servers:
-      - url: https://raavi.narvar.com/api/v1
+      - url: https://beas.narvar.com/api/v1
     paths:
-      /order:
+      /magento/handshake:
         post:
-          summary: Posting an order for raavi
+          summary: Posting an order for beas
           description: Passing Order detail
           produces:
           - "application/json"
@@ -29,6 +29,112 @@ spec:
             name: "body"
             description: "passing the payload"
             required: true
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-magento-hmac-sha256
+            in: header
+            description: x-magento-hmac-sha256
+            required: true
+            type: string
+          - name: x-magento-store
+            in: header
+            description: x-magento-store
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+
+
+      /magento/integration/callback:
+        post:
+          summary: Posting an order for beas
+          description: Passing Order detail
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          - name: x-magento-store
+            in: header
+            description: x-magento-store
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /magento/integration/login:
+        post:
+          summary: Posting an order for beas
+          description: Passing Order detail
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          - name: x-magento-store
+            in: header
+            description: x-magento-store
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /magento/integration/endpoints:
+        post:
+          summary: Posting an order for beas
+          description: Passing Order detail
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: oAuth2
+            in: header
+            description: oAuth2
+            required: true
+            type: string
+          - name: x-magento-store
+            in: header
+            description: x-magento-store
+            required: true
+            type: string
           responses:
             "200":
               description: "successful operation"
