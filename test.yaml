@@ -1,0 +1,58 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test
+  description: Carrier API Facade
+  annotations:
+    circleci.com/project-slug: github/narvar/carrier-api-facade
+    jira/project-key: CAR
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/DS/pages/96010366/Carrier+API+Facade
+    github.com/project-slug: narvar/carrier-api-facade
+    narvar-speca/url: https://speca.io/Narvar/carrier-tracking-update
+    narvar-datadog/alerts: https://app.datadoghq.com/monitors/manage?q=CAF%20status%3Aalert
+    narvar-datadog/logs: https://app.datadoghq.com/logs?cols=core_host%2Ccore_service&from_ts=1590599918567&index=main&live=true&messageDisplay=inline&query=service%3Adocker+kube_service%3Acarrier-api-facade-prod01&stream_sort=desc&to_ts=1590600818567
+    narvar-cloud-monitoring/logs: https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Faws-prod-narvar-sta-1535370501%2Flogs%2Fprod01.kubernetes.carrier-api-facade-prod01%22?project=aws-prod-narvar-sta-1535370501
+    narvar-datadog/monitor: https://app.datadoghq.com/monitors/manage?q=CAF
+    narvar-datadog/dashboard: https://app.datadoghq.com/dashboard/3v7-fpx-rrh/carrier-api-facade-k8-stats?from_ts=1599401422409&live=true&tile_size=m&to_ts=1599402322409
+    narvar-cloud-monitoring/dashboard: https://console.cloud.google.com/monitoring/dashboards/custom/99761178076706284?authuser=0&project=aws-prod-narvar-sta-1535370501&timeDomain=1d
+    narvar-noflake/url: https://noflake.narvar.com/dashboard/200,https://noflake.narvar.com/dashboard/220
+    sonarqube.org/project-key: com.narvar:carrier-api-facade
+  tags:
+    - java
+    - carrier
+  links:
+    - url: https://portal.victorops.com/client/narvar-inc
+      title: VictorOps
+    - url: https://portal.victorops.com/dash/narvar-inc#/team/team-xYJvfWK3GYgg6YlD/users
+      title: VictorOps Team
+    - url: https://narvar.slack.com/archives/CRJ4S2ZPF
+      title: Slack Channel
+    - url: https://narvar.atlassian.net/secure/RapidBoard.jspa?rapidView=235
+      title: Kanban Board
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/586317839/Carrier
+      title: Wiki Main Page
+    - url: https://jenkins-qa01.narvar.qa/
+      title: Jenkins-QA (Need QA VPN)
+    - url: https://jenkins-prod01.narvar.com/
+      title: Jenkins-Prod (Need Prod VPN)
+    - url: https://sonarqube.narvar.qa/
+      title: Sonar
+    - url: https://github.com/orgs/narvar/teams/carrier-integrations
+      title: Github Team
+    - url: https://github.com/orgs/narvar/teams/carrier-integrations/repositories
+      title: Repositories owned by the team
+    - url: https://retool-qa01.narvar.qa/apps/Ship/Ship_Carriers
+      title: QA (Ship Carriers)
+    - url: https://retool-qa01.narvar.qa/apps/Encryption/Decryption
+      title: QA01 (Decryption)
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/416907370/Engineering+Onboarding
+      title: Engineering Onboarding
+    - url: https://drive.google.com/drive/u/0/folders/1i6I3pERltieRGbzZy290oTH4uvzZn0KW
+      title: Engineering Onboarding Resources
+spec:
+  type: service
+  lifecycle: production
+  owner: Carriers@narvar.com
+  system: carrier-api-facade
+  providesApis:
+    - carrier-api-facade-api
