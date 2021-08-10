@@ -1,0 +1,140 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: carrier-api-facade-api
+  description: Shows list of API used in carrier-api-facade
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Carrier Facade API
+      version: 1.0.0
+    servers:
+      - url: http://internal-acf47a1a-prod01-carrierapi-7db4-1883887765.us-west-2.elb.amazonaws.com
+    paths:
+      /carrier/ftn/tracking:
+        get:
+          tags:
+            - default
+          summary: Carrier Facade Tracking API
+          description: This API is used to derive tracking information from a carrier
+          parameters:
+            - name: tracking_id
+              in: query
+              schema:
+                type: integer
+              example: '392501087608'
+            - name: retailer
+              in: query
+              schema:
+                type: string
+              example: bedbathandbeyond
+            - name: locale
+              in: query
+              schema:
+                type: string
+              example: fr
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /configuration/carrier_config/ftn/bedbathandbeyond:
+        get:
+          tags:
+            - default
+          summary: Carrier Configuration API
+          description: Used to fetch carrier level configuration
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /carrier-alias/carrier:
+        get:
+          tags:
+            - default
+          summary: Carrier Alias API
+          description: Used to fetch all stored aliases associated to a carrier
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /carrier-alias/retailer/bedbathandbeyond:
+        get:
+          tags:
+            - default
+          summary: Carrier Alias with Retailer API
+          description: Used to fetch carrier alias w.r.t a retailer
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /status-codes/mapping/ftn:
+        get:
+          tags:
+            - default
+          summary: status mapping api
+          parameters:
+            - name: event_code
+              in: query
+              schema:
+                type: integer
+              example: '200'
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /status-codes/mappings/ftn:
+        get:
+          tags:
+            - default
+          summary: source mappings API
+          parameters:
+            - name: source
+              in: query
+              schema:
+                type: string
+              example: API
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /carrier/ftn/tracking-debug:
+        get:
+          tags:
+            - default
+          summary: Carrier Facade Tracking-Debug API
+          description: >-
+            This API is used to get debugging information from Carrier API, i.e, the
+            original carrier response is appeneded to the original carrier tracking
+            response.
+          parameters:
+            - name: tracking_id
+              in: query
+              schema:
+                type: integer
+              example: '392501087608'
+            - name: retailer
+              in: query
+              schema:
+                type: string
+              example: bedbathandbeyond
+            - name: locale
+              in: query
+              schema:
+                type: string
+              example: fr
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
