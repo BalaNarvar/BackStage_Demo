@@ -38,3 +38,4 @@ spec:
   providesApis: 
     - retailer-notification-preferences-api-test
   type: service
+  system: artist-engagement-portal
