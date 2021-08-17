@@ -36,6 +36,6 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis: 
-    - retailer-notification-preferences-api-test
+    - bktest-api
   type: service
   system: artist-engagement-portal
