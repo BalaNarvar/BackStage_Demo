@@ -1,0 +1,2547 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bktest-notification-api
+  description: Shows list of API used in Notification
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Notification Service API
+      description: API for using NS
+      contact:
+        name: Narvar
+      license: {}
+      version: 1.2.4
+    servers:
+    - url: http://internal-d471ad54-qa01-notification-14e3-973512313.us-west-2.elb.amazonaws.com:80
+      description: Inferred Url
+    tags:
+    - name: notification-controller
+      description: Notification Controller
+    - name: template-processor-payload-creator-controller
+      description: Template Processor Payload Creator Controller
+    paths:
+      "/api/v1/notification-service/notify":
+        post:
+          tags:
+          - notification-controller
+          summary: Process Notification request via REST API. Not used or maintained.
+          operationId: postNotificationRequestUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/NotificationRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BaseNotificationResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/template-processor-payload-creator":
+        get:
+          tags:
+          - template-processor-payload-creator-controller
+          summary: Retrieve Template Processor Payload (OrderInfo)
+          description: One of order_number / tracking_number mandatory
+          operationId: getTemplateProcessorRequestUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: query
+            description: retailer_moniker
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: order_number
+            in: query
+            description: order_number
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: carrier_moniker
+            in: query
+            description: carrier_moniker
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: tracking_number
+            in: query
+            description: tracking_number
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: pickup_id
+            in: query
+            description: pickup_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: return_id
+            in: query
+            description: return_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: lookup_id
+            in: query
+            description: lookup_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: locale
+            in: query
+            description: locale
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: notification_type
+            in: query
+            description: notification_type
+            required: false
+            style: form
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/TemplateProcessorRequest"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+    components:
+      schemas:
+        Address:
+          title: Address
+          type: object
+          properties:
+            city:
+              type: string
+              example: Anytown
+            country:
+              type: string
+              example: US
+            line1:
+              type: string
+              example: 123 Main St
+            line2:
+              type: string
+              example: 'Unit #100'
+            line3:
+              type: string
+              description: This is currently always blank
+              example: None
+            state:
+              type: string
+              example: CA
+            zip:
+              type: string
+              example: '12345'
+        All item related objects, other than itemBeingProcessed:
+          title: All item related objects, other than itemBeingProcessed
+          type: object
+          properties:
+            current_item:
+              "$ref": "#/components/schemas/Template processor representation of an item"
+            current_item_group:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+        All return related objects:
+          title: All return related objects
+          type: object
+          properties:
+            current_return:
+              "$ref": "#/components/schemas/Return"
+            other_returns:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Return"
+            returns_delivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Return"
+        AtlasMetaInfo:
+          title: AtlasMetaInfo
+          type: object
+          properties:
+            data_available_date_time:
+              type: string
+            enqueued_date_time:
+              type: string
+            message_groups:
+              type: array
+              items:
+                type: string
+            message_origin:
+              type: string
+            message_source:
+              type: string
+            message_trigger:
+              type: string
+            message_trigger_return_id:
+              type: string
+            message_type:
+              type: string
+            rook_process_pulsar_messages:
+              type: boolean
+            update_entity:
+              type: string
+            update_source:
+              type: string
+              enum:
+              - ORDER
+              - TRACKING
+            updated_at:
+              type: string
+            updated_order_number:
+              type: string
+            updated_return_id:
+              type: string
+            updated_tracking_number:
+              type: string
+        AtlasResponse:
+          title: AtlasResponse
+          type: object
+          properties:
+            customer:
+              "$ref": "#/components/schemas/Customer"
+            order:
+              "$ref": "#/components/schemas/Order"
+            tracking:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Tracking"
+        Audit:
+          title: Audit
+          type: object
+          properties:
+            audit_record_saved:
+              type: boolean
+            date:
+              type: string
+            message_origin:
+              type: string
+        Authorization:
+          title: Authorization
+          type: object
+          properties:
+            param_1:
+              type: string
+            param_2:
+              type: string
+            param_3:
+              type: string
+            type:
+              type: string
+        BaseNotificationResponse:
+          title: BaseNotificationResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            request_id:
+              type: string
+            status:
+              type: string
+            tracer_id:
+              type: string
+        Billing:
+          title: Billing
+          type: object
+          properties:
+            amount:
+              type: string
+              example: "$10.00"
+            billed_to:
+              "$ref": "#/components/schemas/Contact"
+            billing_address:
+              "$ref": "#/components/schemas/Address"
+            payments:
+              type: array
+              description: List of payment methods used
+              items:
+                "$ref": "#/components/schemas/Payment"
+            shipping_handling:
+              type: string
+              example: "$3.99"
+            tax_amount:
+              type: string
+              example: "$5.00"
+            tax_rate:
+              type: string
+              example: 50%
+        BillingDocument:
+          title: BillingDocument
+          type: object
+          properties:
+            amount:
+              type: string
+            billed_to:
+              "$ref": "#/components/schemas/Contact"
+            billing_address:
+              "$ref": "#/components/schemas/Address"
+            payments:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Payment"
+            shipping_handling:
+              type: string
+            tax_amount:
+              type: string
+            tax_rate:
+              type: string
+        CarrierOrdinal:
+          title: CarrierOrdinal
+          type: object
+          properties:
+            event_source:
+              type: string
+            event_source_descriptor:
+              type: string
+            ordinal:
+              type: integer
+              format: int32
+        ChannelContactInfo:
+          title: ChannelContactInfo
+          type: object
+          properties:
+            channel:
+              type: string
+            contact_detail_list:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ContactDetail"
+            contacts:
+              type: array
+              items:
+                type: string
+            custom_attributes:
+              type: object
+            dedup_key:
+              type: string
+            digest_collection:
+              "$ref": "#/components/schemas/DigestCollection"
+            enforce_sleep_hours:
+              type: boolean
+            locale:
+              type: string
+            lookup_id_list:
+              type: array
+              items:
+                type: string
+            opt_in_required:
+              type: boolean
+            options:
+              "$ref": "#/components/schemas/Options"
+            provider:
+              "$ref": "#/components/schemas/Provider"
+            template_name:
+              type: string
+            webhook_purpose:
+              type: string
+        Contact:
+          title: Contact
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            email:
+              type: string
+              example: joe.doe@example.com
+            fax:
+              type: string
+              example: "+12345678902"
+            first_name:
+              type: string
+              example: First
+            language:
+              type: string
+              example: en
+            last_name:
+              type: string
+              example: Last
+            phone:
+              type: string
+              example: '2345678901'
+            phone_extension:
+              type: string
+              example: "+1000"
+        ContactDetail:
+          title: ContactDetail
+          type: object
+          properties:
+            contact:
+              type: string
+            dedup_key:
+              type: string
+            device_id:
+              type: string
+            opt_in_status:
+              type: string
+              enum:
+              - OPT_IN_AT_PROVIDER
+              - OPT_IN_BY_RETAILER
+              - OPT_OUT_BY_RETAILER
+            os_type:
+              type: string
+        Customer:
+          title: Customer
+          type: object
+          properties:
+            contact:
+              "$ref": "#/components/schemas/Contact"
+            id:
+              type: string
+              example: customer-id
+            notification_preferences:
+              type: array
+              items:
+                type: string
+            tier:
+              type: string
+            type:
+              type: string
+        Delivery:
+          title: Delivery
+          type: object
+          properties:
+            appointment_window_begin:
+              type: string
+            appointment_window_end:
+              type: string
+            carrier_edd_begin:
+              type: string
+            carrier_edd_end:
+              type: string
+            edd_begin:
+              type: string
+            edd_bucket:
+              type: string
+            edd_end:
+              type: string
+            edd_tracer_id:
+              type: string
+            guaranteed_date_begin:
+              type: string
+            stops:
+              "$ref": "#/components/schemas/Stops"
+        DigestCollection:
+          title: DigestCollection
+          type: object
+          properties:
+            digest_collection_existing:
+              "$ref": "#/components/schemas/DigestDetailCollection"
+            digest_collection_new:
+              "$ref": "#/components/schemas/DigestDetailCollection"
+        DigestDetailCollection:
+          title: DigestDetailCollection
+          type: object
+          properties:
+            items_back_ordered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemInfo0"
+            items_cancelled:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemInfo0"
+            shipments_delayed:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_delivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_in_transit:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_just_shipped:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_lost_or_damaged:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_ready_to_go:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+            shipments_undelivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+        DigestInterval:
+          title: DigestInterval
+          type: object
+          properties:
+            digest_end_time:
+              type: string
+            digest_start_time:
+              type: string
+        Dimensions:
+          title: Dimensions
+          type: object
+          properties:
+            height:
+              type: string
+            length:
+              type: string
+            uom:
+              type: string
+            weight:
+              type: string
+            weight_uom:
+              type: string
+            width:
+              type: string
+        DisplayProperties:
+          title: DisplayProperties
+          type: object
+          properties:
+            business_info:
+              type: array
+              items:
+                "$ref": "#/components/schemas/DisplayProperty"
+            in_location_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/DisplayProperty"
+        DisplayProperty:
+          title: DisplayProperty
+          type: object
+          properties:
+            icon:
+              type: string
+            key:
+              type: string
+            value:
+              type: string
+        EddDerived:
+          title: EddDerived
+          type: object
+          properties:
+            date:
+              type: string
+            powered_by:
+              type: string
+            source:
+              type: string
+        EmailAttributes:
+          title: EmailAttributes
+          type: object
+          properties:
+            bcc:
+              type: array
+              items:
+                type: string
+            cc:
+              type: array
+              items:
+                type: string
+        Event:
+          title: Event
+          type: object
+          properties:
+            carrier_moniker:
+              type: string
+            carrier_ordinal:
+              "$ref": "#/components/schemas/CarrierOrdinal"
+            carrier_status_code:
+              type: string
+            created_date_epoch:
+              type: integer
+              format: int64
+            date:
+              type: string
+            date_raw:
+              type: string
+            date_with_derived_offset:
+              type: string
+            description:
+              type: string
+            exception:
+              "$ref": "#/components/schemas/EventError"
+            local_date_time:
+              type: string
+            location:
+              "$ref": "#/components/schemas/Address"
+            modified_date_epoch:
+              type: integer
+              format: int64
+            raw_code:
+              type: string
+            status_code_mapping:
+              "$ref": "#/components/schemas/StatusCodeMapping"
+        EventError:
+          title: EventError
+          type: object
+          properties:
+            code:
+              type: string
+            description:
+              type: string
+        ExchangeItem:
+          title: ExchangeItem
+          type: object
+          properties:
+            attributes:
+              type: object
+              additionalProperties:
+                type: string
+            ext_id:
+              type: string
+            product_sku:
+              type: string
+            title:
+              type: string
+        ExchangeOrderInfo:
+          title: ExchangeOrderInfo
+          type: object
+          properties:
+            customer_order_number:
+              type: string
+            id:
+              type: string
+            order_number:
+              type: string
+            order_type:
+              type: string
+            tags:
+              type: string
+        Information about the pickup location:
+          title: Information about the pickup location
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            hours:
+              type: array
+              description: List of opening and closing hours for the store
+              items:
+                "$ref": "#/components/schemas/PickupStoreHour"
+            name:
+              type: string
+              example: REI - Market Street
+            phone_number:
+              type: string
+              example: "+12345678901"
+            url:
+              type: string
+              example: http://www.example.com
+        Item:
+          title: Item
+          type: object
+          properties:
+            active:
+              type: boolean
+            back_ordered:
+              type: boolean
+            categories:
+              type: array
+              items:
+                type: string
+            color:
+              type: string
+            color_id:
+              type: string
+            created_date:
+              type: integer
+              format: int64
+            currency:
+              type: string
+            custom_attributes:
+              type: object
+              additionalProperties:
+                type: string
+            description:
+              type: string
+            dimensions:
+              "$ref": "#/components/schemas/Dimensions"
+            discount_amount:
+              type: string
+            discount_percent:
+              type: string
+            events:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemEvent"
+            final_sale:
+              type: boolean
+            final_sale_date:
+              type: string
+            fulfillment_status:
+              type: string
+            fulfillment_type:
+              type: string
+            gift:
+              type: boolean
+            hazmat_flag:
+              type: string
+            id:
+              type: string
+            image_url:
+              type: string
+            invoice_id:
+              type: string
+            is_hazmat:
+              type: boolean
+            item_id:
+              type: string
+            line_number:
+              type: string
+            line_price:
+              type: string
+            modified_date:
+              type: integer
+              format: int64
+            name:
+              type: string
+            narvar_convert_id:
+              type: string
+            original_line_price:
+              type: string
+            original_unit_price:
+              type: string
+            parent_product_sku:
+              type: string
+            pick_ticket:
+              type: string
+            price:
+              type: string
+            product_description_url:
+              type: string
+            product_id:
+              type: string
+            product_sku:
+              type: string
+            product_type:
+              type: string
+            promise_date:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+            reference_file:
+              type: string
+            retailer_order_tracking_number:
+              type: string
+            sale_flag:
+              type: string
+            shipped_date:
+              type: string
+            shop_runner_eligible:
+              type: boolean
+            size:
+              type: string
+            size_id:
+              type: string
+            style:
+              type: string
+            url:
+              type: string
+            vendor:
+              type: string
+            vendors:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Vendor"
+            weight:
+              type: string
+            weight_unit:
+              type: string
+        ItemEvent:
+          title: ItemEvent
+          type: object
+          properties:
+            date:
+              type: string
+            event:
+              type: string
+            line_number:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+            sequence:
+              type: integer
+              format: int32
+        ItemInfo:
+          title: ItemInfo
+          type: object
+          properties:
+            item_id:
+              type: string
+            parent_sku:
+              type: string
+            product_sku:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+            status:
+              type: string
+        ItemInfo0:
+          title: ItemInfo0
+          type: object
+          properties:
+            item_info:
+              "$ref": "#/components/schemas/Item"
+        ItemMap:
+          title: ItemMap
+          type: object
+          properties:
+            event_date:
+              type: string
+            item:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+        ItemPrices:
+          title: ItemPrices
+          type: object
+          properties:
+            line_price:
+              type: string
+            original_line_price:
+              type: string
+            original_unit_price:
+              type: string
+        ItemVendor:
+          title: ItemVendor
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            email:
+              type: string
+            name:
+              type: string
+            phone:
+              type: string
+            type:
+              type: string
+        ItemizedDetail:
+          title: ItemizedDetail
+          type: object
+          properties:
+            expiry_date:
+              type: string
+            item_id:
+              type: string
+            product_sku:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+        Latest status of pickup:
+          title: Latest status of pickup
+          type: object
+          properties:
+            code:
+              type: string
+              description: Pickup status code.
+              example: PICKED_UP
+            date:
+              type: string
+              description: Timestamp when status occurred
+              example: '2019-01-01T12:00:00Z'
+            message:
+              type: string
+              description: Human readable version of pickup status code.
+              example: Package is ready for pickup
+        NdrActivity:
+          title: NdrActivity
+          type: object
+          properties:
+            location:
+              "$ref": "#/components/schemas/Address"
+            name:
+              type: string
+            phone_number:
+              type: string
+            reason:
+              type: string
+            requested_date:
+              type: string
+        NonDeliveryResponse:
+          title: NonDeliveryResponse
+          type: object
+          properties:
+            activity:
+              "$ref": "#/components/schemas/NdrActivity"
+            created_at:
+              type: string
+            nauth:
+              type: string
+            source:
+              type: string
+        NotificationPreference:
+          title: NotificationPreference
+          type: object
+          properties:
+            opt_ins:
+              type: array
+              items:
+                "$ref": "#/components/schemas/OptIn"
+        NotificationRequest:
+          title: NotificationRequest
+          type: object
+          properties:
+            hints:
+              uniqueItems: true
+              type: array
+              items:
+                type: string
+            item_info_map:
+              type: object
+              additionalProperties:
+                "$ref": "#/components/schemas/ItemInfo0"
+            item_key_strategy:
+              type: string
+              enum:
+              - ID
+              - SKU
+              - SKU_AND_ID
+            merged_order_tracking_response:
+              "$ref": "#/components/schemas/AtlasResponse"
+            meta_info:
+              "$ref": "#/components/schemas/AtlasMetaInfo"
+            notify:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotifyEvent"
+            pickup_info_map:
+              type: object
+              additionalProperties:
+                "$ref": "#/components/schemas/PickupInfo"
+            previous_order_tracking_response:
+              "$ref": "#/components/schemas/AtlasResponse"
+            retailer_moniker:
+              type: string
+            return_info_map:
+              type: object
+              additionalProperties:
+                "$ref": "#/components/schemas/ReturnInfo"
+            tracking_shipment_info_map:
+              type: object
+              additionalProperties:
+                "$ref": "#/components/schemas/TrackingShipmentInfo"
+        NotifyEvent:
+          title: NotifyEvent
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ChannelContactInfo"
+            locale:
+              type: string
+            lookup_id:
+              type: string
+            notification_scope:
+              type: string
+            notification_time:
+              type: string
+            notification_type:
+              type: string
+            order_level_scope:
+              type: boolean
+            pickup_id:
+              type: string
+            referrer_url:
+              type: string
+            return_id:
+              type: string
+            tracking_number:
+              type: string
+        OptIn:
+          title: OptIn
+          type: object
+          properties:
+            channel:
+              type: string
+            contact:
+              type: string
+        Options:
+          title: Options
+          type: object
+          properties:
+            authorization:
+              "$ref": "#/components/schemas/Authorization"
+            bcc_enabled:
+              type: boolean
+            carrier_processing_hours:
+              type: integer
+              format: int32
+            cc_enabled:
+              type: boolean
+            contact_name:
+              type: string
+            custom_params:
+              type: object
+              additionalProperties:
+                type: string
+            digest_interval:
+              "$ref": "#/components/schemas/DigestInterval"
+            digest_notification_types:
+              type: array
+              items:
+                type: string
+            digest_skip_update_check:
+              type: boolean
+            disabled:
+              type: boolean
+            from_contact:
+              type: string
+            http_method:
+              type: string
+            item_delay_check_hours:
+              type: integer
+              format: int32
+            item_max_processing_hours:
+              type: integer
+              format: int32
+            lambda_name:
+              type: string
+            locale:
+              type: string
+            locale_to_contact_map:
+              type: object
+              additionalProperties:
+                "$ref": "#/components/schemas/Options"
+            preferred_edd_bucket_list:
+              type: array
+              items:
+                type: string
+            reminder_processing_hours:
+              type: integer
+              format: int32
+            reply_to_contact:
+              type: string
+            request_headers:
+              type: array
+              items:
+                "$ref": "#/components/schemas/RequestHeader"
+            resend_enabled:
+              type: boolean
+            survey_processing_hours:
+              type: integer
+              format: int32
+            test_bcc_contact:
+              type: array
+              items:
+                type: string
+            test_cc_contact:
+              type: array
+              items:
+                type: string
+            test_contact:
+              type: string
+            time_zone:
+              type: string
+            url:
+              type: string
+        Order:
+          title: Order
+          type: object
+          properties:
+            billing_document:
+              "$ref": "#/components/schemas/BillingDocument"
+            checkout_locale:
+              type: string
+            created_date:
+              type: string
+            custom_attributes:
+              type: object
+              additionalProperties:
+                type: string
+            customer_id:
+              type: string
+            customer_level:
+              type: string
+            customer_type:
+              type: string
+            events:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemEvent"
+            fulfillment_status:
+              type: string
+            gift:
+              type: boolean
+            is_tracking_reference:
+              type: boolean
+            items:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Item"
+            items_truncated:
+              type: boolean
+            modified_date:
+              type: string
+            notification_preferences:
+              "$ref": "#/components/schemas/NotificationPreference"
+            order_currency:
+              type: string
+            order_number:
+              type: string
+            order_source:
+              type: string
+            pickups:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            pickups_truncated:
+              type: boolean
+            placement_date:
+              type: string
+            promotions:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Promotion"
+            reference_file:
+              type: string
+            retailer_moniker:
+              type: string
+            returns:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Return"
+            riid:
+              type: string
+            secure_order_number:
+              type: string
+            ship_date:
+              type: integer
+              format: int64
+            shipment_document:
+              "$ref": "#/components/schemas/ShipmentInfo"
+            shipment_info:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ShipmentInfo"
+            shipments_truncated:
+              type: boolean
+            store:
+              "$ref": "#/components/schemas/Store"
+        OrderInfo:
+          title: OrderInfo
+          type: object
+          properties:
+            address:
+              description: Order billing address
+              "$ref": "#/components/schemas/Address"
+            all_order_items:
+              type: array
+              description: All items for the order collected together. Not always populated
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+            attributes:
+              type: object
+              additionalProperties:
+                type: string
+              description: Map of custom attributes provided by call to orderApi
+            billing:
+              "$ref": "#/components/schemas/Billing"
+            checkout_locale:
+              type: string
+            current_shipment:
+              "$ref": "#/components/schemas/Shipment"
+            customer:
+              "$ref": "#/components/schemas/Customer"
+            digest_collection:
+              "$ref": "#/components/schemas/TPDigestCollection"
+            exception_link:
+              type: string
+              description: Always unset by messaging
+            first_name:
+              type: string
+              example: example_first_name
+            item_collection:
+              "$ref": "#/components/schemas/All item related objects, other than itemBeingProcessed"
+            items_being_processed:
+              type: array
+              description: Items not belonging to any pickup, return, or shipment.
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+            last_name:
+              type: string
+              example: example_last_name
+            long_order_tracking_url:
+              type: string
+              description: Order level track url with only order number and locale
+            multi_pickups_delayed:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_pickups_not_picked:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_pickups_on_its_way:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_pickups_picked:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_pickups_processing:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_pickups_ready:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            multi_shipment:
+              type: array
+              description: Other non-delivered shipments
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            multi_shipment_delivered:
+              type: array
+              description: Other delivered shipments
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            narvar_tracer_id:
+              type: string
+            notification_date:
+              type: string
+            notification_locale:
+              type: string
+            notification_lookup_id:
+              type: string
+            notification_triggered_by_tracking_number:
+              type: string
+            notification_type:
+              type: string
+            order_currency:
+              type: string
+            order_date:
+              type: string
+              example: '2019-01-01T12:00:00Z'
+            order_number:
+              type: string
+              example: ORDER12345
+            phone_number:
+              type: string
+              example: "+12345678901"
+            pickup_collection:
+              "$ref": "#/components/schemas/PickupCollection"
+            pickup_delayed:
+              "$ref": "#/components/schemas/Pickup"
+            pickup_not_picked:
+              "$ref": "#/components/schemas/Pickup"
+            pickup_on_its_way:
+              "$ref": "#/components/schemas/Pickup"
+            pickup_picked:
+              "$ref": "#/components/schemas/Pickup"
+            pickup_processing:
+              "$ref": "#/components/schemas/Pickup"
+            pickup_ready:
+              "$ref": "#/components/schemas/Pickup"
+            promotions:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Promotion"
+            return_collection:
+              "$ref": "#/components/schemas/All return related objects"
+            rule_attributes:
+              type: object
+              description: Map of custom attributes provided by the rule that triggered
+                this notification
+            status:
+              type: string
+              description: Always unset by messaging
+            tiny_order_tracking_url:
+              type: string
+              description: tiny version of Order level track url
+            unique_id:
+              type: string
+            unique_uuid:
+              type: string
+            unsubscribe_url:
+              type: string
+        OrderItem:
+          title: OrderItem
+          type: object
+          properties:
+            item_id:
+              type: string
+            product_sku:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+        PartnerEvent:
+          title: PartnerEvent
+          type: object
+          properties:
+            event:
+              type: string
+            event_date:
+              type: string
+            event_id:
+              type: string
+            items:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemInfo"
+            partner:
+              type: string
+        Payment:
+          title: Payment
+          type: object
+          properties:
+            amount:
+              type: number
+              format: float
+            gift_card:
+              type: boolean
+            merchant:
+              type: string
+            merchant_ref:
+              type: string
+            method:
+              type: string
+            payment_card:
+              type: string
+            payment_ref:
+              type: string
+        Pickup:
+          title: Pickup
+          type: object
+          properties:
+            attributes:
+              type: object
+              additionalProperties:
+                type: string
+              description: Key value map of custom attributes provided by order API
+            carrier:
+              type: string
+              description: carrier_moniker of carrier if relevant. Not all pickups have
+                carriers
+              example: ups
+            collection_token:
+              type: string
+              description: Code for customer to present upon pickup
+              example: A1B2C3
+            eta:
+              type: string
+            order_items:
+              type: array
+              example: List of items included in the pickup
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+            pickup_by_date:
+              type: string
+            pickup_id:
+              type: string
+            retailer_order_number:
+              type: string
+            ship_date:
+              type: string
+            slug:
+              type: string
+            status:
+              "$ref": "#/components/schemas/Latest status of pickup"
+            store:
+              "$ref": "#/components/schemas/Information about the pickup location"
+            tiny_tracking_url:
+              type: string
+            tracking_number:
+              type: string
+              description: tracking_number of pickup if relevant. Not all pickups have
+                tracking numbers
+              example: ups
+            tracking_url:
+              type: string
+            type:
+              type: string
+              description: 'Type of pickup: BOPIS or BOSS'
+              example: BOPIS
+              enum:
+              - BOPIS
+              - BOSS
+        PickupAddress:
+          title: PickupAddress
+          type: object
+          properties:
+            pickup_address_line1:
+              type: string
+            pickup_address_line2:
+              type: string
+            pickup_city:
+              type: string
+            pickup_country:
+              type: string
+            pickup_country_code:
+              type: string
+            pickup_province:
+              type: string
+            pickup_province_code:
+              type: string
+            pickup_zipcode:
+              type: string
+        PickupCollection:
+          title: PickupCollection
+          type: object
+          properties:
+            current_pickup:
+              "$ref": "#/components/schemas/Pickup"
+            other_pickups:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+            pickups_delivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Pickup"
+        PickupEvents:
+          title: PickupEvents
+          type: object
+          properties:
+            carrier_status_code:
+              type: string
+            carrier_status_description:
+              type: string
+            event_date:
+              type: string
+            status:
+              type: string
+        PickupInfo:
+          title: PickupInfo
+          type: object
+          properties:
+            pickup_info:
+              "$ref": "#/components/schemas/Pickup"
+            tracking_info:
+              "$ref": "#/components/schemas/Tracking"
+        PickupItem:
+          title: PickupItem
+          type: object
+          properties:
+            item_id:
+              type: string
+            quantity:
+              type: integer
+              format: int32
+            sku:
+              type: string
+        PickupLocation:
+          title: PickupLocation
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            country_code:
+              type: string
+            lat:
+              type: number
+              format: float
+            lng:
+              type: number
+              format: float
+            location_id:
+              type: integer
+              format: int32
+            location_name:
+              type: string
+            state:
+              type: string
+            street1:
+              type: string
+            street2:
+              type: string
+            zip:
+              type: string
+            zip2:
+              type: string
+        PickupStatus:
+          title: PickupStatus
+          type: object
+          properties:
+            code:
+              type: string
+            date:
+              type: string
+            location:
+              "$ref": "#/components/schemas/PickupLocation"
+            message:
+              type: string
+        PickupStore:
+          title: PickupStore
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/PickupStoreAddress"
+            hours:
+              type: array
+              items:
+                "$ref": "#/components/schemas/PickupStoreHour"
+            id:
+              type: string
+            name:
+              type: string
+            phone_number:
+              type: string
+            url:
+              type: string
+        PickupStoreAddress:
+          title: PickupStoreAddress
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            state:
+              type: string
+            store_area:
+              type: string
+            street1:
+              type: string
+            street2:
+              type: string
+            zip:
+              type: string
+        PickupStoreHour:
+          title: PickupStoreHour
+          type: object
+          properties:
+            close:
+              type: string
+              example: '1800'
+            open:
+              type: string
+              example: '0900'
+        Promotion:
+          title: Promotion
+          type: object
+          properties:
+            promotion:
+              type: string
+            value:
+              type: string
+        Provider:
+          title: Provider
+          type: object
+          properties:
+            android:
+              type: string
+            credentials:
+              type: object
+              additionalProperties:
+                type: string
+            ios:
+              type: string
+            name:
+              type: string
+        RedirectToHold:
+          title: RedirectToHold
+          type: object
+          properties:
+            eligible:
+              type: boolean
+            has_nearby_locations:
+              type: boolean
+            package_identifier:
+              type: string
+            redirect_request_number:
+              type: string
+            rth_scheduled:
+              type: boolean
+            store_document:
+              "$ref": "#/components/schemas/StoreDocument"
+        RequestHeader:
+          title: RequestHeader
+          type: object
+          properties:
+            name:
+              type: string
+            value:
+              type: string
+        ResponseMessage:
+          title: ResponseMessage
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            field:
+              type: string
+            level:
+              type: string
+            message:
+              type: string
+        Return:
+          title: Return
+          type: object
+          properties:
+            alternate_email:
+              type: string
+            barcode_url:
+              type: string
+            carrier:
+              type: string
+              description: carrier_moniker if relevant. Not all returns have carrier information
+              example: fedex
+            currency:
+              type: string
+              example: GBP
+            display_restocking_fee:
+              type: boolean
+            estimated_refund:
+              type: number
+              format: float
+            event_date:
+              type: string
+            exchange_order_info:
+              "$ref": "#/components/schemas/ExchangeOrderInfo"
+            express_upgrade_fee:
+              type: number
+              format: float
+            is_gift_return:
+              type: boolean
+            is_restock_override_used:
+              type: boolean
+            is_simple_return:
+              type: boolean
+            label_url:
+              type: string
+            locale:
+              type: string
+              example: en_gb
+            max_refund_days:
+              type: string
+            min_refund_days:
+              type: string
+            partner_carrier:
+              type: string
+            pickup_address_line1:
+              type: string
+            pickup_address_line2:
+              type: string
+            pickup_city:
+              type: string
+            pickup_date:
+              type: string
+            pickup_phone_number:
+              type: string
+            pickup_state:
+              type: string
+            pickup_zip:
+              type: string
+            printerless_info_url:
+              type: string
+            proactive_disabled:
+              type: boolean
+            proactive_platform:
+              type: string
+            process_date:
+              type: string
+            refund_option:
+              type: string
+            restocking_fee:
+              type: number
+              format: float
+            return_created_date:
+              type: string
+            return_drop_off_location:
+              "$ref": "#/components/schemas/ReturnDropOffLocation"
+            return_from:
+              "$ref": "#/components/schemas/ReturnFrom"
+            return_handling_fee:
+              type: number
+              format: float
+            return_id:
+              type: string
+            return_items:
+              type: array
+              description: List of items that are part of the return
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+            return_method:
+              type: string
+            return_partner_tracking_number:
+              type: string
+            return_shipping_credit:
+              type: number
+              format: float
+            return_shipping_fee:
+              type: number
+              format: float
+            return_status:
+              type: string
+              example: cancelled
+            return_to:
+              "$ref": "#/components/schemas/ReturnTo"
+            return_trace_id:
+              type: string
+            return_tracking_number:
+              type: string
+              description: tracking_number if relevant. Not all returns have tracking
+                information
+              example: 1Z123456
+            return_tracking_status:
+              type: string
+            return_tracking_url:
+              type: string
+            rma_number:
+              type: string
+            s3_label_path:
+              type: string
+              description: S3 url with return label
+              example: http://s3.example.com/path-to-return-label.pdf
+            ship_by_date:
+              type: string
+            shipping_fee:
+              type: number
+              format: float
+            shipping_method:
+              type: string
+            slug:
+              type: string
+            subtotal:
+              type: string
+            tax_amount:
+              type: number
+              format: float
+            tiny_tracking_url:
+              type: string
+            tracking_url:
+              type: string
+            weeks_to_return:
+              type: string
+            workflow_manager_enabled:
+              type: boolean
+        ReturnDropOffLocation:
+          title: ReturnDropOffLocation
+          type: object
+          properties:
+            additional_details:
+              "$ref": "#/components/schemas/DisplayProperties"
+            city:
+              type: string
+            country:
+              type: string
+            country_code:
+              type: string
+            display_label:
+              type: string
+            lat:
+              type: number
+              format: float
+            lng:
+              type: number
+              format: float
+            location_directions:
+              type: string
+            location_id:
+              type: string
+            location_name:
+              type: string
+            location_type:
+              type: string
+            phone:
+              type: string
+            state:
+              type: string
+            street1:
+              type: string
+            street2:
+              type: string
+            type:
+              type: string
+            zip:
+              type: string
+            zip2:
+              type: string
+        ReturnFrom:
+          title: ReturnFrom
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            email:
+              type: string
+              example: joe.doe@example.com
+            fax:
+              type: string
+              example: "+12345678902"
+            first_name:
+              type: string
+              example: First
+            language:
+              type: string
+              example: en
+            last_name:
+              type: string
+              example: Last
+            phone:
+              type: string
+              example: '2345678901'
+            phone_extension:
+              type: string
+              example: "+1000"
+        ReturnInfo:
+          title: ReturnInfo
+          type: object
+          properties:
+            return_info:
+              "$ref": "#/components/schemas/Return"
+            tracking_info:
+              "$ref": "#/components/schemas/Tracking"
+        ReturnItem:
+          title: ReturnItem
+          type: object
+          properties:
+            exchange_item:
+              "$ref": "#/components/schemas/ExchangeItem"
+            item_category:
+              type: string
+            item_id:
+              type: string
+            itemized_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemizedDetail"
+            narvar_return_type:
+              type: string
+            parent_return_reason:
+              type: string
+            parent_sku:
+              type: string
+            product_sku:
+              type: string
+            repair_reason_fee:
+              type: number
+              format: float
+            retailer_reason_code:
+              type: string
+            return_quantity:
+              type: integer
+              format: int32
+            return_reason:
+              type: string
+            return_reason_locale:
+              type: string
+            unit_price:
+              type: number
+              format: float
+            user_comment:
+              type: string
+        ReturnPickupInfo:
+          title: ReturnPickupInfo
+          type: object
+          properties:
+            current_event_date:
+              type: string
+            current_status:
+              type: string
+            events:
+              type: array
+              items:
+                "$ref": "#/components/schemas/PickupEvents"
+            previous_status:
+              type: string
+            schedule_info:
+              "$ref": "#/components/schemas/ReturnPickupScheduleInfo"
+        ReturnPickupScheduleInfo:
+          title: ReturnPickupScheduleInfo
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/PickupLocation"
+            business_address:
+              type: boolean
+            cancel_deadline:
+              type: string
+            comments:
+              type: string
+            company_name:
+              type: string
+            confirmation_number:
+              type: string
+            date:
+              type: string
+            is_business_address:
+              type: boolean
+            requested_slot:
+              type: string
+            scheduled_slot:
+              type: string
+            shipment_id:
+              type: string
+            shipment_kept_at:
+              type: string
+            slot_id:
+              type: string
+        ReturnTo:
+          title: ReturnTo
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            email:
+              type: string
+              example: joe.doe@example.com
+            fax:
+              type: string
+              example: "+12345678902"
+            first_name:
+              type: string
+              example: First
+            language:
+              type: string
+              example: en
+            last_name:
+              type: string
+              example: Last
+            phone:
+              type: string
+              example: '2345678901'
+            phone_extension:
+              type: string
+              example: "+1000"
+        ReturnsShipment:
+          title: ReturnsShipment
+          type: object
+          properties:
+            carrier:
+              type: string
+            delivered_date:
+              type: string
+            items:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemInfo"
+            label_path:
+              type: string
+            shipped_date:
+              type: string
+            tracking_number:
+              type: string
+            tracking_url:
+              type: string
+        SchedulePickupInfo:
+          title: SchedulePickupInfo
+          type: object
+          properties:
+            business_address:
+              type: boolean
+            cancel_deadline:
+              type: string
+            company_name:
+              type: string
+            confirmation_number:
+              type: string
+            event_update_date:
+              type: string
+            events:
+              type: array
+              items:
+                "$ref": "#/components/schemas/PickupEvents"
+            is_business_address:
+              type: boolean
+            pickup_address:
+              "$ref": "#/components/schemas/PickupAddress"
+            pickup_comments:
+              type: string
+            pickup_date:
+              type: string
+            pickup_slot_id:
+              type: string
+            pickup_status:
+              type: string
+            pickup_time_window:
+              type: string
+            previous_pickup_status:
+              type: string
+            shipment_id:
+              type: string
+            shipment_kept_at:
+              type: string
+        Scheduling:
+          title: Scheduling
+          type: object
+          properties:
+            eligibility_message:
+              type: string
+            eligibility_status:
+              type: string
+            reason:
+              type: string
+            reschedulable:
+              type: boolean
+            schedulable:
+              type: boolean
+            schedulable_api:
+              type: boolean
+            schedule_later:
+              type: boolean
+            scheduled:
+              type: boolean
+        Shipment:
+          title: Shipment
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            carrier:
+              type: string
+            carrier_description:
+              type: string
+            carrier_moniker:
+              type: string
+              example: fedex
+            carrier_name:
+              type: string
+              description: Human-friendly carrier name
+              example: FEDEX
+            carrier_phone_number:
+              type: string
+              example: "+12345678901"
+            carrier_service:
+              type: string
+            carrier_service_code:
+              type: string
+            carrier_status:
+              type: string
+              description: Current status bucket code
+              example: DLVD
+            current_event_date:
+              type: string
+              description: Timestamp the latest shipment update occurred
+              example: '2019-01-01T12:00:00-0700'
+            custom_attributes:
+              type: object
+              additionalProperties:
+                type: string
+            customer_key:
+              type: string
+            customer_option:
+              type: string
+            delivery_management_link:
+              type: string
+            delivery_method:
+              type: string
+            discount:
+              type: string
+            edd_begin:
+              type: string
+            edd_bucket:
+              type: string
+            edd_end:
+              type: string
+            exception_link:
+              type: string
+            guaranteed_delivery_date:
+              type: string
+              description: Expected date of delivery - EDD for showing to customer
+              example: '2019-01-01T12:00:00-0700'
+            nauth:
+              type: string
+            order_items:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Template processor representation of an
+                  item"
+            phone_number:
+              type: string
+              description: shipped_to contact phone number
+              example: '8005551234'
+            redirect_address:
+              "$ref": "#/components/schemas/Address"
+            redirect_to_hold:
+              "$ref": "#/components/schemas/RedirectToHold"
+            retailer_promise_date:
+              type: string
+            ship_from:
+              "$ref": "#/components/schemas/Contact"
+            ship_method:
+              type: string
+            ship_source:
+              type: string
+            ship_to:
+              "$ref": "#/components/schemas/Contact"
+            shipment_date:
+              type: string
+            shipment_source:
+              type: string
+            shipping_amount:
+              type: string
+            slug:
+              type: string
+            status:
+              type: string
+            tax:
+              type: string
+            tiny_tracking_url:
+              type: string
+            tracking_number:
+              type: string
+              example: 1Z1231455734571345
+            tracking_url:
+              type: string
+              description: URL to track given shipment
+              example: http://peninsula.narvar.com/track?trackingId=1Z12345
+        ShipmentInfo:
+          title: ShipmentInfo
+          type: object
+          properties:
+            carrier:
+              type: string
+            carrier_service:
+              type: string
+            carrier_service_code:
+              type: string
+            created_date:
+              type: integer
+              format: int64
+            custom_attributes:
+              type: object
+              additionalProperties:
+                type: string
+            customer_key:
+              type: string
+            customer_option:
+              type: string
+            delivery_method:
+              type: string
+            discount:
+              type: string
+            id:
+              type: string
+            items:
+              type: array
+              items:
+                "$ref": "#/components/schemas/OrderItem"
+            modified_date:
+              type: integer
+              format: int64
+            retailer_promise_date:
+              type: string
+            ship_date:
+              type: string
+            ship_from:
+              "$ref": "#/components/schemas/Contact"
+            ship_method:
+              type: string
+            ship_source:
+              type: string
+            ship_to:
+              "$ref": "#/components/schemas/Contact"
+            shipping_amount:
+              type: string
+            slug:
+              type: string
+            tax:
+              type: string
+            tracking:
+              "$ref": "#/components/schemas/Tracking"
+            tracking_number:
+              type: string
+        Signature:
+          title: Signature
+          type: object
+          properties:
+            carrier_code:
+              type: string
+            carrier_description:
+              type: string
+            code:
+              type: string
+            narvar_code:
+              type: string
+            required:
+              type: boolean
+        StatusCodeMapping:
+          title: StatusCodeMapping
+          type: object
+          properties:
+            bucket:
+              type: string
+            bucket_code:
+              type: string
+            bucket_display_token:
+              type: string
+            code:
+              type: string
+            code_description:
+              type: string
+            context_params:
+              type: object
+              additionalProperties:
+                type: string
+            display_token:
+              type: string
+        Stops:
+          title: Stops
+          type: object
+          properties:
+            last_location:
+              "$ref": "#/components/schemas/Address"
+            preceding_stops:
+              type: integer
+              format: int32
+            total_stops:
+              type: integer
+              format: int32
+        Store:
+          title: Store
+          type: object
+          properties:
+            id:
+              type: string
+            location:
+              "$ref": "#/components/schemas/Address"
+            name:
+              type: string
+        StoreDocument:
+          title: StoreDocument
+          type: object
+          properties:
+            contact_detail:
+              "$ref": "#/components/schemas/Contact"
+            distance:
+              type: string
+            distance_unit:
+              type: string
+            id:
+              type: string
+            location_hours:
+              type: array
+              items:
+                "$ref": "#/components/schemas/StoreOperationHoursDocument"
+            location_hours_summary:
+              type: string
+            name:
+              type: string
+        StoreOperationHoursDocument:
+          title: StoreOperationHoursDocument
+          type: object
+          properties:
+            closed_all_day:
+              type: boolean
+            day_of_week:
+              type: string
+            open_all_day:
+              type: boolean
+            operation_hours:
+              type: array
+              items:
+                type: string
+        TPDigestCollection:
+          title: TPDigestCollection
+          type: object
+          properties:
+            digest_collection_detail_existing:
+              "$ref": "#/components/schemas/TPDigestCollectionDetail"
+            digest_collection_detail_new:
+              "$ref": "#/components/schemas/TPDigestCollectionDetail"
+        TPDigestCollectionDetail:
+          title: TPDigestCollectionDetail
+          type: object
+          properties:
+            items_back_ordered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemMap"
+            items_cancelled:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemMap"
+            shipments_delayed:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_delivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_in_transit:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_just_shipped:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_lost_or_damaged:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_ready_to_go:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+            shipments_undelivered:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Shipment"
+        Template processor representation of an item:
+          title: Template processor representation of an item
+          type: object
+          properties:
+            attributes:
+              type: object
+              description: 'Key-Value Map of other attributes, including custom attributes
+                provided by order API. List of known non-custom fields: name, quantity,
+                price, currency, weight, weight_unit, discount_amount, color, color_id,
+                size, size_id, style, image_url, is_final_sale, is_shop_runner_eligible,
+                fulfillment_status, is_gift, final_sale_date, parent_product_sku, product_type,
+                product_id, is_active, line_number, pick_ticket, shipped_date, reference_file,
+                product_description_url, discount_percent, is_backordered, item_description,
+                promise_date, vendor, item_url, description_url'
+            categories:
+              type: array
+              items:
+                type: string
+            description_url:
+              type: string
+              example: http://www.example.com/sample_product?id=ITEMID-67890
+            item_id:
+              type: string
+              example: ITEMID-67890
+            name:
+              type: string
+              example: Cool Jacket
+            prices:
+              "$ref": "#/components/schemas/ItemPrices"
+            product_sku:
+              type: string
+              example: ITEMSKU-12345
+            quantity:
+              type: string
+              example: '5'
+            vendors:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ItemVendor"
+        TemplateProcessorRequest:
+          title: TemplateProcessorRequest
+          type: object
+          properties:
+            order_info:
+              "$ref": "#/components/schemas/OrderInfo"
+        Tracking:
+          title: Tracking
+          type: object
+          properties:
+            audit_log:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Audit"
+            carrier_moniker:
+              type: string
+            carrier_name:
+              type: string
+            carrier_status_code:
+              type: string
+            carrier_transfer:
+              type: boolean
+            context_params:
+              type: object
+              additionalProperties:
+                type: string
+            created_date:
+              type: string
+            current_event_code:
+              type: string
+            current_event_date:
+              type: string
+            current_event_date_raw:
+              type: string
+            current_event_date_with_derived_offset:
+              type: string
+            current_event_local_date_time:
+              type: string
+            current_event_timezone_id:
+              type: string
+            db_id:
+              type: string
+            delivered_not_received_initiated:
+              type: boolean
+            delivery:
+              "$ref": "#/components/schemas/Delivery"
+            delivery_carrier:
+              type: string
+            delivery_notification_date:
+              type: string
+            dest:
+              "$ref": "#/components/schemas/Address"
+            edd_derived:
+              "$ref": "#/components/schemas/EddDerived"
+            edd_source:
+              type: string
+            events:
+              type: array
+              items:
+                "$ref": "#/components/schemas/Event"
+            modified_date:
+              type: string
+            non_delivery_responses:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NonDeliveryResponse"
+            origin:
+              "$ref": "#/components/schemas/Address"
+            package_count:
+              type: string
+            package_redirect:
+              type: string
+            partner_tracking_number:
+              type: string
+            phone_number:
+              type: string
+            previous_event_code:
+              type: array
+              items:
+                type: string
+            record_updaters:
+              uniqueItems: true
+              type: array
+              items:
+                type: string
+            redirect_address:
+              "$ref": "#/components/schemas/Address"
+            redirect_to_hold:
+              "$ref": "#/components/schemas/RedirectToHold"
+            reference_number:
+              type: string
+            rescheduled_delivery_date:
+              type: string
+            response_from_delivery_carrier:
+              type: boolean
+            retailer_moniker:
+              type: string
+            scheduling:
+              "$ref": "#/components/schemas/Scheduling"
+            service_code:
+              type: string
+            service_description:
+              type: string
+            ship_date:
+              type: string
+            shipper_account_number:
+              type: string
+            signature:
+              "$ref": "#/components/schemas/Signature"
+            slug:
+              type: string
+            source:
+              type: string
+            status:
+              type: string
+            status_category:
+              type: string
+            status_code:
+              type: string
+            status_description:
+              type: string
+            status_summary:
+              type: string
+            status_token:
+              type: string
+            track_url_tracking_id:
+              type: string
+            tracking_number:
+              type: string
+            tracking_status_code_id:
+              type: string
+            use_carrier_description:
+              type: boolean
+            weight:
+              type: string
+            weight_uom:
+              type: string
+        TrackingShipmentInfo:
+          title: TrackingShipmentInfo
+          type: object
+          properties:
+            nauth:
+              type: string
+            shipment_info:
+              "$ref": "#/components/schemas/ShipmentInfo"
+            tracking_info:
+              "$ref": "#/components/schemas/Tracking"
+        Vendor:
+          title: Vendor
+          type: object
+          properties:
+            address:
+              "$ref": "#/components/schemas/Address"
+            country:
+              type: string
+            email:
+              type: string
+            fax:
+              type: string
+            first_name:
+              type: string
+            language:
+              type: string
+            last_name:
+              type: string
+            name:
+              type: string
+            phone:
+              type: string
+            phone_extension:
+              type: string
+            type:
+              type: string
