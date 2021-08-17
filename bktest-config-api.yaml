@@ -13,6 +13,7 @@ spec:
   owner: carriers
   system: carrier-api-facade
   definition: |
+    openapi: 3.0.3
     info:
       name: Config Management Service API
       description: Config Management Service API
