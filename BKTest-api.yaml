@@ -1,0 +1,2645 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bktest-api
+  description: Shows list of API used in carrier-api-facade
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Consumer Notification Preferences API
+      description: API for using CNP
+      contact:
+        name: Narvar
+      license: {}
+      version: '1.8'
+    servers:
+    - url: http://internal-consumer-notify-prefs-qa01-405093623.us-west-2.elb.amazonaws.com:80
+      description: Inferred Url
+    tags:
+    - name: consumer-controller
+      description: Consumer Controller
+    - name: o-auth-consumer-controller
+      description: O Auth Consumer Controller
+    - name: o-auth-optout-controller
+      description: O Auth Optout Controller
+    - name: o-auth-order-controller
+      description: O Auth Order Controller
+    - name: o-auth-tracking-controller
+      description: O Auth Tracking Controller
+    - name: opt-out-controller
+      description: Opt Out Controller
+    - name: order-controller
+      description: Order Controller
+    - name: preferences-merge-controller
+      description: Preferences Merge Controller
+    - name: tracking-controller
+      description: Tracking Controller
+    - name: unsubscribe-controller
+      description: Unsubscribe Controller
+    paths:
+      "/api/v1/customer-preferences/retailer/{retailer_moniker}/customer/{customer_id}":
+        get:
+          tags:
+          - consumer-controller
+          summary: INTERNAL SECURE - Get consumer level preferences
+          description: PIIs are clear text. Internal Use Only.
+          operationId: getConsumerNotificationPreferencesInternalSecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/ConsumerPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - consumer-controller
+          summary: INTERNAL - Update consumer level preferences
+          description: Internal Use Only!
+          operationId: putConsumerNotificationPreferencesInternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - consumer-controller
+          summary: INTERNAL - Create consumer level preferences
+          description: Internal Use Only!
+          operationId: postConsumerPreferencesInternalUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notification/preferences/consumer/retailer/{retailer_moniker}/customer/{customer_id}":
+        get:
+          tags:
+          - consumer-controller
+          summary: INTERNAL INSECURE - Get consumer level preferences
+          description: PIIs are masked
+          operationId: getConsumerNotificationPreferencesInternalInsecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/ConsumerPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - consumer-controller
+          summary: INTERNAL - Update consumer level preferences
+          description: Internal Use Only!
+          operationId: putConsumerNotificationPreferencesInternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - consumer-controller
+          summary: INTERNAL - Create consumer level preferences
+          description: Internal Use Only!
+          operationId: postConsumerPreferencesInternalUsingPOST_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/customer-level/customer/{customer_id}":
+        get:
+          tags:
+          - consumer-controller
+          summary: EXTERNAL - Get consumer level preferences
+          description: PIIs are clear text. Exposed to outside world.
+          operationId: getConsumerNotificationPreferencesExternalUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/ConsumerPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - consumer-controller
+          summary: EXTERNAL - Update consumer level preferences
+          description: Exposed to outside world.
+          operationId: putConsumerNotificationPreferencesExternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - consumer-controller
+          summary: EXTERNAL - Create consumer level preferences
+          description: Exposed to outside world.
+          operationId: postConsumerPreferencesExternalUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1.1/notify-preferences/customer-level/customer/{customer_id}":
+        get:
+          tags:
+          - o-auth-consumer-controller
+          summary: getConsumerNotificationPreferencesExternal
+          operationId: getConsumerNotificationPreferencesExternalUsingGET_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/ConsumerPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - o-auth-consumer-controller
+          summary: putConsumerNotificationPreferencesExternal
+          operationId: putConsumerNotificationPreferencesExternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - o-auth-consumer-controller
+          summary: postConsumerPreferencesExternal
+          operationId: postConsumerPreferencesExternalUsingPOST_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1.1/notify-preferences/optout/customer/{customer_id}":
+        post:
+          tags:
+          - o-auth-optout-controller
+          summary: optOutByConsumerId
+          operationId: optOutByConsumerIdUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerIdOptOutRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1.1/notify-preferences/order-level/customer/{customer_id}":
+        get:
+          tags:
+          - o-auth-order-controller
+          summary: getOrderPreferencesExternal
+          operationId: getOrderPreferencesExternalUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: query
+            description: order_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: is_include_inactive
+            in: query
+            description: is_include_inactive
+            required: false
+            style: form
+            schema:
+              type: boolean
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/OrderPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1.1/notify-preferences/order-level/customer/{customer_id}/order/{order_id}":
+        put:
+          tags:
+          - o-auth-order-controller
+          summary: putOrderPreferencesExternal
+          operationId: putOrderPreferencesExternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - o-auth-order-controller
+          summary: postOrderPreferencesExternal
+          operationId: postOrderPreferencesExternalUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1.1/notify-preferences/tracking-level/carrier/{carrier_id}/tracking/{tracking_id}":
+        get:
+          tags:
+          - o-auth-tracking-controller
+          summary: getTrackingNotificationPreferencesExternal
+          operationId: getTrackingNotificationPreferencesExternalUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/TrackingPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - o-auth-tracking-controller
+          summary: putConsumerPreferencesExternal
+          operationId: putConsumerPreferencesExternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - o-auth-tracking-controller
+          summary: postConsumerPreferencesExternal
+          operationId: postConsumerPreferencesExternalUsingPOST_2
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/optout/customer/{customer_id}":
+        post:
+          tags:
+          - opt-out-controller
+          summary: EXTERNAL - Opt out all the preferences for the consumer id and channel
+          description: opt-out-by-customer-id-external
+          operationId: optOutByConsumerIdExternalUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerIdOptOutRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/optout-preferences/retailer/{retailer_moniker}/customer_id/{customer_id}":
+        post:
+          tags:
+          - opt-out-controller
+          summary: INTERNAL - Opt out all the preferences for the consumer id and channel
+          description: opt-out-by-customer-id-internal
+          operationId: optOutByConsumerIdUsingPOST_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/ConsumerIdOptOutRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/preferences-opt-out/retailer/{retailer_moniker}":
+        post:
+          tags:
+          - opt-out-controller
+          summary: INTERNAL - Opt out all the preferences for the contact
+          description: in-channel-opt-out
+          operationId: optOutByContactUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OptOutRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/OptOutResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notification/preferences/order/retailer/{retailer_moniker}/customer/{customer_id}":
+        get:
+          tags:
+          - order-controller
+          summary: INTERNAL INSECURE - Get order level preferences
+          description: PIIs are masked
+          operationId: getOrderPreferencesInternalInsecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: query
+            description: order_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: is_include_inactive
+            in: query
+            description: is_include_inactive
+            required: false
+            style: form
+            schema:
+              type: boolean
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/OrderPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notification/preferences/order/retailer/{retailer_moniker}/customer/{customer_id}/order/{order_id}":
+        put:
+          tags:
+          - order-controller
+          summary: INTERNAL - Update order level preferences
+          description: Internal Use Only!
+          operationId: putOrderPreferencesInternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - order-controller
+          summary: INTERNAL - Create order level preferences
+          description: Internal Use Only!
+          operationId: postOrderPreferencesInternalUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/order-level/customer/{customer_id}":
+        get:
+          tags:
+          - order-controller
+          summary: EXTERNAL - Get order level preferences
+          description: PIIs are clear text. Exposed to outside world.
+          operationId: getOrderPreferencesExternalUsingGET_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: query
+            description: order_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: is_include_inactive
+            in: query
+            description: is_include_inactive
+            required: false
+            style: form
+            schema:
+              type: boolean
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/OrderPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/order-level/customer/{customer_id}/order/{order_id}":
+        put:
+          tags:
+          - order-controller
+          summary: EXTERNAL - Update order level preferences
+          description: Exposed to outside world.
+          operationId: putOrderPreferencesExternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - order-controller
+          summary: EXTERNAL - Create order level preferences
+          description: Exposed to outside world.
+          operationId: postOrderPreferencesExternalUsingPOST_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/order-preferences/retailer/{retailer_moniker}/customer/{customer_id}":
+        get:
+          tags:
+          - order-controller
+          summary: INTERNAL SECURE - Get order level preferences
+          description: PIIs are clear text. Internal Use Only.
+          operationId: getOrderPreferencesInternalSecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: query
+            description: order_id
+            required: false
+            style: form
+            schema:
+              type: string
+          - name: is_include_inactive
+            in: query
+            description: is_include_inactive
+            required: false
+            style: form
+            schema:
+              type: boolean
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/OrderPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/order-preferences/retailer/{retailer_moniker}/customer/{customer_id}/order/{order_id}":
+        put:
+          tags:
+          - order-controller
+          summary: INTERNAL - Update order level preferences
+          description: Internal Use Only!
+          operationId: putOrderPreferencesInternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - order-controller
+          summary: INTERNAL - Create order level preferences
+          description: Internal Use Only!
+          operationId: postOrderPreferencesInternalUsingPOST_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: customer_id
+            in: path
+            description: customer_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: order_id
+            in: path
+            description: order_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/OrderRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/merged-preferences":
+        post:
+          tags:
+          - preferences-merge-controller
+          summary: SECURE - Get tracking or order or consumer preferences if exists
+          description: 'PIIs are clear text. Priority: tracking > order > consumer'
+          operationId: postMergePreferencesRequestSecureUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/MergeRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/MergedPreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notification/preferences/consumer/merged-preferences":
+        post:
+          tags:
+          - preferences-merge-controller
+          summary: INSECURE - Get tracking or order or consumer preferences if exists
+          description: 'PIIs are masked. Priority: tracking > order > consumer'
+          operationId: postMergePreferencesRequestInsecureUsingPOST
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: is_decode_customer_id
+            in: query
+            description: is_decode_customer_id
+            required: false
+            style: form
+            schema:
+              type: boolean
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/MergeRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/MergedPreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notification/preferences/tracking/retailer/{retailer_moniker}/carrier/{carrier_id}/tracking/{tracking_id}":
+        get:
+          tags:
+          - tracking-controller
+          summary: INTERNAL INSECURE - Get tracking level preferences
+          description: PIIs are masked
+          operationId: getTrackingNotificationPreferencesInternalInsecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/TrackingPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - tracking-controller
+          summary: INTERNAL - Update tracking level preferences
+          description: Internal Use Only!
+          operationId: putConsumerPreferencesInternalUsingPUT
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - tracking-controller
+          summary: INTERNAL - Create tracking level preferences
+          description: Internal Use Only!
+          operationId: postConsumerPreferencesInternalUsingPOST_2
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/tracking-level/carrier/{carrier_id}/tracking/{tracking_id}":
+        get:
+          tags:
+          - tracking-controller
+          summary: EXTERNAL - Get tracking level preferences
+          description: PIIs are clear text. Exposed to outside world.
+          operationId: getTrackingNotificationPreferencesExternalUsingGET_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/TrackingPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - tracking-controller
+          summary: EXTERNAL - Update tracking level preferences
+          description: Exposed to outside world.
+          operationId: putConsumerPreferencesExternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - tracking-controller
+          summary: EXTERNAL - Create tracking level preferences
+          description: Exposed to outside world.
+          operationId: postConsumerPreferencesExternalUsingPOST_3
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          - name: Authorization
+            in: header
+            description: Authorization
+            required: true
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/tracking-preferences/retailer/{retailer_moniker}/carrier/{carrier_id}/tracking/{tracking_id}":
+        get:
+          tags:
+          - tracking-controller
+          summary: INTERNAL SECURE - Get tracking level preferences
+          description: PIIs are clear text. Internal Use Only.
+          operationId: getTrackingNotificationPreferencesInternalSecureUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/TrackingPreferencesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - tracking-controller
+          summary: INTERNAL - Update tracking level preferences
+          description: Internal Use Only!
+          operationId: putConsumerPreferencesInternalUsingPUT_1
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - tracking-controller
+          summary: INTERNAL - Create tracking level preferences
+          description: Internal Use Only!
+          operationId: postConsumerPreferencesInternalUsingPOST_3
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: true
+            schema:
+              type: string
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: carrier_id
+            in: path
+            description: carrier_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: tracking_id
+            in: path
+            description: tracking_id
+            required: true
+            style: simple
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/TrackingRequestWrapper"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/BasePreferencesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/unsubscribe":
+        get:
+          tags:
+          - unsubscribe-controller
+          summary: Unsubscribes the contact
+          operationId: unsubscribeUsingGET
+          parameters:
+          - name: sub
+            in: query
+            description: encrypt('contact,retailer,channel')
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: notification_type
+            in: query
+            description: notification_type
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: narvar_tracer_id
+            in: query
+            description: narvar_tracer_id
+            required: false
+            style: form
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                text/html:
+                  schema:
+                    type: string
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/api/v1/notify-preferences/unsubscribe-reason":
+        get:
+          tags:
+          - unsubscribe-controller
+          summary: Logs the unsubscribe reason to noflake for analytics
+          operationId: unsubscribeReasonUsingGET
+          parameters:
+          - name: sub
+            in: query
+            description: encrypt('contact,retailer,channel')
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: notification_type
+            in: query
+            description: notification_type
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: reason
+            in: query
+            description: reason
+            required: true
+            style: form
+            schema:
+              type: string
+          - name: narvar_tracer_id
+            in: query
+            description: narvar_tracer_id
+            required: false
+            style: form
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                text/html:
+                  schema:
+                    type: string
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+    components:
+      schemas:
+        BasePreferencesResponse:
+          title: BasePreferencesResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            status:
+              type: string
+        ConsumerIdOptOutRequest:
+          title: ConsumerIdOptOutRequest
+          type: object
+          properties:
+            channel:
+              type: string
+            opt_out_datetime:
+              type: string
+        ConsumerPreferences:
+          title: ConsumerPreferences
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+            locale:
+              type: string
+            modified_datetime:
+              type: string
+            notification_pref_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationPrefDetail"
+            traffic_source:
+              type: string
+        ConsumerPreferencesResponse:
+          title: ConsumerPreferencesResponse
+          type: object
+          properties:
+            customer_preferences:
+              "$ref": "#/components/schemas/ConsumerPreferences"
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            status:
+              type: string
+        ConsumerRequestWrapper:
+          title: ConsumerRequestWrapper
+          type: object
+          properties:
+            customer_preferences:
+              "$ref": "#/components/schemas/ConsumerPreferences"
+        ContactDetail:
+          title: ContactDetail
+          type: object
+          properties:
+            contact:
+              type: string
+            device_id:
+              type: string
+            os_type:
+              type: string
+        ContactDetailInternal:
+          title: ContactDetailInternal
+          type: object
+          properties:
+            contact:
+              type: string
+            device_id:
+              type: string
+            opt_in_status:
+              type: string
+              enum:
+              - OPT_IN_AT_PROVIDER
+              - OPT_IN_BY_RETAILER
+              - OPT_OUT_BY_RETAILER
+            os_type:
+              type: string
+        MergeRequest:
+          title: MergeRequest
+          type: object
+          properties:
+            carrier_id:
+              type: string
+            consumer_id:
+              type: string
+            order_id:
+              type: string
+            retailer_moniker:
+              type: string
+            tracking_id:
+              type: string
+        MergedPreferences:
+          title: MergedPreferences
+          type: object
+          properties:
+            last_modified_date_time:
+              type: string
+            level:
+              type: string
+              enum:
+              - customer
+              - order
+              - tracking
+            locale:
+              type: string
+            notification_pref_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationPrefDetailInternal"
+            referrer_url:
+              type: string
+        MergedPreferencesResponse:
+          title: MergedPreferencesResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            preferences:
+              "$ref": "#/components/schemas/MergedPreferences"
+            status:
+              type: string
+        NotificationPrefDetail:
+          title: NotificationPrefDetail
+          type: object
+          properties:
+            channel:
+              type: string
+            contact:
+              type: string
+            contact_detail_list:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ContactDetail"
+        NotificationPrefDetailInternal:
+          title: NotificationPrefDetailInternal
+          type: object
+          properties:
+            channel:
+              type: string
+            contact:
+              type: string
+            contact_detail_list:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ContactDetailInternal"
+        OptOutRequest:
+          title: OptOutRequest
+          type: object
+          properties:
+            carrier_moniker:
+              type: string
+            locale:
+              type: string
+            notification_pref_detail:
+              "$ref": "#/components/schemas/NotificationPrefDetail"
+            opt_out_command:
+              type: string
+            opt_out_datetime:
+              type: string
+            order_id:
+              type: string
+            retailer_name:
+              type: string
+            tracking_id:
+              type: string
+        OptOutResponse:
+          title: OptOutResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            preferences_records_found:
+              type: integer
+              format: int32
+            preferences_records_opted_out:
+              type: integer
+              format: int32
+            status:
+              type: string
+        OrderPreferences:
+          title: OrderPreferences
+          type: object
+          properties:
+            first_name:
+              type: string
+            is_active:
+              type: string
+            is_guest:
+              type: string
+            last_name:
+              type: string
+            locale:
+              type: string
+            modified_datetime:
+              type: string
+            notification_pref_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationPrefDetail"
+            order_id:
+              type: string
+            referrer_url:
+              type: string
+            traffic_source:
+              type: string
+        OrderPreferencesResponse:
+          title: OrderPreferencesResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            order_preferences:
+              type: array
+              items:
+                "$ref": "#/components/schemas/OrderPreferences"
+            status:
+              type: string
+        OrderRequestWrapper:
+          title: OrderRequestWrapper
+          type: object
+          properties:
+            order_preferences:
+              "$ref": "#/components/schemas/OrderPreferences"
+        ResponseMessage:
+          title: ResponseMessage
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            field:
+              type: string
+            level:
+              type: string
+            message:
+              type: string
+        TrackingPreferences:
+          title: TrackingPreferences
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+            locale:
+              type: string
+            modified_datetime:
+              type: string
+            notification_pref_details:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationPrefDetail"
+            referrer_url:
+              type: string
+            tracking_id:
+              type: string
+            traffic_source:
+              type: string
+        TrackingPreferencesResponse:
+          title: TrackingPreferencesResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            status:
+              type: string
+            tracking_preferences:
+              "$ref": "#/components/schemas/TrackingPreferences"
+        TrackingRequestWrapper:
+          title: TrackingRequestWrapper
+          type: object
+          properties:
+            tracking_preferences:
+              "$ref": "#/components/schemas/TrackingPreferences"
