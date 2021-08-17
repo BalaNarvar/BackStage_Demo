@@ -20,5 +20,5 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis: 
-    - beas-api
+    - bktest-config-api
   type: service
