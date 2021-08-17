@@ -7,1112 +7,1112 @@ metadata:
   lifecycle: production
   owner: carriers
   system: carrier-api-facade
-  spec:
-    type: openapi
-    lifecycle: production
-    owner: carriers
-    system: carrier-api-facade
-    definition: |
-      openapi: 3.0.3
-      info:
-        title: Retailer Notification Preferences API
-        description: API for using RNP
-        contact:
-          name: Narvar
-        license: {}
-        version: '1.1'
-      servers:
-      - url: http://internal-d471ad54-qa01-retailernoti-2790-1968814195.us-west-2.elb.amazonaws.com:80
-        description: Inferred Url
-      tags:
-      - name: global-channels-controller
-        description: Global Channels Controller
-      - name: global-notification-types-controller
-        description: Global Notification Types Controller
-      - name: notification-enabled-retailers-controller
-        description: Notification Enabled Retailers Controller
-      - name: retailer-channels-controller
-        description: Retailer Channels Controller
-      - name: retailer-notification-preferences-controller
-        description: Retailer Notification Preferences Controller
-      paths:
-        "/retailer-preferences/channels":
-          get:
-            tags:
-            - global-channels-controller
-            summary: Get globally supported channels
-            operationId: getGlobalChannelsListUsingGET
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalChannelsResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          put:
-            tags:
-            - global-channels-controller
-            summary: Update globally supported channels
-            operationId: updateGlobalChannelsListUsingPUT
-            parameters:
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Retailer Notification Preferences API
+      description: API for using RNP
+      contact:
+        name: Narvar
+      license: {}
+      version: '1.1'
+    servers:
+    - url: http://internal-d471ad54-qa01-retailernoti-2790-1968814195.us-west-2.elb.amazonaws.com:80
+      description: Inferred Url
+    tags:
+    - name: global-channels-controller
+      description: Global Channels Controller
+    - name: global-notification-types-controller
+      description: Global Notification Types Controller
+    - name: notification-enabled-retailers-controller
+      description: Notification Enabled Retailers Controller
+    - name: retailer-channels-controller
+      description: Retailer Channels Controller
+    - name: retailer-notification-preferences-controller
+      description: Retailer Notification Preferences Controller
+    paths:
+      "/retailer-preferences/channels":
+        get:
+          tags:
+          - global-channels-controller
+          summary: Get globally supported channels
+          operationId: getGlobalChannelsListUsingGET
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/GlobalChannels"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalChannelsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          post:
-            tags:
-            - global-channels-controller
-            summary: Add globally supported channels
-            operationId: setGlobalChannelsListUsingPOST
-            parameters:
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalChannelsResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - global-channels-controller
+          summary: Update globally supported channels
+          operationId: updateGlobalChannelsListUsingPUT
+          parameters:
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/GlobalChannels"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/GlobalChannels"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalChannelsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer-preferences/notification-types":
-          get:
-            tags:
-            - global-notification-types-controller
-            summary: Get globally supported triggers / notification types
-            operationId: getGlobalNotificationTypesListUsingGET
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          put:
-            tags:
-            - global-notification-types-controller
-            summary: Update globally supported triggers / notification types
-            operationId: updateGlobalNotificationTypesListUsingPUT
-            parameters:
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalChannelsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - global-channels-controller
+          summary: Add globally supported channels
+          operationId: setGlobalChannelsListUsingPOST
+          parameters:
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/GlobalChannels"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/GlobalNotificationTypes"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          post:
-            tags:
-            - global-notification-types-controller
-            summary: Add globally supported triggers / notification types
-            operationId: setGlobalNotificationTypesListUsingPOST
-            parameters:
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalChannelsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer-preferences/notification-types":
+        get:
+          tags:
+          - global-notification-types-controller
+          summary: Get globally supported triggers / notification types
+          operationId: getGlobalNotificationTypesListUsingGET
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/GlobalNotificationTypes"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer-preferences/notification_enabled_retailers":
-          get:
-            tags:
-            - notification-enabled-retailers-controller
-            summary: Get retailers enabled for messaging
-            operationId: getNotificationEnabledRetailersUsingGET
-            parameters:
-            - name: narvar_tracer_id
-              in: header
-              description: narvar_tracer_id
-              required: false
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/NotificationEnabledRetailersResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer-preferences/retailer/{retailer_moniker}/channels":
-          get:
-            tags:
-            - retailer-channels-controller
-            summary: SECURE - Get all channels enabled for retailer
-            description: Same as insecure one except that it is logged.
-            operationId: getRetailerChannelsListUsingGET
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerChannelsResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          put:
-            tags:
-            - retailer-channels-controller
-            summary: Update channels to enable for retailer
-            operationId: updateRetailerChannelsListUsingPUT
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - global-notification-types-controller
+          summary: Update globally supported triggers / notification types
+          operationId: updateGlobalNotificationTypesListUsingPUT
+          parameters:
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/GlobalNotificationTypes"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/RetailerChannels"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerChannelsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          post:
-            tags:
-            - retailer-channels-controller
-            summary: Add channels to enable for retailer
-            operationId: setRetailerChannelsListUsingPOST
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - global-notification-types-controller
+          summary: Add globally supported triggers / notification types
+          operationId: setGlobalNotificationTypesListUsingPOST
+          parameters:
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/GlobalNotificationTypes"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/RetailerChannels"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerChannelsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer/preferences/notify/retailer_moniker/{retailer_moniker}/channels":
-          get:
-            tags:
-            - retailer-channels-controller
-            summary: INSECURE - Get all channels enabled for retailer
-            description: Same as secure one except that it is logged.
-            operationId: getRetailerChannelsListExternalUsingGET
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerChannelsResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer-preferences/notification_enablement":
-          patch:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Enable / Disable notification for retailer
-            operationId: patchRetailerNotificationPreferencesNotificationsDisabledUsingPATCH
-            parameters:
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/GlobalNotificationTypesResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer-preferences/notification_enabled_retailers":
+        get:
+          tags:
+          - notification-enabled-retailers-controller
+          summary: Get retailers enabled for messaging
+          operationId: getNotificationEnabledRetailersUsingGET
+          parameters:
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/NotificationsDisabledOverrideRequest"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
-              '204':
-                description: No Content
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-        "/retailer-preferences/retailer/{retailer_moniker}":
-          get:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Get Retailer Notification Preferences
-            operationId: getRetailerNotificationPreferencesSecureUsingGET
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: narvar_tracer_id
-              in: header
-              description: narvar_tracer_id
-              required: false
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          put:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Update Retailer Notification Preferences
-            operationId: updateRetailerNotificationPreferencesUsingPUT
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/NotificationEnabledRetailersResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer-preferences/retailer/{retailer_moniker}/channels":
+        get:
+          tags:
+          - retailer-channels-controller
+          summary: SECURE - Get all channels enabled for retailer
+          description: Same as insecure one except that it is logged.
+          operationId: getRetailerChannelsListUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/RetailerNotificationPrefs"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-          post:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Add Retailer Notification Preferences
-            operationId: setRetailerNotificationPreferencesUsingPOST
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/RetailerChannelsResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - retailer-channels-controller
+          summary: Update channels to enable for retailer
+          operationId: updateRetailerChannelsListUsingPUT
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/RetailerChannels"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/RetailerNotificationPrefs"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
-              '201':
-                description: Created
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer-preferences/retailer/{retailer_moniker}/credentials":
-          patch:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: DEPRECATED. Email credentials are moved to vault.
-            operationId: updateEmailAPIKeyUsingPATCH
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: user_email
-              in: header
-              description: user_email
-              required: false
-              schema:
-                type: string
-            requestBody:
+                    "$ref": "#/components/schemas/RetailerChannelsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - retailer-channels-controller
+          summary: Add channels to enable for retailer
+          operationId: setRetailerChannelsListUsingPOST
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/RetailerChannels"
+          responses:
+            '200':
+              description: OK
               content:
                 application/json:
                   schema:
-                    "$ref": "#/components/schemas/APICredentialsUpdateRequest"
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/APICredentialsUpdateResponse"
-              '204':
-                description: No Content
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-        "/retailer-preferences/retailer/{retailer_moniker}/webhook":
-          get:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Get webhook configuration for retailer
-            operationId: getWebHookConfigResponseUsingGET
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: narvar_tracer_id
-              in: header
-              description: narvar_tracer_id
-              required: false
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/WebHookConfigResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-        "/retailer/preferences/notify/retailer_moniker/{retailer_moniker}":
-          get:
-            tags:
-            - retailer-notification-preferences-controller
-            summary: Get Retailer Notification Preferences
-            operationId: getRetailerNotificationPreferencesInsecureUsingGET
-            parameters:
-            - name: retailer_moniker
-              in: path
-              description: retailer_moniker
-              required: true
-              style: simple
-              schema:
-                type: string
-            - name: narvar_tracer_id
-              in: header
-              description: narvar_tracer_id
-              required: false
-              schema:
-                type: string
-            responses:
-              '200':
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
-              '401':
-                description: Unauthorized
-              '403':
-                description: Forbidden
-              '404':
-                description: Not Found
-      components:
-        schemas:
-          APICredentialsUpdateRequest:
-            title: APICredentialsUpdateRequest
-            type: object
-            properties:
-              channel:
-                type: string
-              modified_date:
-                type: string
-              provider:
-                "$ref": "#/components/schemas/Provider"
-          APICredentialsUpdateResponse:
-            title: APICredentialsUpdateResponse
-            type: object
-            properties:
-              channel:
-                type: string
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              provider:
-                "$ref": "#/components/schemas/Provider"
-              status:
-                type: string
-              status_code:
+                    "$ref": "#/components/schemas/RetailerChannelsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer/preferences/notify/retailer_moniker/{retailer_moniker}/channels":
+        get:
+          tags:
+          - retailer-channels-controller
+          summary: INSECURE - Get all channels enabled for retailer
+          description: Same as secure one except that it is logged.
+          operationId: getRetailerChannelsListExternalUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerChannelsResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer-preferences/notification_enablement":
+        patch:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Enable / Disable notification for retailer
+          operationId: patchRetailerNotificationPreferencesNotificationsDisabledUsingPATCH
+          parameters:
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/NotificationsDisabledOverrideRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
+            '204':
+              description: No Content
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+      "/retailer-preferences/retailer/{retailer_moniker}":
+        get:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Get Retailer Notification Preferences
+          operationId: getRetailerNotificationPreferencesSecureUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        put:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Update Retailer Notification Preferences
+          operationId: updateRetailerNotificationPreferencesUsingPUT
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/RetailerNotificationPrefs"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        post:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Add Retailer Notification Preferences
+          operationId: setRetailerNotificationPreferencesUsingPOST
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/RetailerNotificationPrefs"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer-preferences/retailer/{retailer_moniker}/credentials":
+        patch:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: DEPRECATED. Email credentials are moved to vault.
+          operationId: updateEmailAPIKeyUsingPATCH
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: user_email
+            in: header
+            description: user_email
+            required: false
+            schema:
+              type: string
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  "$ref": "#/components/schemas/APICredentialsUpdateRequest"
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/APICredentialsUpdateResponse"
+            '204':
+              description: No Content
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+      "/retailer-preferences/retailer/{retailer_moniker}/webhook":
+        get:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Get webhook configuration for retailer
+          operationId: getWebHookConfigResponseUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/WebHookConfigResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      "/retailer/preferences/notify/retailer_moniker/{retailer_moniker}":
+        get:
+          tags:
+          - retailer-notification-preferences-controller
+          summary: Get Retailer Notification Preferences
+          operationId: getRetailerNotificationPreferencesInsecureUsingGET
+          parameters:
+          - name: retailer_moniker
+            in: path
+            description: retailer_moniker
+            required: true
+            style: simple
+            schema:
+              type: string
+          - name: narvar_tracer_id
+            in: header
+            description: narvar_tracer_id
+            required: false
+            schema:
+              type: string
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    "$ref": "#/components/schemas/RetailerNotificationPrefsResponse"
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+    components:
+      schemas:
+        APICredentialsUpdateRequest:
+          title: APICredentialsUpdateRequest
+          type: object
+          properties:
+            channel:
+              type: string
+            modified_date:
+              type: string
+            provider:
+              "$ref": "#/components/schemas/Provider"
+        APICredentialsUpdateResponse:
+          title: APICredentialsUpdateResponse
+          type: object
+          properties:
+            channel:
+              type: string
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            provider:
+              "$ref": "#/components/schemas/Provider"
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+        Authorization:
+          title: Authorization
+          type: object
+          properties:
+            param_1:
+              type: string
+            param_2:
+              type: string
+            param_3:
+              type: string
+            type:
+              type: string
+        ChannelConfigurations:
+          title: ChannelConfigurations
+          type: object
+          properties:
+            email:
+              "$ref": "#/components/schemas/Provider"
+            hipaa_email:
+              "$ref": "#/components/schemas/Provider"
+            hipaa_sms:
+              "$ref": "#/components/schemas/Provider"
+            line:
+              "$ref": "#/components/schemas/Provider"
+            sms:
+              "$ref": "#/components/schemas/Provider"
+            whatsapp:
+              "$ref": "#/components/schemas/Provider"
+        ChannelStatus:
+          title: ChannelStatus
+          type: object
+          properties:
+            digest_detail:
+              "$ref": "#/components/schemas/DigestDetail"
+            modified_date:
+              type: string
+            notification_channel_status:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationChannelStatus"
+            notification_type:
+              type: string
+            reminder_offsets:
+              type: array
+              items:
                 type: integer
                 format: int32
-          Authorization:
-            title: Authorization
-            type: object
-            properties:
-              param_1:
+            scheduler_frequency:
+              type: integer
+              format: int32
+            task_workflow:
+              type: array
+              items:
+                "$ref": "#/components/schemas/TaskWorkflow"
+        Credentials:
+          title: Credentials
+          type: object
+          properties:
+            api_key:
+              type: string
+        DigestDetail:
+          title: DigestDetail
+          type: object
+          properties:
+            frequency_in_days:
+              type: integer
+              format: int32
+            max_days_to_send:
+              type: integer
+              format: int32
+        DigestInterval:
+          title: DigestInterval
+          type: object
+          properties:
+            digest_end_time:
+              type: string
+            digest_start_time:
+              type: string
+        GlobalChannels:
+          title: GlobalChannels
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
                 type: string
-              param_2:
+            modified_date:
+              type: string
+        GlobalChannelsResponse:
+          title: GlobalChannelsResponse
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
                 type: string
-              param_3:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+        GlobalNotificationTypes:
+          title: GlobalNotificationTypes
+          type: object
+          properties:
+            modified_date:
+              type: string
+            notification_types:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationType"
+        GlobalNotificationTypesResponse:
+          title: GlobalNotificationTypesResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            notification_types:
+              type: array
+              items:
+                "$ref": "#/components/schemas/NotificationType"
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+        NotificationChannelStatus:
+          title: NotificationChannelStatus
+          type: object
+          properties:
+            channel:
+              type: string
+            enabled:
+              type: boolean
+            enforce_sleep_hours:
+              type: boolean
+            opt_in_required:
+              type: boolean
+            options:
+              "$ref": "#/components/schemas/Options"
+            priority:
+              type: integer
+              format: int32
+            provider:
+              "$ref": "#/components/schemas/Provider"
+            webhook_purpose:
+              type: string
+        NotificationEnabledRetailersResponse:
+          title: NotificationEnabledRetailersResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            notification_enabled_retailers:
+              type: array
+              items:
                 type: string
-              type:
+            notification_tracking_only_enabled_retailers:
+              type: array
+              items:
                 type: string
-          ChannelConfigurations:
-            title: ChannelConfigurations
-            type: object
-            properties:
-              email:
-                "$ref": "#/components/schemas/Provider"
-              hipaa_email:
-                "$ref": "#/components/schemas/Provider"
-              hipaa_sms:
-                "$ref": "#/components/schemas/Provider"
-              line:
-                "$ref": "#/components/schemas/Provider"
-              sms:
-                "$ref": "#/components/schemas/Provider"
-              whatsapp:
-                "$ref": "#/components/schemas/Provider"
-          ChannelStatus:
-            title: ChannelStatus
-            type: object
-            properties:
-              digest_detail:
-                "$ref": "#/components/schemas/DigestDetail"
-              modified_date:
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+        NotificationType:
+          title: NotificationType
+          type: object
+          properties:
+            code:
+              type: string
+            custom:
+              type: boolean
+            desc:
+              type: string
+            detail:
+              type: string
+            notification_scope:
+              type: string
+            retailers:
+              uniqueItems: true
+              type: array
+              items:
                 type: string
-              notification_channel_status:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/NotificationChannelStatus"
-              notification_type:
+        NotificationsDisabledOverrideRequest:
+          title: NotificationsDisabledOverrideRequest
+          type: object
+          properties:
+            notifications_disabled:
+              type: boolean
+            retailer_moniker:
+              type: string
+        Options:
+          title: Options
+          type: object
+          properties:
+            authorization:
+              "$ref": "#/components/schemas/Authorization"
+            bcc_enabled:
+              type: boolean
+            carrier_processing_hours:
+              type: integer
+              format: int32
+            cc_enabled:
+              type: boolean
+            contact_name:
+              type: string
+            custom_params:
+              type: object
+              additionalProperties:
                 type: string
-              reminder_offsets:
-                type: array
-                items:
-                  type: integer
-                  format: int32
-              scheduler_frequency:
-                type: integer
-                format: int32
-              task_workflow:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/TaskWorkflow"
-          Credentials:
-            title: Credentials
-            type: object
-            properties:
-              api_key:
+            digest_interval:
+              "$ref": "#/components/schemas/DigestInterval"
+            digest_notification_types:
+              type: array
+              items:
                 type: string
-          DigestDetail:
-            title: DigestDetail
-            type: object
-            properties:
-              frequency_in_days:
-                type: integer
-                format: int32
-              max_days_to_send:
-                type: integer
-                format: int32
-          DigestInterval:
-            title: DigestInterval
-            type: object
-            properties:
-              digest_end_time:
-                type: string
-              digest_start_time:
-                type: string
-          GlobalChannels:
-            title: GlobalChannels
-            type: object
-            properties:
-              channels:
-                type: array
-                items:
-                  type: string
-              modified_date:
-                type: string
-          GlobalChannelsResponse:
-            title: GlobalChannelsResponse
-            type: object
-            properties:
-              channels:
-                type: array
-                items:
-                  type: string
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              status:
-                type: string
-              status_code:
-                type: integer
-                format: int32
-          GlobalNotificationTypes:
-            title: GlobalNotificationTypes
-            type: object
-            properties:
-              modified_date:
-                type: string
-              notification_types:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/NotificationType"
-          GlobalNotificationTypesResponse:
-            title: GlobalNotificationTypesResponse
-            type: object
-            properties:
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              notification_types:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/NotificationType"
-              status:
-                type: string
-              status_code:
-                type: integer
-                format: int32
-          NotificationChannelStatus:
-            title: NotificationChannelStatus
-            type: object
-            properties:
-              channel:
-                type: string
-              enabled:
-                type: boolean
-              enforce_sleep_hours:
-                type: boolean
-              opt_in_required:
-                type: boolean
-              options:
+            digest_skip_update_check:
+              type: boolean
+            disabled:
+              type: boolean
+            from_contact:
+              type: string
+            http_method:
+              type: string
+            item_delay_check_hours:
+              type: integer
+              format: int32
+            item_max_processing_hours:
+              type: integer
+              format: int32
+            lambda_name:
+              type: string
+            locale:
+              type: string
+            locale_to_contact_map:
+              type: object
+              additionalProperties:
                 "$ref": "#/components/schemas/Options"
-              priority:
-                type: integer
-                format: int32
-              provider:
-                "$ref": "#/components/schemas/Provider"
-              webhook_purpose:
+            preferred_edd_bucket_list:
+              type: array
+              items:
                 type: string
-          NotificationEnabledRetailersResponse:
-            title: NotificationEnabledRetailersResponse
-            type: object
-            properties:
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              notification_enabled_retailers:
-                type: array
-                items:
-                  type: string
-              notification_tracking_only_enabled_retailers:
-                type: array
-                items:
-                  type: string
-              status:
+            reminder_processing_hours:
+              type: integer
+              format: int32
+            reply_to_contact:
+              type: string
+            request_headers:
+              type: array
+              items:
+                "$ref": "#/components/schemas/RequestHeader"
+            resend_enabled:
+              type: boolean
+            survey_processing_hours:
+              type: integer
+              format: int32
+            test_bcc_contact:
+              type: array
+              items:
                 type: string
-              status_code:
-                type: integer
-                format: int32
-          NotificationType:
-            title: NotificationType
-            type: object
-            properties:
-              code:
+            test_cc_contact:
+              type: array
+              items:
                 type: string
-              custom:
-                type: boolean
-              desc:
+            test_contact:
+              type: string
+            time_zone:
+              type: string
+            url:
+              type: string
+        Provider:
+          title: Provider
+          type: object
+          properties:
+            credentials:
+              "$ref": "#/components/schemas/Credentials"
+            name:
+              type: string
+        RequestHeader:
+          title: RequestHeader
+          type: object
+          properties:
+            name:
+              type: string
+            value:
+              type: string
+        ResponseMessage:
+          title: ResponseMessage
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            field:
+              type: string
+            level:
+              type: string
+            message:
+              type: string
+        RetailerChannels:
+          title: RetailerChannels
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
                 type: string
-              detail:
+            modified_date:
+              type: string
+        RetailerChannelsResponse:
+          title: RetailerChannelsResponse
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
                 type: string
-              notification_scope:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+        RetailerNotificationPrefs:
+          title: RetailerNotificationPrefs
+          type: object
+          properties:
+            channel_configurations:
+              "$ref": "#/components/schemas/ChannelConfigurations"
+            channel_status:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ChannelStatus"
+            custom_rules_engine_topic:
+              type: string
+            item_key_strategy:
+              type: string
+              enum:
+              - ID
+              - SKU
+              - SKU_AND_ID
+            item_max_processing_days:
+              type: integer
+              format: int32
+            item_status_check:
+              type: string
+            licensed_features:
+              type: array
+              items:
                 type: string
-              retailers:
-                uniqueItems: true
-                type: array
-                items:
-                  type: string
-          NotificationsDisabledOverrideRequest:
-            title: NotificationsDisabledOverrideRequest
-            type: object
-            properties:
-              notifications_disabled:
-                type: boolean
-              retailer_moniker:
+            modified_date:
+              type: string
+            notifications_disabled:
+              type: boolean
+            pickup_max_hold_days:
+              type: integer
+              format: int32
+            returns_configurations:
+              "$ref": "#/components/schemas/ReturnsConfigurations"
+            tracking_retailer_only:
+              type: boolean
+            use_custom_rules_engine:
+              type: boolean
+            web_hook_config:
+              "$ref": "#/components/schemas/WebHookConfig"
+        RetailerNotificationPrefsResponse:
+          title: RetailerNotificationPrefsResponse
+          type: object
+          properties:
+            channel_configurations:
+              "$ref": "#/components/schemas/ChannelConfigurations"
+            channel_status:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ChannelStatus"
+            custom_rules_engine_topic:
+              type: string
+            item_key_strategy:
+              type: string
+              enum:
+              - ID
+              - SKU
+              - SKU_AND_ID
+            item_max_processing_days:
+              type: integer
+              format: int32
+            item_status_check:
+              type: string
+            licensed_features:
+              type: array
+              items:
                 type: string
-          Options:
-            title: Options
-            type: object
-            properties:
-              authorization:
-                "$ref": "#/components/schemas/Authorization"
-              bcc_enabled:
-                type: boolean
-              carrier_processing_hours:
-                type: integer
-                format: int32
-              cc_enabled:
-                type: boolean
-              contact_name:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            notifications_disabled:
+              type: boolean
+            pickup_max_hold_days:
+              type: integer
+              format: int32
+            returns_configurations:
+              "$ref": "#/components/schemas/ReturnsConfigurations"
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+            tracking_retailer_only:
+              type: boolean
+            use_custom_rules_engine:
+              type: boolean
+            web_hook_config:
+              "$ref": "#/components/schemas/WebHookConfig"
+        ReturnsConfigurations:
+          title: ReturnsConfigurations
+          type: object
+          properties:
+            retailer_schedule_interval:
+              type: integer
+              format: int32
+        TaskWorkflow:
+          title: TaskWorkflow
+          type: object
+          properties:
+            dependent_task:
+              type: array
+              items:
                 type: string
-              custom_params:
-                type: object
-                additionalProperties:
-                  type: string
-              digest_interval:
-                "$ref": "#/components/schemas/DigestInterval"
-              digest_notification_types:
-                type: array
-                items:
-                  type: string
-              digest_skip_update_check:
-                type: boolean
-              disabled:
-                type: boolean
-              from_contact:
-                type: string
-              http_method:
-                type: string
-              item_delay_check_hours:
-                type: integer
-                format: int32
-              item_max_processing_hours:
-                type: integer
-                format: int32
-              lambda_name:
-                type: string
-              locale:
-                type: string
-              locale_to_contact_map:
-                type: object
-                additionalProperties:
-                  "$ref": "#/components/schemas/Options"
-              preferred_edd_bucket_list:
-                type: array
-                items:
-                  type: string
-              reminder_processing_hours:
-                type: integer
-                format: int32
-              reply_to_contact:
-                type: string
-              request_headers:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/RequestHeader"
-              resend_enabled:
-                type: boolean
-              survey_processing_hours:
-                type: integer
-                format: int32
-              test_bcc_contact:
-                type: array
-                items:
-                  type: string
-              test_cc_contact:
-                type: array
-                items:
-                  type: string
-              test_contact:
-                type: string
-              time_zone:
-                type: string
-              url:
-                type: string
-          Provider:
-            title: Provider
-            type: object
-            properties:
-              credentials:
-                "$ref": "#/components/schemas/Credentials"
-              name:
-                type: string
-          RequestHeader:
-            title: RequestHeader
-            type: object
-            properties:
-              name:
-                type: string
-              value:
-                type: string
-          ResponseMessage:
-            title: ResponseMessage
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              field:
-                type: string
-              level:
-                type: string
-              message:
-                type: string
-          RetailerChannels:
-            title: RetailerChannels
-            type: object
-            properties:
-              channels:
-                type: array
-                items:
-                  type: string
-              modified_date:
-                type: string
-          RetailerChannelsResponse:
-            title: RetailerChannelsResponse
-            type: object
-            properties:
-              channels:
-                type: array
-                items:
-                  type: string
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              status:
-                type: string
-              status_code:
-                type: integer
-                format: int32
-          RetailerNotificationPrefs:
-            title: RetailerNotificationPrefs
-            type: object
-            properties:
-              channel_configurations:
-                "$ref": "#/components/schemas/ChannelConfigurations"
-              channel_status:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ChannelStatus"
-              custom_rules_engine_topic:
-                type: string
-              item_key_strategy:
-                type: string
-                enum:
-                - ID
-                - SKU
-                - SKU_AND_ID
-              item_max_processing_days:
-                type: integer
-                format: int32
-              item_status_check:
-                type: string
-              licensed_features:
-                type: array
-                items:
-                  type: string
-              modified_date:
-                type: string
-              notifications_disabled:
-                type: boolean
-              pickup_max_hold_days:
-                type: integer
-                format: int32
-              returns_configurations:
-                "$ref": "#/components/schemas/ReturnsConfigurations"
-              tracking_retailer_only:
-                type: boolean
-              use_custom_rules_engine:
-                type: boolean
-              web_hook_config:
-                "$ref": "#/components/schemas/WebHookConfig"
-          RetailerNotificationPrefsResponse:
-            title: RetailerNotificationPrefsResponse
-            type: object
-            properties:
-              channel_configurations:
-                "$ref": "#/components/schemas/ChannelConfigurations"
-              channel_status:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ChannelStatus"
-              custom_rules_engine_topic:
-                type: string
-              item_key_strategy:
-                type: string
-                enum:
-                - ID
-                - SKU
-                - SKU_AND_ID
-              item_max_processing_days:
-                type: integer
-                format: int32
-              item_status_check:
-                type: string
-              licensed_features:
-                type: array
-                items:
-                  type: string
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              notifications_disabled:
-                type: boolean
-              pickup_max_hold_days:
-                type: integer
-                format: int32
-              returns_configurations:
-                "$ref": "#/components/schemas/ReturnsConfigurations"
-              status:
-                type: string
-              status_code:
-                type: integer
-                format: int32
-              tracking_retailer_only:
-                type: boolean
-              use_custom_rules_engine:
-                type: boolean
-              web_hook_config:
-                "$ref": "#/components/schemas/WebHookConfig"
-          ReturnsConfigurations:
-            title: ReturnsConfigurations
-            type: object
-            properties:
-              retailer_schedule_interval:
-                type: integer
-                format: int32
-          TaskWorkflow:
-            title: TaskWorkflow
-            type: object
-            properties:
-              dependent_task:
-                type: array
-                items:
-                  type: string
-              parent_task:
-                type: string
-          WebHookConfig:
-            title: WebHookConfig
-            type: object
-            properties:
-              basic_auth_token:
-                type: string
-              webhook_url:
-                type: string
-          WebHookConfigResponse:
-            title: WebHookConfigResponse
-            type: object
-            properties:
-              messages:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/ResponseMessage"
-              modified_date:
-                type: string
-              status:
-                type: string
-              status_code:
-                type: integer
-                format: int32
-              web_hook_config:
-                "$ref": "#/components/schemas/WebHookConfig"
+            parent_task:
+              type: string
+        WebHookConfig:
+          title: WebHookConfig
+          type: object
+          properties:
+            basic_auth_token:
+              type: string
+            webhook_url:
+              type: string
+        WebHookConfigResponse:
+          title: WebHookConfigResponse
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                "$ref": "#/components/schemas/ResponseMessage"
+            modified_date:
+              type: string
+            status:
+              type: string
+            status_code:
+              type: integer
+              format: int32
+            web_hook_config:
+              "$ref": "#/components/schemas/WebHookConfig"
