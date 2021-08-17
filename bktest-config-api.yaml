@@ -1,0 +1,100 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bktest-config-api
+  description: Shows list of API used in RNP
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    info:
+      name: Config Management Service API
+      description: Config Management Service API
+      _postman_id: 1426a029-f572-4648-bc5b-f5dc2b09e52d
+      version: master
+      schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+    item:
+    - id: readUsers_group
+      name: readUsers
+      description: Operations available to read users
+      item:
+      - id: getClientConfigs
+        name: gets all the client configurations
+        request:
+          description: "Gets the latest application specific configurations from the central
+            gitstore based on the commit id and application name.  \n\nIn case when commit
+            hash send in the request is a stale commit then the service will still send
+            back the latest configuration with its respective latest commit hash in the
+            response."
+          method: GET
+          url:
+            raw: "/configurations?clientAppName=&commitHash="
+            query:
+            - key: clientAppName
+              value: ''
+              description: a valid application name that is available in this config service
+            - key: commitHash
+              value: ''
+              description: the commit hash against which the config is required
+        response:
+        - status: '200'
+          code: 200
+        - status: '400'
+          code: 400
+    - id: writeUsers_group
+      name: writeUsers
+      description: Operations available to write users
+      item:
+      - id: writeConfigData
+        name: writes configurations to the content datajson files
+        request:
+          description: Writes updated configurations to the content data.json files in
+            the clients' git store folder directory based on the client app name and the
+            config request.
+          method: POST
+          url:
+            raw: "/configurations?clientAppName="
+            query:
+            - key: clientAppName
+              value: ''
+              description: a valid application name that is available in this config service
+          body:
+            mode: raw
+            raw: |-
+              {
+                "key" : "Carriers-Fedex-LabelRequestValidations",
+                "data" : "{\"LabelUrl\":\"https://sampletesting.com\",\"AccessLicenseNumber\":\"******\",\"Username\":\"******\",\"Password\":\"******\",\"TransactionSrc\":\"NarvarCapri:: Shipping Label Service\",\"AccountNumber\":\"******\"}"
+              }
+        response:
+        - status: '201'
+          code: 201
+        - status: '400'
+          code: 400
+        - status: '500'
+          code: 500
+      - id: getClientConfigData
+        name: gets client configuration data based on config key
+        request:
+          description: gets the last updated configuration data from the central gitstore
+            based on the client app name and config key.
+          method: GET
+          url:
+            raw: "/configurations/data?clientAppName=&configKey=Carriers-Fedex-LabelRequestValidations"
+            query:
+            - key: clientAppName
+              value: ''
+              description: a valid application name that is available in this config service
+            - key: configKey
+              value: Carriers-Fedex-LabelRequestValidations
+              description: configuration key
+        response:
+        - status: '200'
+          code: 200
+        - status: '400'
+          code: 400
