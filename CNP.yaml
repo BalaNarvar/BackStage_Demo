@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: bktest-api
-  description: Shows list of API used in carrier-api-facade
+  description: Shows list of API used in CNP
 spec:
   type: openapi
   lifecycle: production
