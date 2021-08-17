@@ -38,4 +38,4 @@ spec:
   type: service
   system: bktest-api
   providesApis: 
-    - bktest-api
+    - bktest-rnp-api
