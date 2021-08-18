@@ -1,0 +1,258 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: dedupe-api
+  description: Shows list of API used in Dedupe
+  type: openapi
+  lifecycle: production
+  owner: messaging
+  system: messaging-portal
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: carrier-api-facade
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Dedupe-for-backstage
+      version: 1.0.0
+    servers:
+      - url: >-
+          undefined://internal-d471ad54-qa01-dedupeqa01in-75a1-272497165.us-west-2.elb.amazonaws.com
+    paths:
+      /dedupe/delete:
+        post:
+          tags:
+            - default
+          summary: Delete
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    service: rules-engine
+                    product: comms
+                    key: sephora:ANTA_SAPH_06:2204204
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: narvar_tracer_id
+              in: header
+              schema:
+                type: string
+              example: ANTA_TRACER
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /dedupe/validate:
+        post:
+          tags:
+            - default
+          summary: Validate
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    dedupe:
+                      service: rules-engine
+                      product: comms
+                      key: sephora:ANTA_SAPH_06:test2
+                      enabled: true
+                    ratelimit: 2592000
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: narvar_tracer_id
+              in: header
+              schema:
+                type: string
+              example: ANTA_TRACER
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /dedupe/check:
+        get:
+          tags:
+            - default
+          summary: Check
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: narvar_tracer_id
+              in: header
+              schema:
+                type: string
+              example: ANTA_TRACER
+            - name: service
+              in: query
+              schema:
+                type: string
+              example: rules-engine
+            - name: product
+              in: query
+              schema:
+                type: string
+              example: comms
+            - name: key
+              in: query
+              schema:
+                type: string
+              example: sephora:ANTA_SAPH_06:test
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /dedupe/add:
+        post:
+          tags:
+            - default
+          summary: Add
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    service: rules-engine
+                    product: comms
+                    key: sephora:ANTA_SAPH_06:test
+                    ttl: 2592000
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: ''
+              in: header
+              schema:
+                type: string
+            - name: service
+              in: query
+              schema:
+                type: string
+              example: dedupe
+            - name: product
+              in: query
+              schema:
+                type: string
+              example: comms
+            - name: key
+              in: query
+              schema:
+                type: string
+              example: sephora:ANTA_SAPH_06
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /dedupe/get:
+        get:
+          tags:
+            - default
+          summary: Get
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: narvar_tracer_id
+              in: header
+              schema:
+                type: string
+              example: ANTA_TRACER
+            - name: service
+              in: query
+              schema:
+                type: string
+              example: rules-engine
+            - name: product
+              in: query
+              schema:
+                type: string
+              example: comms
+            - name: key
+              in: query
+              schema:
+                type: string
+              example: sephora:ANTA_SAPH_06:2204204
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
+      /dedupe/validate-bulk:
+        post:
+          tags:
+            - default
+          summary: Validate-bulk
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    - dedupe:
+                        service: rules-engine
+                        product: comms
+                        key: sephora:ANTA_SAPH_06:2204204
+                        ttl: 2592000
+                        enabled: true
+                      ratelimit: 2592000
+                    - dedupe:
+                        service: rules-engine
+                        product: comms
+                        key: sephora:ANTA_SAPH_06:test2
+                        enabled: true
+                      ratelimit: 2592000
+          parameters:
+            - name: Content-Type
+              in: header
+              schema:
+                type: string
+              example: application/json
+            - name: narvar_tracer_id
+              in: header
+              schema:
+                type: string
+              example: ANTA_TRACER
+            - name: service
+              in: query
+              schema:
+                type: string
+              example: dedupe
+            - name: product
+              in: query
+              schema:
+                type: string
+              example: comms
+            - name: key
+              in: query
+              schema:
+                type: string
+              example: sephora:ANTA_SAPH_06
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json: {}
