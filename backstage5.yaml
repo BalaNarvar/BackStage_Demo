@@ -36,6 +36,6 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis: 
-    - dedupe-api
+    - raavi-api
   type: service
   system: artist-engagement-portal
