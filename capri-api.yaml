@@ -1,0 +1,260 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: capri-api
+  description: This document covers the current APIs supported by Narvar's Intelligent
+    Carrier Allocation Service. This is offered as part of Narvar Ship product and
+    augments the APIs and settings provided as part of the Narvar Hub integration.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: carriers
+  system: capri
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Narvar Intelligent Carrier Allocation Service
+      description: This document covers the current APIs supported by Narvar's Intelligent
+        Carrier Allocation Service. This is offered as part of Narvar Ship product and
+        augments the APIs and settings provided as part of the Narvar Hub integration.
+      _postman_id: a9821849-87f4-4723-b62a-80e24d0f210d
+      version: SLGv1
+    servers:
+      - url: https://api.narvar.com/v1
+    paths:
+      /shipping-labels:
+        post:
+          summary: Generate Carrier Shipping Label
+          description: Generate shipping forward label from retailer to customer. The
+            service abstracts all carrier logic and normalizes the API specification across
+            multiple carriers.
+          parameters:
+            - key: X-Narvar-Tracer-ID
+              value: ''
+              description: Tracer ID is used to trace the request, via logging.
+            - key: X-Narvar-Experimental
+              value: ''
+              description: when this header is set, experimental features are enabled on
+                this API
+            - key: Authorization
+              value: Bearer <TOKEN>
+              description: Bearer Token
+          body:
+            mode: raw
+            raw: |-
+              {
+                "shipment" : {
+                  "carrier_moniker" : "",
+                  "carrier_service" : "fedex_ground",
+                  "currency_code" : "",
+                  "ship_from_location" : {
+                    "id" : "",
+                    "first_name" : "",
+                    "company" : "",
+                    "phone_number" : "",
+                    "email" : "",
+                    "house_number" : "",
+                    "street_address1" : "",
+                    "street_address2" : "",
+                    "city" : "",
+                    "province_code" : "",
+                    "postal_code" : "",
+                    "country_code" : "",
+                    "is_residential" : "false",
+                    "last_name" : "",
+                    "street_address3" : ""
+                  },
+                  "ship_to_location" : {
+                    "id" : "",
+                    "first_name" : "",
+                    "company" : "",
+                    "phone_number" : "",
+                    "email" : "",
+                    "house_number" : "",
+                    "street_address1" : "",
+                    "street_address2" : "",
+                    "city" : "",
+                    "province_code" : "",
+                    "postal_code" : "",
+                    "country_code" : "",
+                    "is_residential" : "false",
+                    "last_name" : "",
+                    "street_address3" : ""
+                  },
+                  "hold_at_location" : {
+                    "id" : "",
+                    "first_name" : "",
+                    "company" : "",
+                    "phone_number" : "",
+                    "email" : "",
+                    "house_number" : "",
+                    "street_address1" : "",
+                    "street_address2" : "",
+                    "city" : "",
+                    "province_code" : "",
+                    "postal_code" : "",
+                    "country_code" : "",
+                    "is_residential" : "false",
+                    "last_name" : "",
+                    "street_address3" : ""
+                  },
+                  "return_location" : {
+                    "id" : "",
+                    "first_name" : "",
+                    "company" : "",
+                    "phone_number" : "",
+                    "email" : "",
+                    "house_number" : "",
+                    "street_address1" : "",
+                    "street_address2" : "",
+                    "city" : "",
+                    "province_code" : "",
+                    "postal_code" : "",
+                    "country_code" : "",
+                    "is_residential" : "false",
+                    "last_name" : "",
+                    "street_address3" : ""
+                  },
+                  "reference_details" : {
+                    "order_id" : "",
+                    "order_number" : "",
+                    "customer_reference_number" : "",
+                    "reference_order_number" : "",
+                    "rma_number" : ""
+                  },
+                  "attributes" : {
+                    "[]" : ""
+                  },
+                  "billing" : {
+                    "paid_by" : "sender",
+                    "account_number" : "",
+                    "postal_code" : "",
+                    "country_code" : ""
+                  },
+                  "parcels" : [
+                    {
+                      "package_type" : "",
+                      "dimension" : {
+                        "length" : 1.0,
+                        "width" : 1.0,
+                        "height" : "",
+                        "unit" : "cm"
+                      },
+                      "items" : [
+                        {
+                          "item_id" : "",
+                          "line_item_id" : "",
+                          "product_id" : "",
+                          "product" : "",
+                          "product_sku" : "",
+                          "item_desc" : "",
+                          "item_price" : {
+                            "amount" : 1.0,
+                            "currency" : ""
+                          },
+                          "item_category" : "",
+                          "quantity" : 1,
+                          "description" : "",
+                          "dimension" : {
+                            "length" : 1.0,
+                            "width" : 1.0,
+                            "height" : "",
+                            "unit" : "cm"
+                          },
+                          "weight" : {
+                            "value" : 1.0,
+                            "unit" : "g"
+                          },
+                          "origin_country" : "",
+                          "hs_code" : "",
+                          "tags" : [
+                            ""
+                          ]
+                        }
+                      ],
+                      "weight" : {
+                        "value" : 1.0,
+                        "unit" : "g"
+                      },
+                      "tags" : [
+                        ""
+                      ],
+                      "description" : ""
+                    }
+                  ],
+                  "shipper_accounts" : [
+                    {
+                      "account_identifier" : "",
+                      "parent_username" : "",
+                      "parent_password" : "",
+                      "username" : "",
+                      "password" : "",
+                      "account_number" : "",
+                      "account_name" : "",
+                      "parent_account_number" : "",
+                      "parent_account_name" : "",
+                      "meter_number" : "",
+                      "api_key" : "",
+                      "label_url" : "",
+                      "login_url" : "",
+                      "oauth_info" : {
+                        "access_token_url" : "",
+                        "refresh_token_url" : "",
+                        "client_id" : "",
+                        "client_secret" : "",
+                        "username" : "",
+                        "password" : "",
+                        "grant_type" : "",
+                        "org_name" : "",
+                        "scopes" : [
+                          ""
+                        ]
+                      },
+                      "attributes" : ""
+                    }
+                  ],
+                  "shipment_type" : "BOSS",
+                  "undeliverable_action" : "LEAVE_AT_DOOR",
+                  "pickup_deadlines" : {
+                    "start_hours" : "",
+                    "end_hours" : "",
+                    "start_time" : "2021-08-11T02:21:43.389Z",
+                    "end_time" : "2021-08-11T02:21:43.389Z"
+                  },
+                  "dropoff_deadlines" : {
+                    "start_hours" : "",
+                    "end_hours" : "",
+                    "start_time" : "2021-08-11T02:21:43.389Z",
+                    "end_time" : "2021-08-11T02:21:43.389Z"
+                  },
+                  "signature_required" : "FALSE",
+                  "proof_of_delivery_required" : "TRUE",
+                  "is_return" : "false",
+                  "locale" : {
+                    "language" : "en",
+                    "country" : "US",
+                    "variant" : ""
+                  },
+                  "external_shipment_id" : "",
+                  "origin_mode" : "REGULAR_PICKUP",
+                  "shipment_date" : "2021-08-11T02:21:43.389Z",
+                  "[]" : ""
+                },
+                "label_spec" : {
+                  "label_size" : "A6",
+                  "label_type" : "PDF"
+                }
+              }
+        response:
+        - status: '200'
+          code: 200
+        - status: Bad Request
+          code: 400
+        - status: Forbidden
+          code: 403
+        - status: Unauthorized
+          code: 401
+        - status: Unprocessable Entity
+          code: 422
+        - status: Too Many Requests
+          code: 429
