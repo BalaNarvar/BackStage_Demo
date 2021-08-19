@@ -36,6 +36,6 @@ spec:
   lifecycle: experimental
   owner: bala
   providesApis: 
-    - raavi-api
+    - capri-api
   type: service
   system: artist-engagement-portal
