@@ -45,222 +45,223 @@ spec:
               required: true
               type: "string"
               description: Bearer Token
-          body:
-            mode: raw
-            raw: |-
-              {
-                "shipment" : {
-                  "carrier_moniker" : "",
-                  "carrier_service" : "fedex_ground",
-                  "currency_code" : "",
-                  "ship_from_location" : {
-                    "id" : "",
-                    "first_name" : "",
-                    "company" : "",
-                    "phone_number" : "",
-                    "email" : "",
-                    "house_number" : "",
-                    "street_address1" : "",
-                    "street_address2" : "",
-                    "city" : "",
-                    "province_code" : "",
-                    "postal_code" : "",
-                    "country_code" : "",
-                    "is_residential" : "false",
-                    "last_name" : "",
-                    "street_address3" : ""
-                  },
-                  "ship_to_location" : {
-                    "id" : "",
-                    "first_name" : "",
-                    "company" : "",
-                    "phone_number" : "",
-                    "email" : "",
-                    "house_number" : "",
-                    "street_address1" : "",
-                    "street_address2" : "",
-                    "city" : "",
-                    "province_code" : "",
-                    "postal_code" : "",
-                    "country_code" : "",
-                    "is_residential" : "false",
-                    "last_name" : "",
-                    "street_address3" : ""
-                  },
-                  "hold_at_location" : {
-                    "id" : "",
-                    "first_name" : "",
-                    "company" : "",
-                    "phone_number" : "",
-                    "email" : "",
-                    "house_number" : "",
-                    "street_address1" : "",
-                    "street_address2" : "",
-                    "city" : "",
-                    "province_code" : "",
-                    "postal_code" : "",
-                    "country_code" : "",
-                    "is_residential" : "false",
-                    "last_name" : "",
-                    "street_address3" : ""
-                  },
-                  "return_location" : {
-                    "id" : "",
-                    "first_name" : "",
-                    "company" : "",
-                    "phone_number" : "",
-                    "email" : "",
-                    "house_number" : "",
-                    "street_address1" : "",
-                    "street_address2" : "",
-                    "city" : "",
-                    "province_code" : "",
-                    "postal_code" : "",
-                    "country_code" : "",
-                    "is_residential" : "false",
-                    "last_name" : "",
-                    "street_address3" : ""
-                  },
-                  "reference_details" : {
-                    "order_id" : "",
-                    "order_number" : "",
-                    "customer_reference_number" : "",
-                    "reference_order_number" : "",
-                    "rma_number" : ""
-                  },
-                  "attributes" : {
-                    "[]" : ""
-                  },
-                  "billing" : {
-                    "paid_by" : "sender",
-                    "account_number" : "",
-                    "postal_code" : "",
-                    "country_code" : ""
-                  },
-                  "parcels" : [
-                    {
-                      "package_type" : "",
-                      "dimension" : {
-                        "length" : 1.0,
-                        "width" : 1.0,
-                        "height" : "",
-                        "unit" : "cm"
+            requestbody:
+              content:
+              application/json:
+                schema:
+                  {
+                    "shipment" : {
+                      "carrier_moniker" : "",
+                      "carrier_service" : "fedex_ground",
+                      "currency_code" : "",
+                      "ship_from_location" : {
+                        "id" : "",
+                        "first_name" : "",
+                        "company" : "",
+                        "phone_number" : "",
+                        "email" : "",
+                        "house_number" : "",
+                        "street_address1" : "",
+                        "street_address2" : "",
+                        "city" : "",
+                        "province_code" : "",
+                        "postal_code" : "",
+                        "country_code" : "",
+                        "is_residential" : "false",
+                        "last_name" : "",
+                        "street_address3" : ""
                       },
-                      "items" : [
+                      "ship_to_location" : {
+                        "id" : "",
+                        "first_name" : "",
+                        "company" : "",
+                        "phone_number" : "",
+                        "email" : "",
+                        "house_number" : "",
+                        "street_address1" : "",
+                        "street_address2" : "",
+                        "city" : "",
+                        "province_code" : "",
+                        "postal_code" : "",
+                        "country_code" : "",
+                        "is_residential" : "false",
+                        "last_name" : "",
+                        "street_address3" : ""
+                      },
+                      "hold_at_location" : {
+                        "id" : "",
+                        "first_name" : "",
+                        "company" : "",
+                        "phone_number" : "",
+                        "email" : "",
+                        "house_number" : "",
+                        "street_address1" : "",
+                        "street_address2" : "",
+                        "city" : "",
+                        "province_code" : "",
+                        "postal_code" : "",
+                        "country_code" : "",
+                        "is_residential" : "false",
+                        "last_name" : "",
+                        "street_address3" : ""
+                      },
+                      "return_location" : {
+                        "id" : "",
+                        "first_name" : "",
+                        "company" : "",
+                        "phone_number" : "",
+                        "email" : "",
+                        "house_number" : "",
+                        "street_address1" : "",
+                        "street_address2" : "",
+                        "city" : "",
+                        "province_code" : "",
+                        "postal_code" : "",
+                        "country_code" : "",
+                        "is_residential" : "false",
+                        "last_name" : "",
+                        "street_address3" : ""
+                      },
+                      "reference_details" : {
+                        "order_id" : "",
+                        "order_number" : "",
+                        "customer_reference_number" : "",
+                        "reference_order_number" : "",
+                        "rma_number" : ""
+                      },
+                      "attributes" : {
+                        "[]" : ""
+                      },
+                      "billing" : {
+                        "paid_by" : "sender",
+                        "account_number" : "",
+                        "postal_code" : "",
+                        "country_code" : ""
+                      },
+                      "parcels" : [
                         {
-                          "item_id" : "",
-                          "line_item_id" : "",
-                          "product_id" : "",
-                          "product" : "",
-                          "product_sku" : "",
-                          "item_desc" : "",
-                          "item_price" : {
-                            "amount" : 1.0,
-                            "currency" : ""
-                          },
-                          "item_category" : "",
-                          "quantity" : 1,
-                          "description" : "",
+                          "package_type" : "",
                           "dimension" : {
                             "length" : 1.0,
                             "width" : 1.0,
                             "height" : "",
                             "unit" : "cm"
                           },
+                          "items" : [
+                            {
+                              "item_id" : "",
+                              "line_item_id" : "",
+                              "product_id" : "",
+                              "product" : "",
+                              "product_sku" : "",
+                              "item_desc" : "",
+                              "item_price" : {
+                                "amount" : 1.0,
+                                "currency" : ""
+                              },
+                              "item_category" : "",
+                              "quantity" : 1,
+                              "description" : "",
+                              "dimension" : {
+                                "length" : 1.0,
+                                "width" : 1.0,
+                                "height" : "",
+                                "unit" : "cm"
+                              },
+                              "weight" : {
+                                "value" : 1.0,
+                                "unit" : "g"
+                              },
+                              "origin_country" : "",
+                              "hs_code" : "",
+                              "tags" : [
+                                ""
+                              ]
+                            }
+                          ],
                           "weight" : {
                             "value" : 1.0,
                             "unit" : "g"
                           },
-                          "origin_country" : "",
-                          "hs_code" : "",
                           "tags" : [
                             ""
-                          ]
+                          ],
+                          "description" : ""
                         }
                       ],
-                      "weight" : {
-                        "value" : 1.0,
-                        "unit" : "g"
-                      },
-                      "tags" : [
-                        ""
+                      "shipper_accounts" : [
+                        {
+                          "account_identifier" : "",
+                          "parent_username" : "",
+                          "parent_password" : "",
+                          "username" : "",
+                          "password" : "",
+                          "account_number" : "",
+                          "account_name" : "",
+                          "parent_account_number" : "",
+                          "parent_account_name" : "",
+                          "meter_number" : "",
+                          "api_key" : "",
+                          "label_url" : "",
+                          "login_url" : "",
+                          "oauth_info" : {
+                            "access_token_url" : "",
+                            "refresh_token_url" : "",
+                            "client_id" : "",
+                            "client_secret" : "",
+                            "username" : "",
+                            "password" : "",
+                            "grant_type" : "",
+                            "org_name" : "",
+                            "scopes" : [
+                              ""
+                            ]
+                          },
+                          "attributes" : ""
+                        }
                       ],
-                      "description" : ""
-                    }
-                  ],
-                  "shipper_accounts" : [
-                    {
-                      "account_identifier" : "",
-                      "parent_username" : "",
-                      "parent_password" : "",
-                      "username" : "",
-                      "password" : "",
-                      "account_number" : "",
-                      "account_name" : "",
-                      "parent_account_number" : "",
-                      "parent_account_name" : "",
-                      "meter_number" : "",
-                      "api_key" : "",
-                      "label_url" : "",
-                      "login_url" : "",
-                      "oauth_info" : {
-                        "access_token_url" : "",
-                        "refresh_token_url" : "",
-                        "client_id" : "",
-                        "client_secret" : "",
-                        "username" : "",
-                        "password" : "",
-                        "grant_type" : "",
-                        "org_name" : "",
-                        "scopes" : [
-                          ""
-                        ]
+                      "shipment_type" : "BOSS",
+                      "undeliverable_action" : "LEAVE_AT_DOOR",
+                      "pickup_deadlines" : {
+                        "start_hours" : "",
+                        "end_hours" : "",
+                        "start_time" : "2021-08-11T02:21:43.389Z",
+                        "end_time" : "2021-08-11T02:21:43.389Z"
                       },
-                      "attributes" : ""
+                      "dropoff_deadlines" : {
+                        "start_hours" : "",
+                        "end_hours" : "",
+                        "start_time" : "2021-08-11T02:21:43.389Z",
+                        "end_time" : "2021-08-11T02:21:43.389Z"
+                      },
+                      "signature_required" : "FALSE",
+                      "proof_of_delivery_required" : "TRUE",
+                      "is_return" : "false",
+                      "locale" : {
+                        "language" : "en",
+                        "country" : "US",
+                        "variant" : ""
+                      },
+                      "external_shipment_id" : "",
+                      "origin_mode" : "REGULAR_PICKUP",
+                      "shipment_date" : "2021-08-11T02:21:43.389Z",
+                      "[]" : ""
+                    },
+                    "label_spec" : {
+                      "label_size" : "A6",
+                      "label_type" : "PDF"
                     }
-                  ],
-                  "shipment_type" : "BOSS",
-                  "undeliverable_action" : "LEAVE_AT_DOOR",
-                  "pickup_deadlines" : {
-                    "start_hours" : "",
-                    "end_hours" : "",
-                    "start_time" : "2021-08-11T02:21:43.389Z",
-                    "end_time" : "2021-08-11T02:21:43.389Z"
-                  },
-                  "dropoff_deadlines" : {
-                    "start_hours" : "",
-                    "end_hours" : "",
-                    "start_time" : "2021-08-11T02:21:43.389Z",
-                    "end_time" : "2021-08-11T02:21:43.389Z"
-                  },
-                  "signature_required" : "FALSE",
-                  "proof_of_delivery_required" : "TRUE",
-                  "is_return" : "false",
-                  "locale" : {
-                    "language" : "en",
-                    "country" : "US",
-                    "variant" : ""
-                  },
-                  "external_shipment_id" : "",
-                  "origin_mode" : "REGULAR_PICKUP",
-                  "shipment_date" : "2021-08-11T02:21:43.389Z",
-                  "[]" : ""
-                },
-                "label_spec" : {
-                  "label_size" : "A6",
-                  "label_type" : "PDF"
-                }
-              }
-        response:
-        - status: '200'
-          code: 200
-        - status: Bad Request
-          code: 400
-        - status: Forbidden
-          code: 403
-        - status: Unauthorized
-          code: 401
-        - status: Unprocessable Entity
-          code: 422
-        - status: Too Many Requests
-          code: 429
+                  }
+            response:
+            - status: '200'
+              code: 200
+            - status: Bad Request
+              code: 400
+            - status: Forbidden
+              code: 403
+            - status: Unauthorized
+              code: 401
+            - status: Unprocessable Entity
+              code: 422
+            - status: Too Many Requests
+              code: 429
