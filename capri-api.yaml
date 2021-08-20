@@ -29,14 +29,14 @@ spec:
             service abstracts all carrier logic and normalizes the API specification across
             multiple carriers.
           parameters:
-            - key: X-Narvar-Tracer-ID
+            - key1: X-Narvar-Tracer-ID
               value: ''
               description: Tracer ID is used to trace the request, via logging.
-            - key: X-Narvar-Experimental
+            - key2: X-Narvar-Experimental
               value: ''
               description: when this header is set, experimental features are enabled on
                 this API
-            - key: Authorization
+            - key3: Authorization
               value: Bearer <TOKEN>
               description: Bearer Token
           body:
