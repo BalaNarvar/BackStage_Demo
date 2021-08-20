@@ -48,19 +48,17 @@ spec:
           - in: body
             name: user
             description: The user to create.
-          response:
-          - status: '200'
-            code: 200
-          - status: Bad Request
-            code: 400
-          - status: Forbidden
-            code: 403
-          - status: Unauthorized
-            code: 401
-          - status: Unprocessable Entity
-            code: 422
-          - status: Too Many Requests
-            code: 429
+          responses:
+            '200':
+              description: OK
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
       /shipping-labels:
         get:
           summary: Retrieve Shipping Label by reference IDs
@@ -81,6 +79,6 @@ spec:
             description: "The opaque unique identifier sent as part of `Shipping Label Request` as part of the `Label Generation API`."
             required: true
             type: "string"
-          response:
-          - status: '200'
-            code: 200
+          responses:
+            '200':
+              description: OK
