@@ -59,26 +59,4 @@ spec:
               description: Forbidden
             '404':
               description: Not Found
-      /shipping-labels:
-        get:
-          summary: Retrieve Shipping Label by reference IDs
-          description: Retrieves the previously generated labels based on identifiers
-          parameters:
-          - name: "id"
-            in: "query"
-            description: The UUID to uniquely identify a label. This is same id recieved as part of the `Label Generation API`"
-            required: true
-            type: "string"
-          - name: "tracking_number"
-            in: "query"
-            description: "The tracking number assigned to in a label by the carrier. This is tracking number recieved as part of the `Label Generation API`"
-            required: true
-            type: "string"
-          - name: "shipment_id"
-            in: "query"
-            description: "The opaque unique identifier sent as part of `Shipping Label Request` as part of the `Label Generation API`."
-            required: true
-            type: "string"
-          responses:
-            '200':
-              description: OK
+      
