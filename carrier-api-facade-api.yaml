@@ -14,7 +14,8 @@ spec:
       title: Carrier Facade API
       version: 1.0.0
     servers:
-      - url: http://internal-acf47a1a-prod01-carrierapi-7db4-1883887765.us-west-2.elb.amazonaws.com
+      - url: http://internal-d471ad54-qa01-carrierapifa-d865-1635686225.us-west-2.elb.amazonaws.com
+      - url: http://internal-4d78fcee-qa02-carrierapifa-e94a-232005264.us-west-2.elb.amazonaws.com
     paths:
       /carrier/ftn/tracking:
         get:
@@ -43,12 +44,17 @@ spec:
               description: Successful response
               content:
                 application/json: {}
-      /configuration/carrier_config/ftn/bedbathandbeyond:
+      /configuration/carrier_config/ftn/{retailerName}:
         get:
           tags:
             - default
           summary: Carrier Configuration API
           description: Used to fetch carrier level configuration
+          parameters:
+            - name: retailerName
+              in: path
+              type: string
+              example: bedbathandbeyond
           responses:
             '200':
               description: Successful response
@@ -65,12 +71,17 @@ spec:
               description: Successful response
               content:
                 application/json: {}
-      /carrier-alias/retailer/bedbathandbeyond:
+      /carrier-alias/retailer/{retailerName}:
         get:
           tags:
             - default
           summary: Carrier Alias with Retailer API
           description: Used to fetch carrier alias w.r.t a retailer
+          parameters:
+            - name: retailerName
+              in: path
+              type: string
+              example: bedbathandbeyond
           responses:
             '200':
               description: Successful response
@@ -113,8 +124,7 @@ spec:
           tags:
             - default
           summary: Carrier Facade Tracking-Debug API
-          description: >-
-            This API is used to get debugging information from Carrier API, i.e, the
+          description: This API is used to get debugging information from Carrier API, i.e, the
             original carrier response is appeneded to the original carrier tracking
             response.
           parameters:
