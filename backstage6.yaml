@@ -23,4 +23,5 @@ spec:
   system: messaging-system
   providesApis: 
     - carrier-api-facade-api
+    - dedupe-api
   type: service
