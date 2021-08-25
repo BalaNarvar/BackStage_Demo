@@ -17,7 +17,7 @@ spec:
       - url: http://internal-d471ad54-qa01-carrierapifa-d865-1635686225.us-west-2.elb.amazonaws.com
       - url: http://internal-4d78fcee-qa02-carrierapifa-e94a-232005264.us-west-2.elb.amazonaws.com
     paths:
-      /carrier/ftn/tracking:
+      /carrier/{carrierName}/tracking:
         get:
           tags:
             - default
@@ -39,12 +39,16 @@ spec:
               schema:
                 type: string
               example: fr
+            - name: carrierName
+              in: path
+              type: string
+              example: ftn
           responses:
             '200':
               description: Successful response
               content:
                 application/json: {}
-      /configuration/carrier_config/ftn/{retailerName}:
+      /configuration/carrier_config/{carrierName}/{retailerName}:
         get:
           tags:
             - default
@@ -55,6 +59,10 @@ spec:
               in: path
               type: string
               example: bedbathandbeyond
+            - name: carrierName
+              in: path
+              type: string
+              example: ftn
           responses:
             '200':
               description: Successful response
@@ -87,7 +95,7 @@ spec:
               description: Successful response
               content:
                 application/json: {}
-      /status-codes/mapping/ftn:
+      /status-codes/mapping/{carrierName}:
         get:
           tags:
             - default
@@ -98,12 +106,16 @@ spec:
               schema:
                 type: integer
               example: '200'
+            - name: carrierName
+              in: path
+              type: string
+              example: ftn
           responses:
             '200':
               description: Successful response
               content:
                 application/json: {}
-      /status-codes/mappings/ftn:
+      /status-codes/mappings/{carrierName}:
         get:
           tags:
             - default
@@ -114,12 +126,16 @@ spec:
               schema:
                 type: string
               example: API
+            - name: carrierName
+              in: path
+              type: string
+              example: ftn
           responses:
             '200':
               description: Successful response
               content:
                 application/json: {}
-      /carrier/ftn/tracking-debug:
+      /carrier/{carrierName}/tracking-debug:
         get:
           tags:
             - default
@@ -143,6 +159,10 @@ spec:
               schema:
                 type: string
               example: fr
+            - name: carrierName
+              in: path
+              type: string
+              example: ftn
           responses:
             '200':
               description: Successful response
