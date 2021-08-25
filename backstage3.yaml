@@ -15,4 +15,4 @@ spec:
   system: messaging-system
   owner: bala
   providesApis:
-    - retailer-notification-preferences-api-test
+    - raavi-api
