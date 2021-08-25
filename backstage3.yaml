@@ -13,5 +13,6 @@ spec:
   lifecycle: experimental
   owner: bala
   partOf: Bala-backstage2
+  system: messaging-system
   providesApis:
     - retailer-notification-preferences-api-test
