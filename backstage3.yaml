@@ -12,5 +12,6 @@ spec:
   type: service
   lifecycle: experimental
   owner: bala
+  partOf: Bala-backstage2
   providesApis:
     - retailer-notification-preferences-api-test
