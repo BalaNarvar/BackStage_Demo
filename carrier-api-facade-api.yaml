@@ -7,7 +7,7 @@ spec:
   type: openapi
   lifecycle: production
   owner: carriers
-  system: carrier-api-facade
+  system: messaging-system
   definition: |
     openapi: 3.0.0
     info:
