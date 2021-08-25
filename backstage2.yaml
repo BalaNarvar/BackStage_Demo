@@ -38,4 +38,5 @@ spec:
   domain: Narvar
   providesApis: 
     - bktest-notification-api
+    - bktest-rnp-api
   type: service
