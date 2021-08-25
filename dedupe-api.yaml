@@ -7,15 +7,14 @@ spec:
   type: openapi
   lifecycle: production
   owner: messaging
-  system: messaging-portal
+  system: messaging-system
   definition: |
     openapi: 3.0.0
     info:
       title: Dedupe-API
       version: 1.0.0
     servers:
-      - url: >-
-          http://internal-d471ad54-qa01-dedupeqa01in-75a1-272497165.us-west-2.elb.amazonaws.com
+      - url: http://internal-d471ad54-qa01-dedupeqa01in-75a1-272497165.us-west-2.elb.amazonaws.com
     paths:
       /dedupe/delete:
         post:
