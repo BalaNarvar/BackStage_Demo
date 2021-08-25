@@ -10,9 +10,9 @@ metadata:
     - python
 spec:
   type: service
-  system: messaging-system
   subcomponentOf: Bala-backstage2
-  lifecycle: experimental
+  lifecycle: production
+  system: messaging-system
   owner: bala
   providesApis:
     - retailer-notification-preferences-api-test
