@@ -34,7 +34,7 @@ metadata:
 spec: 
   lifecycle: experimental
   owner: bala
+  system: messaging-system
   providesApis: 
     - bktest-notification-api
   type: service  system: messaging-system
-  system: messaging-system
