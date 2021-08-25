@@ -38,4 +38,4 @@ spec:
   providesApis: 
     - capri-api
   type: service
-    system: messaging-system
+  system: messaging-system
