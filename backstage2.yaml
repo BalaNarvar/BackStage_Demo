@@ -36,5 +36,5 @@ spec:
   owner: bala
   providesApis: 
     - bktest-notification-api
-  type: service
-  system: artist-engagement-portal
+  type: service  system: messaging-system
+  system: messaging-system
