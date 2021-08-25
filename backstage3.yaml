@@ -3,7 +3,6 @@ kind: Component
 metadata:
   name: Bala-backstage3
   description: Backstage-Testing3
-  system: messaging-system
   annotations:
     circleci.com/project-slug: github/narvar/hub_backend
   tags:
