@@ -6,7 +6,7 @@ metadata:
   type: openapi
   lifecycle: production
   owner: carriers
-  system: carrier-api-facade
+  system: messaging-system
 spec:
   type: openapi
   lifecycle: production
