@@ -3,15 +3,11 @@ kind: API
 metadata:
   name: bktest-rnp-api
   description: Shows list of API used in RNP
-  type: openapi
-  lifecycle: production
-  owner: carriers
-  system: messaging-system
 spec:
   type: openapi
   lifecycle: production
   owner: carriers
-  system: carrier-api-facade
+  system: messaging-system
   definition: |
     openapi: 3.0.3
     info:
