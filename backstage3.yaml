@@ -3,7 +3,6 @@ kind: Component
 metadata:
   name: Bala-backstage3
   description: Backstage-Testing3
-  partOf: Bala-backstage2
   system: messaging-system
   annotations:
     circleci.com/project-slug: github/narvar/hub_backend
@@ -12,9 +11,9 @@ metadata:
     - python
 spec:
   type: service
+  subcomponentOf: Bala-backstage2
   lifecycle: experimental
   owner: bala
-  subcomponentOf: Bala-backstage2
   system: messaging-system
   providesApis:
     - retailer-notification-preferences-api-test
