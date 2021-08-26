@@ -35,7 +35,5 @@ metadata:
 spec: 
   lifecycle: experimental
   owner: bala
-  providesApis: 
-    - capri-api
   type: service
   system: messaging-system
