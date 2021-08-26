@@ -17,8 +17,10 @@ metadata:
     - java
     - python
 spec: 
-  lifecycle: experimental
+  subcomponentOf: Bala-backstage2
+  lifecycle: production
+  system: messaging-system
   owner: bala
   providesApis: 
-    - bktest-config-api
+    - beas-api
   type: service
