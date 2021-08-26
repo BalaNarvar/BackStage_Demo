@@ -7,7 +7,7 @@ spec:
   type: openapi
   lifecycle: production
   owner: partnership
-  system: Demandware-Cartridge
+  system: messaging-system
   definition: |
     openapi: "3.0.0"
     info:
