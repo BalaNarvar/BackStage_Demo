@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: carrier1
+  description: carrier1
+  annotations:
+    circleci.com/project-slug: github/narvar/hub_backend
+  tags:
+    - java
+    - python
+spec:
+  type: service
+  lifecycle: production
+  system: carrier-system
+  owner: bala
+  providesApis:
+    - cnp-api
