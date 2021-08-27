@@ -17,7 +17,7 @@ metadata:
     - java
     - python
 spec: 
-  subcomponentOf: Bala-backstage3
+  dependsOn: Bala-backstage3
   lifecycle: production
   system: messaging-system
   owner: bala
