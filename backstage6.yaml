@@ -1,6 +1,6 @@
 --- 
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Component-1
 metadata:
   annotations: 
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
