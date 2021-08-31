@@ -1,0 +1,56 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bindleTest
+  description: Bundle Of component scripts that retailers embed on their page.
+  annotations:
+    circleci.com/project-slug: github/narvar/bindle
+    jira/project-key: HUB
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/EN/pages/1490420259/Bindle+Validation
+    github.com/project-slug: narvar/bindle
+    sonarqube.org/project-key: bindle
+  tags:
+    - go
+    - track and hub
+  links:
+    - url: https://portal.victorops.com/client/narvar-inc
+      title: VictorOps
+    - url: https://portal.victorops.com/dash/narvar-inc/team-schedules#/team/team-8YrPsPIQrDw36fUV/users
+      title: VictorOps Team
+    - url: https://narvar.slack.com/archives/C013KCWD4TB
+      title: Slack Channel (dt-retailer-launches)
+    - url: https://narvar.slack.com/archives/C234M0V7V
+      title: Slack Channel (tracking-t2)
+    - url: https://narvar.slack.com/archives/C7XT7LHQQ
+      title: Slack Channel (hub)
+    - url: https://narvar.atlassian.net/secure/RapidBoard.jspa?rapidView=263
+      title: Kanban Board (Track)
+    - url: https://narvar.atlassian.net/secure/RapidBoard.jspa?rapidView=226
+      title: Kanban Board (Hub)
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/38109231/Tracking
+      title: Wiki Main Page (Tracking)
+    - url: https://narvar.atlassian.net/wiki/spaces/NH/overview
+      title: Wiki Main Page (Hub)
+    - url: https://jenkins-qa01.narvar.qa/
+      title: Jenkins-QA (Need QA VPN)
+    - url: https://jenkins-prod01.narvar.com/
+      title: Jenkins-Prod (Need Prod VPN)
+    - url: https://sonarqube.narvar.qa/
+      title: Sonar
+    - url: https://github.com/orgs/narvar/teams/track
+      title: Github Team
+    - url: https://github.com/orgs/narvar/teams/track/repositories
+      title: Repositories owned by the team
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/416907370/Engineering+Onboarding
+      title: Engineering Onboarding
+    - url: https://drive.google.com/drive/u/0/folders/1i6I3pERltieRGbzZy290oTH4uvzZn0KW
+      title: Engineering Onboarding Resources
+    - url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1400700958/ADA+Test+Automation+Framework+For+Track
+      title: ADA Wiki
+    - url: https://app.circleci.com/pipelines/github/narvar/sutro/1095/workflows/8c1149af-95a4-4dc8-bac0-0ce133dc214a/jobs/9645/artifacts
+      title: ADA Jenkins Job
+spec:
+  type: service
+  lifecycle: production
+  owner: track-squad@narvar.com
+  system: bindle
