@@ -10,7 +10,7 @@ metadata:
     - python
 spec:
   type: service
-  subcomponentOf: Bala-backstage2
+  dependsOn: Bala-backstage2
   lifecycle: production
   system: messaging-system
   owner: bala
