@@ -15,4 +15,3 @@ spec:
   owner: bala
   providesApis:
     - raavi-api
-  dependsOn: ['Bala-backstage2']
