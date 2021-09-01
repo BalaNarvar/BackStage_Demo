@@ -11,7 +11,7 @@ metadata:
     sonarqube.org/project-key: bindle
   tags:
     - go
-    - track_hub
+    - track&hub
   links:
     - url: https://portal.victorops.com/client/narvar-inc
       title: VictorOps
