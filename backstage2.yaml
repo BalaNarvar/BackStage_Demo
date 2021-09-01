@@ -40,4 +40,4 @@ spec:
     - bktest-notification-api
     - bktest-rnp-api
   type: service
-  dependsOn: ['resource:backstage2-db,backstage2-cluster,backstage2-s3bucket']
+  dependsOn: ['Bala-backstage3']
