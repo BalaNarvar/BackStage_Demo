@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: bindleTest
+  name: bindleTest1
   description: Bundle Of component scripts that retailers embed on their page.
   annotations:
     circleci.com/project-slug: github/narvar/bindle
@@ -11,7 +11,7 @@ metadata:
     sonarqube.org/project-key: bindle
   tags:
     - go
-    - track and hub
+    - track_hub
   links:
     - url: https://portal.victorops.com/client/narvar-inc
       title: VictorOps
