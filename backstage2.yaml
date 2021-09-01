@@ -29,7 +29,7 @@ metadata:
   description: Backstage-Testing2
   name: Bala-backstage2
   tags: 
-    - java
+    - track&hub
     - python
 spec: 
   lifecycle: experimental
