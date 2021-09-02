@@ -34,7 +34,7 @@ metadata:
 spec: 
   lifecycle: experimental
   owner: bala
-  system: messaging-system
+  system: messaging
   domain: Narvar
   providesApis: 
     - bktest-notification-api
