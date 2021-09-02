@@ -1,0 +1,52 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage8
+  description: Action Delegator
+  annotations:
+    circleci.com/project-slug: github/narvar/action-delegator
+    jira/project-key: MSG
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1528006768/Action+API+Wiki
+    github.com/project-slug: narvar/action-delegator
+    narvar-noflake/url: https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjo4LCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOjcwNH0sInR5cGUiOiJxdWVyeSJ9LCJkaXNwbGF5IjoidGFibGUiLCJ2aXN1YWxpemF0aW9uX3NldHRpbmdzIjp7fX0=
+    narvar-datadog/monitor: https://app.datadoghq.com/monitors/20783013, https://app.datadoghq.com/monitors/12151018
+    narvar-datadog/dashboard: https://app.datadoghq.com/dashboard/n3g-5j9-6ga/msg---action-rules-delegator-metrics?from_ts=1618982930160&live=true&to_ts=1618986530160
+    narvar-grafana/dashboard: http://pulsar-prod01.narvar.com:3000/d/Ypa0B5eWk/overview?orgId=1&refresh=1m, http://pulsar-prod01.narvar.com:3000/d/p0LQ5r7Mz/topic-metrics?orgId=1&refresh=5s&var-cluster=All&var-namespace=prod01%2Fmessaging&var-topic=persistent:%2F%2Fprod01%2Fmessaging%2Ftopic-action-output
+    sonarqube.org/project-key: action-delegator
+  tags:
+    - python
+    - messaging
+  links:
+    - url: https://portal.victorops.com/client/narvar-inc
+      title: VictorOps
+    - url: https://portal.victorops.com/dash/narvar-inc#/team/team-jG7H1ZXnHh9c27kw/users
+      title: VictorOps Team
+    - url: https://narvar.slack.com/archives/CHLK6T0BT
+      title: Slack Channel
+    - url: https://narvar.atlassian.net/secure/RapidBoard.jspa?rapidView=223
+      title: Kanban Board
+    - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1502846199/Messaging+General
+      title: Wiki Main Page
+    - url: https://jenkins-qa01.narvar.qa/
+      title: Jenkins-QA (Need QA VPN)
+    - url: https://jenkins-prod01.narvar.com/
+      title: Jenkins-Prod (Need Prod VPN)
+    - url: https://sonarqube.narvar.qa/
+      title: Sonar
+    - url: https://github.com/orgs/narvar/teams/messaging
+      title: Github Team
+    - url: https://github.com/orgs/narvar/teams/messaging/repositories
+      title: Repositories owned by the team
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/416907370/Engineering+Onboarding
+      title: Engineering Onboarding
+    - url: https://drive.google.com/drive/u/0/folders/1i6I3pERltieRGbzZy290oTH4uvzZn0KW
+      title: Engineering Onboarding Resources
+    - url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1030455297/ADA+Test+Automation+Framework+For+Messaging+Email+Validation
+      title: ADA Wiki
+    - url: https://jenkins-prod01.narvar.com/job/AccessbilityTest-ADA-Axe/
+      title: ADA Jenkins Job
+spec:
+  type: service
+  lifecycle: production
+  owner: notify-squad@narvar.com
+  system: messaging
