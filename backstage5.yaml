@@ -7,9 +7,12 @@ metadata:
       title: ADA Links
       icon: confluence
   retoollinks:
-    - url: https://narvar.atlassian.net/wiki/spaces/PDT/pages/427885314/BCC+Scrape+Implementation+Instructions
-      title: New Wiki Links
-      icon: confluence
+    - url: https://retool-qa01.narvar.qa/apps/Returns/Picklist%20v2
+      title: QA01 (Retool - Picklist)
+    - url: https://retool-st01.narvar.qa/apps/Returns/Picklist%20v2
+      title: ST01 (Retool - Picklist)
+    - url: https://retool.narvar.com/apps/Returns/Picklist%20v2
+      title: PROD (Retool - Picklist)
   annotations: 
     lighthouse.com/website-url: "/docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
