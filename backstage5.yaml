@@ -13,6 +13,17 @@ metadata:
       title: ST01 (Retool - Picklist)
     - url: https://retool.narvar.com/apps/Returns/Picklist%20v2
       title: PROD (Retool - Picklist)
+  runbooklinks:
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/1205732146
+      title: Carrier Facade Troubleshooting Runbook
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/1205928198/Return+Carrier+Label+Troubleshooting+Runbook
+      title: Return Carrier Label Troubleshooting Runbook
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/1987185979
+      title: Carrier Scheduler Manager Troubleshooting Runbook
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/1997701456/Fiji+Config+Service+Troubleshooting+Runbook
+      title: Fiji: Config Service Troubleshooting Runbook
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/2015035837
+      title: Capri Troubleshooting Runbook
   annotations: 
     lighthouse.com/website-url: "/docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
