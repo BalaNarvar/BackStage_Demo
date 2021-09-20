@@ -25,6 +25,9 @@ metadata:
     - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/2015035837
       title: Capri Troubleshooting Runbook
   annotations: 
+    datadoghq.com/site: https://app.datadoghq.com/dashboard/lists
+    datadoghq.com/dashboard-url: https://p.datadoghq.com/sb/0f6e65e53-90343a841e532f5e9862cea8e83c571c
+    datadoghq.com/graph-token: a0780f24caefe2df5cc827d4df899fadf8933549d0cb2c50e38c742ee5af0f04
     lighthouse.com/website-url: "/docs/auth/auth-backend-classes"
     jenkins.io/github-folder: "SQE-Tracking/cross_browser_tests/"
     sonarqube.org/project-key: "narvar:whatsapp-service"
