@@ -5,6 +5,9 @@ metadata:
   description: Backstage-Testing3
   annotations:
     circleci.com/project-slug: github/narvar/hub_backend
+    datadoghq.com/site: datadoghq.com
+    datadoghq.com/dashboard-url: https://p.datadoghq.com/sb/0f6e65e53-db7e5f1eaecf957273c091083caaa7cd
+    datadoghq.com/graph-token: 247e94a071c8177dba9001e8894a71d3c77f0659ff29bc8872ce58946996b955
   tags:
     - java
     - python
