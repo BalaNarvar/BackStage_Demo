@@ -50,6 +50,6 @@ metadata:
     - python
 spec: 
   lifecycle: experimental
-  owner: bala
+  owner: bala Krishnan
   type: service
   system: messaging-system
