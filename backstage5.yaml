@@ -53,3 +53,4 @@ spec:
   owner: bala Krishnan
   type: service
   system: messaging-system
+  dependsOn: backstage7
