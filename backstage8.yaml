@@ -50,4 +50,4 @@ spec:
   lifecycle: production
   owner: notify-squad@narvar.com
   system: messaging-system
-  dependsOn: ['Bala-backstage3']
+  subcomponentOf: Bala-backstage3
