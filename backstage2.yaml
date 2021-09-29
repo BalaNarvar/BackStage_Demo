@@ -40,4 +40,4 @@ spec:
     - bktest-notification-api
     - bktest-rnp-api
   type: service
-  dependsOn: ['Bala-backstage3']
+  subcomponentOf: Bala-backstage3
