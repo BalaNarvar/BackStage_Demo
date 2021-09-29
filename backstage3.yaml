@@ -18,5 +18,5 @@ spec:
   owner: bala
   providesApis:
     - raavi-api
-  subcomponentOf: Bala-backstage8
+  subcomponentOf: backstage8
 
