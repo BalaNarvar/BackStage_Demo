@@ -49,4 +49,5 @@ spec:
   type: service
   lifecycle: production
   owner: notify-squad@narvar.com
-  system: messaging
+  system: messaging-system
+  dependsOn: ['Bala-backstage3']
