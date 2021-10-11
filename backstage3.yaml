@@ -18,5 +18,3 @@ spec:
   owner: bala
   providesApis:
     - raavi-api
-  dependsOn: backstage8
-
