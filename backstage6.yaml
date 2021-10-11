@@ -4,7 +4,7 @@ kind: Component
 metadata:
   annotations: 
     datadoghq.com/site: datadoghq.com
-    datadoghq.com/dashboard-url: https://p.datadoghq.com/sb/0f6e65e53-db7e5f1eaecf957273c091083caaa7cd
+    datadoghq.com/dashboard-url:  https://app.datadoghq.com/dashboard/3v7-fpx-rrh/carrier-api-facade-k8-stats?tv_mode=true&from_ts=1633845574030&to_ts=1633931974030&live=true
     datadoghq.com/graph-token: 247e94a071c8177dba9001e8894a71d3c77f0659ff29bc8872ce58946996b955
     backstage.io/techdocs-ref: "url:https://github.com/narvar/carrier-data-ingestion/tree/PRD-197"
     jira/project-key: MSG
