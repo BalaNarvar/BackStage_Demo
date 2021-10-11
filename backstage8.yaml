@@ -5,7 +5,7 @@ metadata:
   description: Action Delegator
   annotations:
     datadoghq.com/site: datadoghq.com
-    datadoghq.com/dashboard-url: https://p.datadoghq.com/sb/0f6e65e53-db7e5f1eaecf957273c091083caaa7cd
+    datadoghq.com/dashboard-url: https://p.datadoghq.com/sb/0f6e65e53-88874155b11442ce0b822746016220ed
     datadoghq.com/graph-token: fcd694139d5d08846d8f22372b38841da0b10e766e8d08225951ff0a80a148de
     circleci.com/project-slug: github/narvar/action-delegator
     jira/project-key: MSG
