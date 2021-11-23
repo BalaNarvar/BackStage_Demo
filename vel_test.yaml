@@ -1,0 +1,103 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: consumer-notification-preferences-t
+  description: Consumer Notification Preferences
+  annotations:
+    circleci.com/project-slug: github/narvar/consumer-notification-preferences
+    jira/project-key: MSG
+    narvar-wiki/url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1502813532/Consumer+Notification+Preferences+CNP
+    github.com/project-slug: narvar/consumer-notification-preferences
+    narvar-noflake/url: https://noflake.narvar.com/question#eyJkYXRhc2V0X3F1ZXJ5Ijp7ImRhdGFiYXNlIjpudWxsLCJxdWVyeSI6eyJzb3VyY2UtdGFibGUiOm51bGx9LCJ0eXBlIjoicXVlcnkifSwiZGlzcGxheSI6InRhYmxlIiwidmlzdWFsaXphdGlvbl9zZXR0aW5ncyI6e319
+    narvar-datadog/monitor: https://app.datadoghq.com/monitors/7067863, https://app.datadoghq.com/monitors/10573016, https://app.datadoghq.com/monitors/7257196, https://app.datadoghq.com/monitors/10239877
+    narvar-datadog/dashboard: https://app.datadoghq.com/dashboard/erg-bha-ftz/msg-cnp-metrics?from_ts=1618981641519&live=true&to_ts=1618985241519
+    narvar-grafana/dashboard: http://pulsar-prod01.narvar.com:3000/d/Ypa0B5eWk/overview?orgId=1&refresh=1m, http://pulsar-prod01.narvar.com:3000/d/p0LQ5r7Mz/topic-metrics?orgId=1&refresh=5s&var-cluster=All&var-namespace=prod01%2Fcnp&var-topic=persistent:%2F%2Fprod01%2Fcnp%2Ftopic-cnp-partition-0&var-topic=persistent:%2F%2Fprod01%2Fcnp%2Ftopic-cnp-partition-1&var-topic=persistent:%2F%2Fprod01%2Fmessaging%2Ftopic-cnp
+    sonarqube.org/project-key: com.narvar.consumer-notification-preferences:consumer-notification-preferences
+    splunk.com/on-call-team: Messaging-Backend
+  tags:
+    - java
+    - messaging
+  links:
+    - url: https://portal.victorops.com/client/narvar-inc
+      title: VictorOps
+    - url: https://portal.victorops.com/dash/narvar-inc#/team/team-jG7H1ZXnHh9c27kw/users
+      title: VictorOps Team
+    - url: https://narvar.slack.com/archives/CHLK6T0BT
+      title: Slack Channel
+    - url: https://narvar.atlassian.net/secure/RapidBoard.jspa?rapidView=223
+      title: Kanban Board
+    - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1502846199/Messaging+General
+      title: Wiki Main Page
+    - url: https://jenkins-qa01.narvar.qa/
+      title: Jenkins-QA (Need QA VPN)
+    - url: https://jenkins-prod01.narvar.com/
+      title: Jenkins-Prod (Need Prod VPN)
+    - url: https://sonarqube.narvar.qa/
+      title: Sonar
+    - url: https://github.com/orgs/narvar/teams/messaging
+      title: Github Team
+    - url: https://github.com/orgs/narvar/teams/messaging/repositories
+      title: Repositories owned by the team
+    - url: https://narvar.atlassian.net/wiki/spaces/EN/pages/416907370/Engineering+Onboarding
+      title: Engineering Onboarding
+    - url: https://drive.google.com/drive/u/0/folders/1i6I3pERltieRGbzZy290oTH4uvzZn0KW
+      title: Engineering Onboarding Resources
+    - url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1030455297/ADA+Test+Automation+Framework+For+Messaging+Email+Validation
+      title: ADA Wiki
+    - url: https://jenkins-prod01.narvar.com/job/AccessbilityTest-ADA-Axe/
+      title: ADA Jenkins Job
+    - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/2087355047/Messaging+Architecture
+      title: Messaging Architecture
+    - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1202749641/Messaging+Links
+      title: Messaging Links
+    - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/2087355047/Messaging+Architecture
+      title: Messaging Architecture Diagram
+retool:
+  - url  :https://retool-qa01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
+    title: QA01 (Retool - Debug Rules Engine logs)
+  - url  :https://retool-st01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
+    title: ST01 (Retool - Debug Rules Engine logs)
+  - url  :https://retool-qa01.narvar.qa/folders/Messaging-Services
+    title: QA01 (Retool - Messaging Services)
+  - url  :https://retool-st01.narvar.qa/folders/Messaging-Services
+    title: ST01 (Retool - Messaging Services)
+  - url  :https://retool.narvar.com/folders/Messaging-Services
+    title: PROD (Retool - Messaging Services)
+  - url  :https://retool-qa01.narvar.qa/apps/Messaging-Services/MessagingDecompress
+    title: QA01 (Retool - Decompress the encrypted payload)
+  - url  :https://retool-st01.narvar.qa/apps/Messaging-Services/MessagingDecompress
+    title: ST01 (Retool - Decompress the encrypted payload)
+  - url  :https://retool.narvar.com/apps/Messaging-Services/MessagingDecompress
+    title: PROD (Retool - Decompress the encrypted payload)
+  - url  :https://retool-qa01.narvar.qa/apps/Notifications/Preferences
+    title: QA01 (Retool - Retailer notification preferences)
+  - url  :https://retool-st01.narvar.qa/apps/Notifications/Preferences
+    title: ST01 (Retool - Retailer notification preferences)
+  - url  :https://retool.narvar.com/apps/Notifications/Preferences
+    title: PROD (Retool - Retailer notification preferences)
+  - url  :https://retool-qa01.narvar.qa/folders/WYSIWYG%20Onboarding
+    title: QA01 (Retool - Wysiwyg Onboarding)
+  - url  :https://retool-st01.narvar.qa/folders/WYSIWYG%20Onboarding
+    title: ST01 (Retool - Wysiwyg Onboarding)
+  - url  :https://retool.narvar.com/folders/WYSIWYG%20Onboarding
+    title: PROD (Retool - Wysiwyg Onboarding)
+  - url  :https://retool-qa01.narvar.qa/folders/SMSService
+    title: QA01 (Retool - SMS Service)
+  - url  :https://retool-st01.narvar.qa/folders/SMSService
+    title: ST01 (Retool - SMS Service)
+  - url  :https://retool.narvar.com/folders/SMSService
+    title: PROD (Retool - SMS Service)
+runbooks:
+  - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/586220694/Oncall+Run+Book
+    title: Messaging Oncall Run book
+  - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1637122203/Support+Run-book+for+Messaging+Template+Issue+Report
+    title: Template Issue report Run book
+  - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/2008383539/Messaging+FAQs
+    title: Messaging FAQ's
+spec:
+  type: service
+  lifecycle: production
+  owner: messaging
+  system: messaging
+  providesApis:
+    - consumer-notification-preferences-api
