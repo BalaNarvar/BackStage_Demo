@@ -52,7 +52,7 @@ metadata:
       title: Messaging Links
     - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/2087355047/Messaging+Architecture
       title: Messaging Architecture Diagram
-  retool:
+  retoollinks:
     - url  :https://retool-qa01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
       title: QA01 (Retool - Debug Rules Engine logs)
     - url  :https://retool-st01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
@@ -87,7 +87,7 @@ metadata:
       title: ST01 (Retool - SMS Service)
     - url  :https://retool.narvar.com/folders/SMSService
       title: PROD (Retool - SMS Service)
-  runbooks:
+  runbooklinks:
     - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/586220694/Oncall+Run+Book
       title: Messaging Oncall Run book
     - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/1637122203/Support+Run-book+for+Messaging+Template+Issue+Report
