@@ -53,40 +53,12 @@ metadata:
     - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/2087355047/Messaging+Architecture
       title: Messaging Architecture Diagram
   retoollinks:
-    - url  :https://retool-qa01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
-      title: QA01 (Retool - Debug Rules Engine logs)
-    - url  :https://retool-st01.narvar.qa/apps/Messaging-Services/RE%20Debug%20Logs
-      title: ST01 (Retool - Debug Rules Engine logs)
-    - url  :https://retool-qa01.narvar.qa/folders/Messaging-Services
-      title: QA01 (Retool - Messaging Services)
-    - url  :https://retool-st01.narvar.qa/folders/Messaging-Services
-      title: ST01 (Retool - Messaging Services)
-    - url  :https://retool.narvar.com/folders/Messaging-Services
-      title: PROD (Retool - Messaging Services)
-    - url  :https://retool-qa01.narvar.qa/apps/Messaging-Services/MessagingDecompress
-      title: QA01 (Retool - Decompress the encrypted payload)
-    - url  :https://retool-st01.narvar.qa/apps/Messaging-Services/MessagingDecompress
-      title: ST01 (Retool - Decompress the encrypted payload)
-    - url  :https://retool.narvar.com/apps/Messaging-Services/MessagingDecompress
-      title: PROD (Retool - Decompress the encrypted payload)
-    - url  :https://retool-qa01.narvar.qa/apps/Notifications/Preferences
-      title: QA01 (Retool - Retailer notification preferences)
-    - url  :https://retool-st01.narvar.qa/apps/Notifications/Preferences
-      title: ST01 (Retool - Retailer notification preferences)
-    - url  :https://retool.narvar.com/apps/Notifications/Preferences
-      title: PROD (Retool - Retailer notification preferences)
-    - url  :https://retool-qa01.narvar.qa/folders/WYSIWYG%20Onboarding
-      title: QA01 (Retool - Wysiwyg Onboarding)
-    - url  :https://retool-st01.narvar.qa/folders/WYSIWYG%20Onboarding
-      title: ST01 (Retool - Wysiwyg Onboarding)
-    - url  :https://retool.narvar.com/folders/WYSIWYG%20Onboarding
-      title: PROD (Retool - Wysiwyg Onboarding)
-    - url  :https://retool-qa01.narvar.qa/folders/SMSService
-      title: QA01 (Retool - SMS Service)
-    - url  :https://retool-st01.narvar.qa/folders/SMSService
-      title: ST01 (Retool - SMS Service)
-    - url  :https://retool.narvar.com/folders/SMSService
-      title: PROD (Retool - SMS Service)
+    - url: https://retool-qa01.narvar.qa/apps/Returns/Picklist%20v2
+      title: QA01 (Retool - Picklist)
+    - url: https://retool-st01.narvar.qa/apps/Returns/Picklist%20v2
+      title: ST01 (Retool - Picklist)
+    - url: https://retool.narvar.com/apps/Returns/Picklist%20v2
+      title: PROD (Retool - Picklist)
   runbooklinks:
     - url: https://narvar.atlassian.net/wiki/spaces/CG/pages/586220694/Oncall+Run+Book
       title: Messaging Oncall Run book
