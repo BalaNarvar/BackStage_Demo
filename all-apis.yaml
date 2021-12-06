@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: "all-api"
+  description: "All API's spec path must be added here"
+spec:
+  type: url
+  targets:
+    - https://github.com/narvar/Retailer-notification-preferences/blob/master/backstage/retailer-notification-prefrences-api.yaml
+    - https://github.com/narvar/consumer-notification-preferences/blob/master/backstage/consumer-notification-preferences-api.yaml
+    - https://github.com/narvar/de-dupe/blob/master/backstage/de-dupe-api.yaml
+    - https://github.com/narvar/notification-service/blob/master/backstage/notification-service-api.yaml
+    - https://github.com/narvar/capri/blob/master/backstage/capri-api.yaml
+    - https://github.com/narvar/carrier-api-facade/blob/master/backstage/carrier-api-facade-api.yaml
+    - https://github.com/narvar/returns-carrier-label/blob/master/backstage/returns-carrier-label-api.yaml
+    - https://github.com/narvar/atlas-api/blob/master/backstage/api-docs.yaml
+    - https://github.com/BalaNarvar/BackStage_Demo/blob/main/bktest-rnp-api.yaml
