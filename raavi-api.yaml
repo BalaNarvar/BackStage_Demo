@@ -16,19 +16,4 @@ spec:
       license:
         name: MIT
     servers:
-      - url: https://raavi.narvar.com/api/v1
-    paths:
-      /order:
-        post:
-          summary: Posting an order for raavi
-          description: Passing Order detail
-          produces:
-          - "application/json"
-          parameters:
-          - in: "body"
-            name: "body"
-            description: "passing the payload"
-            required: true
-          responses:
-            "200":
-              description: "successful operation"
+      - url: http://internal-d471ad54-qa01-retailernoti-2790-1968814195.us-west-2.elb.amazonaws.com/swagger-ui/index.html#/
