@@ -1,0 +1,460 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: raavi-api
+  description: Shows list of API used in raavi
+spec:
+  type: openapi
+  lifecycle: production
+  owner: partnership
+  system: messaging-system
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.1
+      title: Raavi
+      license:
+        name: MIT
+    servers:
+      - url: https://raavi.narvar.com/api/v1
+    paths:
+      /order:
+        post:
+          summary: Posting an order for raavi
+          description: Passing Order detail
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          responses:
+            "200":
+              description: "successful operation"
+      
+      /order/{orderNumber}/shipment:
+        put:
+          summary: Updating an Shipment
+          description: Updating an Shipment
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: "orderNumber"
+            in: "path"
+            description: "Passing OrderNumber to the path parameter"
+            required: true
+            type: "string"
+          - name: x-magneto-store
+            in: header
+            description: x-magneto-store
+            required: true
+            type: string
+          - name: x-magento-hmac-sha256
+            in: header
+            description: x-magento-hmac-sha256
+            required: true
+            type: string
+          - name: x-magento-event
+            in: header
+            description: x-magento-event
+            required: true
+            type: string
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+      
+      /order/{orderNumber}/invoice:
+        put:
+          summary: Updating an invoice
+          description: Updating an invoice
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: "orderNumber"
+            in: "path"
+            description: "Passing OrderNumber to the path parameter"
+            required: true
+            type: "string"
+          - name: x-magneto-store
+            in: header
+            description: x-magneto-store
+            required: true
+            type: string
+          - name: x-magento-hmac-sha256
+            in: header
+            description: x-magento-hmac-sha256
+            required: true
+            type: string
+          - name: x-magento-event
+            in: header
+            description: x-magento-event
+            required: true
+            type: string
+          - name: x-magento-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation" 
+      
+      /bigcommerce/order:
+        post:
+          summary: Posting an order
+          description: Posting an order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-store
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-event
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string   
+          responses:
+            "200":
+              description: "successful operation" 
+      
+      /bigcommerce/shipment:
+        post:
+          summary: Posting an shipment for bigcommerce
+          description: Posting an shipment
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-store
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-event
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string   
+          responses:
+            "200":
+              description: "successful operation"  
+       
+      /bigcommerce/store:
+        post:
+          summary: Posting an shipment for store
+          description: Posting an store
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-store
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-event
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string   
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /bigcommerce/category:
+        post:
+          summary: Posting an shipment for category
+          description: Posting an category
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-store
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-event
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string
+          - name: x-narvar-retailer
+            in: header
+            description: x-magento-retailer
+            required: true
+            type: string   
+          responses:
+            "200":
+              description: "successful operation" 
+        
+
+      /shopify/order:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-shopify-hmac-sha256
+            in: header
+            description: x-shopify-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /shopify/product:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-shopify-hmac-sha256
+            in: header
+            description: x-shopify-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /sfcc/order:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-hmac-sha256
+            in: header
+            description: x-narvar-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation" 
+              
+      /sfcc/order/bulk:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-hmac-sha256
+            in: header
+            description: x-narvar-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"  
+              
+      /levi/order:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: x-narvar-hmac-sha256
+            in: header
+            description: x-narvar-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"    
+         
+      /hybris/{retailerName}/order:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: "retailerName"
+            in: "path"
+            description: "Passing retailerName to the path parameter"
+            required: true
+            type: "string"
+          - name: x-narvar-hmac-sha256
+            in: header
+            description: x-narvar-hmac-sha256
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"    
+          
+      /radial/order/confirmation:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: Basic auth
+            in: header
+            description: Basic Auth
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"  
+              
+      /radial/shipment/confirmation:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: Basic auth
+            in: header
+            description: Basic Auth
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"   
+   
+      /radial/vat/invoices:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: Basic auth
+            in: header
+            description: Basic Auth
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+              
+      /radial/order/cancellation:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: Basic auth
+            in: header
+            description: Basic Auth
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
+
+      /radial/order/backordered:
+        post:
+          summary: Posting an Order
+          description: Posting an Order
+          produces:
+          - "application/json"
+          parameters:
+          - in: "body"
+            name: "body"
+            description: "passing the payload"
+            required: true
+          - name: Basic auth
+            in: header
+            description: Basic Auth
+            required: true
+            type: string
+          responses:
+            "200":
+              description: "successful operation"
