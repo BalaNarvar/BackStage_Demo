@@ -22,6 +22,7 @@ metadata:
     narvar-speca/url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1014595727/ADA+Test+For+Messaging+Emailss
     narvar-wiki/url: "https://app.datadoghq.com/monitors/26168411 ,https://app.datadoghq.com/monitors/26168623 , https://app.datadoghq.com/monitors/19787557 ,https://app.datadoghq.com/monitors/19494724"
     prometheus.io/alert: all
+    vault.io/secrets-path: path/to/really-cool
   links:
     - url: https://narvar.atlassian.net/wiki/spaces/TESTENG/pages/1014595727/ADA+Test+For+Messaging+Emailss
       title: ADA Links
